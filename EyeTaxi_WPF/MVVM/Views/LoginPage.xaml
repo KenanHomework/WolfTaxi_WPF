@@ -1,0 +1,62 @@
+﻿<Page x:Class="EyeTaxi_WPF.MVVM.Views.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EyeTaxi_WPF.MVVM.Views"
+      mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="670" d:DesignWidth="350"
+      Title="LoginPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- Brand Area -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1657809534/EyeTaxi/Logo.png" Stretch="Uniform"></Image>
+            <StackPanel>
+                <Label Content="EyeTaxi" Foreground="#f6ba2b" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="45"></Label>
+                <Label Content="Next level service." Foreground="#f6ba2b" FontFamily="Bauhaus 93" FontWeight="SemiBold" FontSize="25"></Label>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Page Info Area -->
+        <StackPanel Grid.Row="3" Margin="0 5">
+            <Label Content="Login" Foreground="#e6e1e4" FontSize="35" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+            <Label Content="Plese sing in to continue " Foreground="#645c64" FontSize="25" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" >
+            <TextBox Foreground="#edecef" Background="#38304c" Margin="15"  Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Background="#38304c" TextChanged="TextBox_TextChanged" Name="Username"/>
+
+            <PasswordBox Foreground="#edecef" Background="#38304c" Margin="15" materialDesign:HintAssist.Hint="Password" 
+                materialDesign:HintAssist.Background="#38304c" PasswordChanged="PasswordBox_PasswordChanged"  Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Name="Password"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Vertical">
+
+            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="60" Background="#0ef5e3"
+             materialDesign:ButtonAssist.CornerRadius="25" ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                <Label Content="Login" Foreground="{StaticResource  Main_Color}" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+            </Button>
+
+            <Label Content="Forgot Password ?" Foreground="#109793" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Segoe UI Symbol" FontWeight="Heavy" Cursor="Hand"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <Label Content="Don't have an account ?" Foreground="#645c64" FontSize="20" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
+
+            <Label Content="Sign Up" Foreground="#0ef5e3" VerticalAlignment="Center" FontSize="22" FontFamily="Segoe UI Black" FontWeight="DemiBold" Cursor="Hand"/>
+        </StackPanel>
+
+    </Grid>
+</Page>
