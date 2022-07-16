@@ -57,28 +57,27 @@ namespace EyeTaxi_WPF.Facade
             Save();
         }
 
-        public SearchProcessResult Login(User user)
+        public ProcessResult Login(User user)
         {
 
-            SearchProcessResult result = HumanService.Search(user);
-            if (result == SearchProcessResult.Success)
-                User = user;
+            ProcessResult result = UserService.Search(user);
+            if (result == ProcessResult.Success)
+                User = UserService.Read(user);
 
             return result;
         }
 
-        public SearchProcessResult Signin(User user, bool autoSaveUser = true)
+        public ProcessResult Signin(User user, bool autoSaveUser = true)
         {
-            SearchProcessResult result = HumanService.Search(user);
-            if (result == SearchProcessResult.NotFound)
+            ProcessResult result = UserService.Search(user);
+            if (result == ProcessResult.NotFound)
             {
                 User = user;
                 if (autoSaveUser)
-                    HumanService.Writehuman(User);
-
+                    UserService.Write( user);
             }
 
-            return SearchProcessResult.Success;
+            return ProcessResult.Success;
         }
 
         #endregion

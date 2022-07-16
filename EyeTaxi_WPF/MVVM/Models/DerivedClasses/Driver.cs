@@ -17,7 +17,7 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 
         public List<Move> History { get; set; } = new();
 
-        public override string SubFilePath => "dataset/Drivers";
+        public override string SubFilePath => App.DriverSubFilePath;
 
         #endregion
 
@@ -30,7 +30,7 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 
         public Driver() : base() { }
 
-        public Driver(string username, Hash password, string email, string phone, Location location, Taxi taxi) : base(username, password, email, phone)
+        public Driver(string username, string password, string email, string phone, Location location, Taxi taxi) : base(username, password, email, phone)
         {
             Location = location;
             Taxi = taxi;

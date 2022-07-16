@@ -20,7 +20,7 @@
 
         <!-- Brand Area -->
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1657809534/EyeTaxi/Logo.png" Stretch="Uniform"></Image>
+            <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1657809534/EyeTaxi/Logo.png" Stretch="Uniform" Margin="10 0"></Image>
             <StackPanel>
                 <Label Content="EyeTaxi" Foreground="#f6ba2b" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="45"></Label>
                 <Label Content="Next level service." Foreground="#f6ba2b" FontFamily="Bauhaus 93" FontWeight="SemiBold" FontSize="25"></Label>
@@ -34,16 +34,20 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" >
-            <TextBox Foreground="#edecef" Background="#38304c" Margin="15"  Style="{StaticResource MaterialDesignOutlinedTextBox}"
+            <TextBox Foreground="#edecef" Background="#38304c" Margin="15"  
+              Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="20"
+              Text="{Binding Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Background="#38304c" TextChanged="TextBox_TextChanged" Name="Username"/>
 
-            <PasswordBox Foreground="#edecef" Background="#38304c" Margin="15" materialDesign:HintAssist.Hint="Password" 
-                materialDesign:HintAssist.Background="#38304c" PasswordChanged="PasswordBox_PasswordChanged"  Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Name="Password"/>
+            <PasswordBox Foreground="#edecef" Background="#38304c" Margin="15" materialDesign:HintAssist.Hint="Password" MaxLength="20"
+                materialDesign:HintAssist.Background="#38304c"
+                PasswordChanged="PasswordBox_PasswordChanged"  Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Name="Password"/>
         </StackPanel>
 
+        <!--Password="{Binding Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->
         <StackPanel Grid.Row="5" Orientation="Vertical">
 
-            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="60" Background="#0ef5e3"
+            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="60" Background="#0ef5e3" Command="{Binding LoginLocal}"
              materialDesign:ButtonAssist.CornerRadius="25" ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
                 <Label Content="Login" Foreground="{StaticResource  Main_Color}" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
             </Button>

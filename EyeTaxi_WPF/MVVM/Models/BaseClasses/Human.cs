@@ -20,15 +20,26 @@ namespace EyeTaxi_WPF.MVVM.Models.BaseClasses
 
         #endregion
 
+        #region Methods
+
+        public string GetPath() => $"{SubFilePath}/{Username}.json";
+
+        #endregion
+
         public Human() { }
 
-        protected Human(string username, Hash password, string email, string phone)
+        protected Human(string username, string password, string email, string phone)
         {
             Username = username;
-            Password = password;
+            Password = new Hash(password);
             Email = email;
             Phone = phone;
         }
 
+        protected Human(string username, string password)
+        {
+            Username = username;
+            Password = new Hash(password);
+        }
     }
 }

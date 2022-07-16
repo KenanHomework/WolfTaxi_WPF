@@ -12,9 +12,11 @@ namespace EyeTaxi_WPF.MVVM.Models.GeneralClasses
 
         #region Members
 
-        string[] SaltStrings = new string[2];
-        char HashKey;
-        string Value = string.Empty;
+        public string[] SaltStrings { get; set; } = new string[2] { Lorem.Words(1, 3), Lorem.Words(1, 3) };
+
+        public char HashKey { get; set; } = (char)new Random().Next(0, 255);
+
+        public string Value { get; set; } = string.Empty;
 
         #endregion
 
@@ -49,13 +51,7 @@ namespace EyeTaxi_WPF.MVVM.Models.GeneralClasses
 
         #endregion
 
-        public Hash()
-        {
-            HashKey = (char)new Random().Next(0, 255);
-
-            SaltStrings[0] = Lorem.Words(1, 3);
-            SaltStrings[1] = Lorem.Words(1, 3);
-        }
+        public Hash() { }
 
         public Hash(string value) : this()
         {

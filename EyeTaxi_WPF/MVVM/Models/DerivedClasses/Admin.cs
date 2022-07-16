@@ -9,7 +9,7 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 {
     public class Admin : Human
     {
-        public override string SubFilePath { get => "dataset"; }
+        public override string SubFilePath => App.AdminSubFilePath;
 
         public Admin() : base() { }
     }
