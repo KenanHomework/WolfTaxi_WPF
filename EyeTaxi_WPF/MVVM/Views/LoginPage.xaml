@@ -48,11 +48,12 @@
         <StackPanel Grid.Row="5" Orientation="Vertical">
 
             <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="60" Background="#0ef5e3" Command="{Binding LoginLocal}"
-             materialDesign:ButtonAssist.CornerRadius="25" ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+             materialDesign:ButtonAssist.CornerRadius="25">
                 <Label Content="Login" Foreground="{StaticResource  Main_Color}" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
             </Button>
 
-            <Label Content="Forgot Password ?" Foreground="#109793" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Segoe UI Symbol" FontWeight="Heavy" Cursor="Hand"/>
+            <Button Content="Forgot Password ?" Foreground="#109793" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Segoe UI Symbol" FontWeight="Heavy" Click="ResetPassword" Background="Transparent"
+              BorderThickness="0"/>
 
         </StackPanel>
 

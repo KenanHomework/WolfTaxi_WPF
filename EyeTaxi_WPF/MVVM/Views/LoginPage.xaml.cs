@@ -1,4 +1,5 @@
-﻿using EyeTaxi_WPF.Interfaces;
+﻿using EyeTaxi_WPF.Enums;
+using EyeTaxi_WPF.Interfaces;
 using EyeTaxi_WPF.MVVM.ViewModels;
 using EyeTaxi_WPF.Services;
 using System;
@@ -38,9 +39,15 @@ namespace EyeTaxi_WPF.MVVM.Views
             ((LoginPageVM)DataContext).Password = Password.Password;
         }
 
-        private void Password_PasswordChanged(object sender, RoutedEventArgs e)
+        private void ResetPassword(object sender, RoutedEventArgs e)
         {
-
+            ForgotPassword forgotPassword = new();
+            forgotPassword.ShowDialog();
+            if (forgotPassword.DialogResult == DialogResult.Success)
+            {
+                new MessageBoxCustom("Succes Reset Password", MessageType.Success, MessageButtons.Ok).ShowDialog();
+                Username.Text = forgotPassword.Username.Text;
+            }
         }
     }
 }

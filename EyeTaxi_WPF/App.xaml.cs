@@ -29,22 +29,10 @@ namespace EyeTaxi_WPF
 
         public App()
         {
-            User user = new("kenan", "passPassd124");
-            UserService.Write(user);
-
+            //User user = new("kenan", "passPassd124","kenanysbv@gmail.com","055");
+            //UserService.Write(user);
+            // kenanShekili2
             Register();
-            Container.GetInstance<LoginPageVM>().LoginClick = new(p =>
-            {
-                ProcessResult res = DataFacade.Login
-                                                (new User(
-                                                    Container.GetInstance<LoginPageVM>().Username,
-                                                    Container.GetInstance<LoginPageVM>().Password
-                                                ));
-
-                MessageBox.Show(res.ToString());
-
-            });
-
         }
 
 
@@ -52,6 +40,8 @@ namespace EyeTaxi_WPF
         void Register()
         {
             Container.RegisterSingleton<LoginPageVM>();
+            Container.RegisterSingleton<EnterSecurityVM>();
+            Container.RegisterSingleton<ForgotPasswordVM>();
             Container.RegisterSingleton<DataFacade>();
 
             Container.Verify();

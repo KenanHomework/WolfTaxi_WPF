@@ -19,9 +19,9 @@ namespace EyeTaxi_WPF.Services
                 return ProcessResult.NotFound;
 
             if (data.Password.Compare(user.Password))
-                return ProcessResult.IncorrectPassword;
+                return ProcessResult.Success;
 
-            return ProcessResult.Success;
+            return ProcessResult.IncorrectPassword;
         }
 
         public static User Read(User user) => JSONService.Read<User>(user.GetPath());

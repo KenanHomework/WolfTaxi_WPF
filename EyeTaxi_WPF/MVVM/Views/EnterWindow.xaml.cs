@@ -1,4 +1,8 @@
-﻿using System;
+﻿using EyeTaxi_WPF.Enums;
+using EyeTaxi_WPF.Facade;
+using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
+using EyeTaxi_WPF.MVVM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +26,22 @@ namespace EyeTaxi_WPF.MVVM.Views
         public EnterWindow()
         {
             InitializeComponent();
+
+            #region Implement Commands
+
+            App.Container.GetInstance<LoginPageVM>().LoginClick = new(p =>
+            {
+                ProcessResult res = App.DataFacade.Login
+                                                (new User(
+                                                    App.Container.GetInstance<LoginPageVM>().Username,
+                                                    App.Container.GetInstance<LoginPageVM>().Password
+                                                ));
+
+                MessageBox.Show(res.ToString());
+            });
+
+            #endregion
+
             Frame.Navigate(new LoginPage());
         }
         private void ResizeButton_Click(object sender, RoutedEventArgs e)
