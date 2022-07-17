@@ -60,7 +60,7 @@
         <StackPanel Grid.Row="6" Orientation="Horizontal">
             <Label Content="Don't have an account ?" Foreground="#645c64" FontSize="20" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
 
-            <Label Content="Sign Up" Foreground="#0ef5e3" VerticalAlignment="Center" FontSize="22" FontFamily="Segoe UI Black" FontWeight="DemiBold" Cursor="Hand"/>
+            <Button Content="Sign Up" Foreground="#0ef5e3" VerticalAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" Command="{Binding SignUpClick}" Cursor="Hand" Background="Transparent" BorderThickness="0"/>
         </StackPanel>
 
     </Grid>

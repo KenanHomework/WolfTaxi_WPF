@@ -13,6 +13,7 @@ using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
 using EyeTaxi_WPF.MVVM.Models.GeneralClasses;
 using EyeTaxi_WPF.Enums;
 using EyeTaxi_WPF.Services;
+using System.IO;
 
 namespace EyeTaxi_WPF
 {
@@ -29,18 +30,29 @@ namespace EyeTaxi_WPF
 
         public App()
         {
-            //User user = new("kenan", "passPassd124","kenanysbv@gmail.com","055");
+            //User user = new("kenan", "passPassd124", "kenanysbv@gmail.com", "055");
             //UserService.Write(user);
             // kenanShekili2
+
+            DataFacade.Load();
+
+            CreateDirectorys();
             Register();
         }
 
+        void CreateDirectorys()
+        {
+            Directory.CreateDirectory(AdminSubFilePath);
+            Directory.CreateDirectory(DriverSubFilePath);
+            Directory.CreateDirectory(UserSubFilePath);
+        }
 
 
         void Register()
         {
             Container.RegisterSingleton<LoginPageVM>();
             Container.RegisterSingleton<EnterSecurityVM>();
+            Container.RegisterSingleton<SignUpVM>();
             Container.RegisterSingleton<ForgotPasswordVM>();
             Container.RegisterSingleton<DataFacade>();
 

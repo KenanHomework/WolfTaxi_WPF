@@ -32,13 +32,19 @@ namespace EyeTaxi_WPF.MVVM.Views
             App.Container.GetInstance<LoginPageVM>().LoginClick = new(p =>
             {
                 ProcessResult res = App.DataFacade.Login
-                                                (new User(
+                                                (
                                                     App.Container.GetInstance<LoginPageVM>().Username,
                                                     App.Container.GetInstance<LoginPageVM>().Password
-                                                ));
+                                                );
+
 
                 MessageBox.Show(res.ToString());
             });
+
+
+            App.Container.GetInstance<LoginPageVM>().SignUpClick = new(p => { Frame.Navigate(new SignUp()); });
+
+            App.Container.GetInstance<SignUpVM>().SignIn = new(p => { Frame.GoBack(); });
 
             #endregion
 

@@ -39,6 +39,8 @@ namespace EyeTaxi_WPF.MVVM.Views
             ((LoginPageVM)DataContext).Password = Password.Password;
         }
 
+
+
         private void ResetPassword(object sender, RoutedEventArgs e)
         {
             ForgotPassword forgotPassword = new();

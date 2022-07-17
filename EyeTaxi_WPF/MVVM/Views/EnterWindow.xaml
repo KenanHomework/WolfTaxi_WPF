@@ -36,6 +36,6 @@
             </Grid>
         </Border>
 
-        <Frame x:Name="Frame"></Frame>
+        <Frame x:Name="Frame" NavigationUIVisibility="Hidden"></Frame>
     </DockPanel>
 </Window>

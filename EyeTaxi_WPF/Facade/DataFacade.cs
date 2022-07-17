@@ -57,12 +57,12 @@ namespace EyeTaxi_WPF.Facade
             Save();
         }
 
-        public ProcessResult Login(User user)
+        public ProcessResult Login(string username, string password)
         {
 
-            ProcessResult result = UserService.Search(user);
+            ProcessResult result = UserService.Search(username, password);
             if (result == ProcessResult.Success)
-                User = UserService.Read(user);
+                User = UserService.Read(username);
 
             return result;
         }
@@ -74,7 +74,7 @@ namespace EyeTaxi_WPF.Facade
             {
                 User = user;
                 if (autoSaveUser)
-                    UserService.Write( user);
+                    UserService.Write(user);
             }
 
             return ProcessResult.Success;
