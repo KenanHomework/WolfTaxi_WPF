@@ -11,6 +11,9 @@ namespace EyeTaxi_WPF.Services
 
         public static ProcessResult Search(User user)
         {
+            if (!File.Exists(user.GetPath()))
+                return ProcessResult.NotFound;
+
             User data;
             try { data = Read(user); }
             catch (Exception) { return ProcessResult.Empty; }
@@ -26,7 +29,12 @@ namespace EyeTaxi_WPF.Services
 
         public static ProcessResult Search(string userame, string password)
         {
+
+            if (!File.Exists($"{App.UserSubFilePath}/{userame}.json"))
+                return ProcessResult.NotFound;
+
             User data;
+
             try { data = Read(userame); }
             catch (Exception) { return ProcessResult.Empty; }
 

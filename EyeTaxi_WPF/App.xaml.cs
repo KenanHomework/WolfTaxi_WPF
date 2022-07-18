@@ -30,8 +30,8 @@ namespace EyeTaxi_WPF
 
         public App()
         {
-            //User user = new("kenan", "passPassd124", "kenanysbv@gmail.com", "055");
-            //UserService.Write(user);
+            User user = new("test2", "testingEYETAXI1", "kenanysbv@gmail.com", "055");
+            UserService.Write(user);
             // kenanShekili2
 
             DataFacade.Load();

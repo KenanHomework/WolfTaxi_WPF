@@ -42,9 +42,9 @@ namespace EyeTaxi_WPF.MVVM.Views
             });
 
 
-            App.Container.GetInstance<LoginPageVM>().SignUpClick = new(p => { Frame.Navigate(new SignUp()); });
+            App.Container.GetInstance<LoginPageVM>().SignUpClick = new(p => { SignUp sign = new(); sign.Reset(); Frame.Navigate( sign); });
 
-            App.Container.GetInstance<SignUpVM>().SignIn = new(p => { Frame.GoBack(); });
+            App.Container.GetInstance<SignUpVM>().SignIn = new(p => { LoginPage login = new(); login.Reset(); Frame.Navigate(login); });
 
             #endregion
 

@@ -22,7 +22,7 @@ namespace EyeTaxi_WPF.MVVM.Views
     /// <summary>
     /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class LoginPage : Page, IResetable
     {
         public LoginPage()
         {
@@ -39,11 +39,12 @@ namespace EyeTaxi_WPF.MVVM.Views
             ((LoginPageVM)DataContext).Password = Password.Password;
         }
 
-
+        public void Reset() => App.Container.GetInstance<LoginPageVM>().Reset();
 
         private void ResetPassword(object sender, RoutedEventArgs e)
         {
             ForgotPassword forgotPassword = new();
+            forgotPassword.Reset();
             forgotPassword.ShowDialog();
             if (forgotPassword.DialogResult == DialogResult.Success)
             {

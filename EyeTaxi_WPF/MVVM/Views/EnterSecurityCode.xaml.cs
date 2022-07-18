@@ -1,4 +1,5 @@
 ﻿using EyeTaxi_WPF.Enums;
+using EyeTaxi_WPF.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace EyeTaxi_WPF.MVVM.Views
     /// <summary>
     /// Interaction logic for EnterSecurityCode.xaml
     /// </summary>
-    public partial class EnterSecurityCode : Window
+    public partial class EnterSecurityCode : Window,IResetable
     {
         public EnterSecurityCode()
         {
@@ -53,5 +54,10 @@ namespace EyeTaxi_WPF.MVVM.Views
 
         private void SecurityCode_TextChanged(object sender, TextChangedEventArgs e)
             => Submite.IsEnabled = !string.IsNullOrWhiteSpace(SecurityCode.Text);
+
+        public void Reset()
+        {
+            SecurityCode.Text = String.Empty;
+        }
     }
 }

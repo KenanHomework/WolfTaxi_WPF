@@ -55,11 +55,6 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
             set { password = value; }
         }
 
-
-
-
-
-
         #endregion
 
         #region PropertyChangedEventHandler
@@ -81,6 +76,14 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
         #endregion
 
         #region Methods
+
+        public void Reset()
+        {
+            Username = String.Empty;
+            Email = String.Empty;
+            Phone = String.Empty;
+            Password = String.Empty;
+        }
 
         public void Signup(object paam)
         {

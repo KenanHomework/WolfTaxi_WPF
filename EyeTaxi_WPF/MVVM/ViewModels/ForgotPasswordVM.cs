@@ -82,6 +82,12 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
 
         #region Methods
 
+        public void Reset()
+        {
+            Username = String.Empty;
+            Email = String.Empty;
+        }
+
         public bool CanSend(object param)
              => !string.IsNullOrWhiteSpace(Email) &&
                 !string.IsNullOrWhiteSpace(Username) &&
@@ -94,11 +100,13 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
                 return;
             SendMail();
             EnterSecurityCode enter = new();
+            enter.Reset();
             enter.Code = SecurityCode;
             enter.ShowDialog();
             if (enter.DialogResult == DialogResult.Success)
             {
                 EnterNewPassword password = new();
+                password.Reset();
                 password.ShowDialog();
                 if (password.DialogResult == DialogResult.Success)
                 {

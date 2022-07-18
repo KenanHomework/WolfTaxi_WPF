@@ -1,4 +1,5 @@
 ﻿using EyeTaxi_WPF.Enums;
+using EyeTaxi_WPF.Interfaces;
 using EyeTaxi_WPF.MVVM.ViewModels;
 using EyeTaxi_WPF.Services;
 using System;
@@ -21,7 +22,7 @@ namespace EyeTaxi_WPF.MVVM.Views
     /// <summary>
     /// Interaction logic for SignUp.xaml
     /// </summary>
-    public partial class SignUp : Page
+    public partial class SignUp : Page,IResetable
     {
         public SignUp()
         {
@@ -49,5 +50,6 @@ namespace EyeTaxi_WPF.MVVM.Views
             App.Container.GetInstance<SignUpVM>().Password = Password.Password;
         }
 
+        public void Reset() => App.Container.GetInstance<SignUpVM>().Reset();
     }
 }

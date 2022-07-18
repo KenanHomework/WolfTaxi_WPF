@@ -1,5 +1,6 @@
 ﻿using EyeTaxi_WPF.Commands;
 using EyeTaxi_WPF.Enums;
+using EyeTaxi_WPF.Interfaces;
 using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
 using EyeTaxi_WPF.MVVM.ViewModels;
 using EyeTaxi_WPF.Services;
@@ -24,7 +25,7 @@ namespace EyeTaxi_WPF.MVVM.Views
     /// <summary>
     /// Interaction logic for ForgotPassword.xaml
     /// </summary>
-    public partial class ForgotPassword : Window
+    public partial class ForgotPassword : Window,IResetable
     {
         public ForgotPassword()
         {
@@ -52,6 +53,8 @@ namespace EyeTaxi_WPF.MVVM.Views
 
         private void Email_TextChanged(object sender, TextChangedEventArgs e)
                     => RegxService.CheckControl(ref Email, 3, Color.FromRgb(237, 236, 239), "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b");
+
+        public void Reset() => App.Container.GetInstance<ForgotPasswordVM>().Reset();
 
         #endregion
     }

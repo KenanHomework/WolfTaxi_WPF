@@ -76,6 +76,11 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
                Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$") &&
                Regex.IsMatch(Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
 
+        public void Reset()
+        {
+            Username = String.Empty;
+            Password = String.Empty;
+        }
 
         #endregion
 

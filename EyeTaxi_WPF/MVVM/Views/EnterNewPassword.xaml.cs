@@ -1,4 +1,5 @@
 ﻿using EyeTaxi_WPF.Enums;
+using EyeTaxi_WPF.Interfaces;
 using EyeTaxi_WPF.Services;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace EyeTaxi_WPF.MVVM.Views
     /// <summary>
     /// Interaction logic for EnterNewPassword.xaml
     /// </summary>
-    public partial class EnterNewPassword : Window
+    public partial class EnterNewPassword : Window, IResetable
     {
         public EnterNewPassword()
         {
@@ -43,6 +44,11 @@ namespace EyeTaxi_WPF.MVVM.Views
         {
             DialogResult = DialogResult.Success;
             Close();
+        }
+
+        public void Reset()
+        {
+            Password.Text = String.Empty;
         }
     }
 }

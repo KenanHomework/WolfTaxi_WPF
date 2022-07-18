@@ -34,33 +34,35 @@
         </StackPanel>
 
         <StackPanel Grid.Row="4" >
-            <TextBox Foreground="#edecef" Background="#38304c" Margin="15"  
+            <TextBox Foreground="#edecef" Background="#38304c" Margin="15"  TabIndex="0"
               Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="20"
               Text="{Binding Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Background="#38304c" TextChanged="TextBox_TextChanged" Name="Username"/>
 
             <PasswordBox Foreground="#edecef" Background="#38304c" Margin="15" materialDesign:HintAssist.Hint="Password" MaxLength="20"
-                materialDesign:HintAssist.Background="#38304c"
+                materialDesign:HintAssist.Background="#38304c" TabIndex="1"
                 PasswordChanged="PasswordBox_PasswordChanged"  Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Name="Password"/>
         </StackPanel>
 
         <!--Password="{Binding Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->
         <StackPanel Grid.Row="5" Orientation="Vertical">
 
-            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="60" Background="#0ef5e3" Command="{Binding LoginLocal}"
+            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="60" Background="#0ef5e3" Command="{Binding LoginLocal}" TabIndex="2"
              materialDesign:ButtonAssist.CornerRadius="25">
                 <Label Content="Login" Foreground="{StaticResource  Main_Color}" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
             </Button>
 
             <Button Content="Forgot Password ?" Foreground="#109793" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Segoe UI Symbol" FontWeight="Heavy" Click="ResetPassword" Background="Transparent"
-              BorderThickness="0"/>
+              BorderThickness="0" TabIndex="3"/>
 
         </StackPanel>
 
         <StackPanel Grid.Row="6" Orientation="Horizontal">
             <Label Content="Don't have an account ?" Foreground="#645c64" FontSize="20" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
 
-            <Button Content="Sign Up" Foreground="#0ef5e3" VerticalAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" Command="{Binding SignUpClick}" Cursor="Hand" Background="Transparent" BorderThickness="0"/>
+            <Button Content="Sign Up" Foreground="#0ef5e3" VerticalAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" 
+             FontWeight="DemiBold" Command="{Binding SignUpClick}" Cursor="Hand" Background="Transparent" BorderThickness="0"
+             TabIndex="4"/>
         </StackPanel>
 
     </Grid>
