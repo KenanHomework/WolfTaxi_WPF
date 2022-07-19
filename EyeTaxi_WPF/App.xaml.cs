@@ -30,8 +30,8 @@ namespace EyeTaxi_WPF
 
         public App()
         {
-            User user = new("test2", "testingEYETAXI1", "kenanysbv@gmail.com", "055");
-            UserService.Write(user);
+            //User user = new("test2", "testingEYETAXI1", "kenanysbv@gmail.com", "055");
+            //UserService.Write(user);
             // kenanShekili2
 
             DataFacade.Load();
@@ -54,6 +54,7 @@ namespace EyeTaxi_WPF
             Container.RegisterSingleton<EnterSecurityVM>();
             Container.RegisterSingleton<SignUpVM>();
             Container.RegisterSingleton<ForgotPasswordVM>();
+            Container.RegisterSingleton<AdminLoginVM>();
             Container.RegisterSingleton<DataFacade>();
 
             Container.Verify();

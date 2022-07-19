@@ -57,7 +57,7 @@
             <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                 <Label Content="Have an account ?" Foreground="#645c64" FontSize="20" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" FontWeight="DemiBold" Margin="10 0"/>
 
-                <Button Content="Sign In" Foreground="#0ef5e3" VerticalAlignment="Center" FontSize="22" FontFamily="Segoe UI Black" FontWeight="DemiBold" Cursor="Hand" Background="Transparent" BorderThickness="0" Command="{Binding SignIn}" />
+                <Button Content="Sign In" Foreground="#0ef5e3" VerticalAlignment="Center" FontSize="22" FontFamily="Segoe UI Black" FontWeight="DemiBold" Cursor="Hand" Background="Transparent" BorderThickness="0" Command="{Binding SignIn}" Height="40" />
             </StackPanel>
 
         </StackPanel>

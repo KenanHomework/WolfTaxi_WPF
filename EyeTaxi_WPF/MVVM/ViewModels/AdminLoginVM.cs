@@ -1,5 +1,4 @@
 ﻿using EyeTaxi_WPF.Commands;
-using EyeTaxi_WPF.Enums;
 using EyeTaxi_WPF.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace EyeTaxi_WPF.MVVM.ViewModels
 {
-    public class LoginPageVM : IEnterPage, IResetable
+    public class AdminLoginVM : IEnterPage, IResetable
     {
 
         #region Members
@@ -47,36 +46,13 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
 
         #region Commands
 
-        public RelayCommand LoginClick { get; set; }
-
         public RelayCommand LoginLocal { get; set; }
 
-        public RelayCommand ForgotPasswordClick { get; set; }
-
-        public RelayCommand SignUpClick { get; set; }
-
-        public RelayCommand AdminClick { get; set; }
+        public RelayCommand UserClick { get; set; }
 
         #endregion
 
         #region Methods
-
-        bool LoginCanRun(object param) => AllInfoCorrect();
-
-        public void Login(object param)
-        {
-            if (AllInfoCorrect())
-            {
-                LoginClick.Execute(param);
-            }
-
-        }
-
-        public bool AllInfoCorrect()
-            => !string.IsNullOrWhiteSpace(Password) &&
-               !string.IsNullOrWhiteSpace(Username) &&
-               Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$") &&
-               Regex.IsMatch(Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
 
         public void Reset()
         {
@@ -84,12 +60,26 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
             Password = String.Empty;
         }
 
-        #endregion
-
-        public LoginPageVM()
+        public void LoginRun(object param)
         {
-            LoginLocal = new(Login, LoginCanRun);
+            // to dashboard
         }
 
+        public bool LoginCanRun(object param) => AllInfoCorrect();
+
+        public bool AllInfoCorrect()
+        => !string.IsNullOrWhiteSpace(Password) &&
+           !string.IsNullOrWhiteSpace(Username) &&
+           Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$") &&
+           Regex.IsMatch(Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
+
+        #endregion
+
+        public AdminLoginVM()
+        {
+            LoginLocal = new(LoginRun, LoginCanRun);
+        }
     }
+
+
 }

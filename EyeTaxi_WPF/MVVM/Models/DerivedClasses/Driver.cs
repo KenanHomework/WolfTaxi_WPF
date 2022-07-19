@@ -15,6 +15,8 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 
         public Taxi Taxi { get; set; } = new();
 
+        public float PricePerKm { get; set; }
+
         public List<Move> History { get; set; } = new();
 
         public override string SubFilePath => App.DriverSubFilePath;
@@ -30,13 +32,14 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 
         public Driver() : base() { }
 
-        public Driver(string username, string password, string email, string phone, Location location, Taxi taxi) : base(username, password, email, phone)
+        public Driver(string username, string password, string email, string phone, Location location, Taxi taxi, float pricePerKm) : base(username, password, email, phone)
         {
             Location = location;
             Taxi = taxi;
+            PricePerKm = pricePerKm;
         }
 
-        public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email}
+        public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email} PricePerKm: {PricePerKm}
         ~ Taxi ~ Model: {Taxi.Model} Year: {Taxi.Year} Color: {Taxi.Color}";
 
 
