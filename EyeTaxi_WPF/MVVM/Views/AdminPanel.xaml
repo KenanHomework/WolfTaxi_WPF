@@ -1,0 +1,48 @@
+﻿<Window x:Class="EyeTaxi_WPF.MVVM.Views.AdminPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EyeTaxi_WPF.MVVM.Views" WindowState="Normal"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:eyetaxi_wpf="clr-namespace:EyeTaxi_WPF"
+        mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Icon="https://res.cloudinary.com/kysbv/image/upload/v1658261750/EyeTaxi/admin_icon_kwclcm.png"
+        Title="AdminPanel" Height="600" Width="1100">
+    <DockPanel Background="#201a30">
+
+        <!-- Title Bar -->
+        <Border Background="#2c2b3f" DockPanel.Dock="Top" Height="25" MouseDown="Border_MouseDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width  ="25"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+                <Image Grid.Column="0" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                 Source="https://res.cloudinary.com/kysbv/image/upload/v1658261750/EyeTaxi/admin_icon_kwclcm.png"/>
+
+                <Label Grid.Column="1" Foreground="#f0f4fd" Margin="2 0"  FontWeight="SemiBold" Content="Admin Panel"/>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Background="Transparent" BorderThickness="0" Width="40" Foreground="#f0f4fd" VerticalAlignment="Center" Content="_" Padding="0 0 0 8" Height="25" Click="ResizeButton_Click"/>
+
+                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="SaddleBrown" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged"
+                   ItemContainerStyle="{StaticResource DriverCard}"
+                   ItemsSource="{Binding ElementName=App, Path=Drivers}">
+
+        </ListView>
+    </DockPanel>
+
+</Window>

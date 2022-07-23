@@ -3,7 +3,9 @@ using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
 using EyeTaxi_WPF.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,9 +18,17 @@ namespace EyeTaxi_WPF.Facade
 
         public User User { get; set; } = new();
 
-        public List<Driver> Drivers { get; set; } = new();
-
         public bool Remember { get; set; } = false;
+
+        #endregion
+
+        #region PropertyChangedEventHandler
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         #endregion
 
@@ -27,7 +37,6 @@ namespace EyeTaxi_WPF.Facade
         public void ReadData(DataFacade dataFacade)
         {
             this.User = dataFacade.User;
-            this.Drivers = dataFacade.Drivers;
             this.Remember = dataFacade.Remember;
         }
 
@@ -44,10 +53,11 @@ namespace EyeTaxi_WPF.Facade
             try
             {
                 loaded = JSONService.Read<DataFacade>("dataset/dataFacade.json");
+
+                ReadData(loaded);
             }
             catch (Exception) { }
 
-            ReadData(loaded);
 
         }
 
@@ -82,6 +92,8 @@ namespace EyeTaxi_WPF.Facade
 
         #endregion
 
-        public override string ToString() => $"User: {User} \n Drivers:\n{Drivers.Count} \n Remember: {Remember}";
+        public DataFacade() { }
+
+        public override string ToString() => $"User: {User}  \n Remember: {Remember}";
     }
 }

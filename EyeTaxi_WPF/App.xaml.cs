@@ -14,6 +14,8 @@ using EyeTaxi_WPF.MVVM.Models.GeneralClasses;
 using EyeTaxi_WPF.Enums;
 using EyeTaxi_WPF.Services;
 using System.IO;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace EyeTaxi_WPF
 {
@@ -22,23 +24,50 @@ namespace EyeTaxi_WPF
     /// </summary>
     public partial class App : Application
     {
-        public static Container Container = new();
+
+        #region Members
+
+        public static SimpleInjector.Container Container = new();
         public static DataFacade DataFacade = new();
+        public static EnterWindow EnterWindow;
+        public static AdminPanel AdminPanel;
         public static string AdminSubFilePath = "dataset";
         public static string UserSubFilePath = "dataset/Users";
         public static string DriverSubFilePath = "dataset/Drivers";
+        private List<Driver> drivers = new();
+        public List<Driver> Drivers { get => drivers; set { drivers = value; OnPropertyChanged(); } }
+
+        #endregion
+
+        #region PropertyChangedEventHandler
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        #endregion
+
 
         public App()
         {
+            CreateDirectorys();
+            Register();
+            //JSONService.Write($"{DriverSubFilePath}/drivers.json",new List<Driver>() { new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", ConsoleColor.Black)) });
+            Drivers = JSONService.Read<List<Driver>>($"{DriverSubFilePath}/drivers.json");
+            AdminPanel = new();
+            DataFacade.Load();
+
             //User user = new("test2", "testingEYETAXI1", "kenanysbv@gmail.com", "055");
             //UserService.Write(user);
             // kenanShekili2
 
-            DataFacade.Load();
 
-            CreateDirectorys();
-            Register();
+            //DataFacade.Save();
         }
+
+        #region Methods
 
         void CreateDirectorys()
         {
@@ -47,18 +76,35 @@ namespace EyeTaxi_WPF
             Directory.CreateDirectory(UserSubFilePath);
         }
 
-
         void Register()
         {
-            Container.RegisterSingleton<LoginPageVM>();
             Container.RegisterSingleton<EnterSecurityVM>();
             Container.RegisterSingleton<SignUpVM>();
             Container.RegisterSingleton<ForgotPasswordVM>();
-            Container.RegisterSingleton<AdminLoginVM>();
             Container.RegisterSingleton<DataFacade>();
+            Container.RegisterSingleton<AdminLoginVM>();
+            Container.RegisterSingleton<AdminPanelVM>();
+            Container.RegisterSingleton<LoginPageVM>();
 
             Container.Verify();
         }
 
+        public static void ToAdminPanel()
+        {
+            EnterWindow.Reset();
+            AdminPanel.Reset();
+            EnterWindow.Close();
+            AdminPanel.ShowDialog();
+        }
+
+        public static void ToEnterWindow()
+        {
+            EnterWindow.Reset();
+            AdminPanel.Reset();
+            AdminPanel.Close();
+            EnterWindow.ShowDialog();
+        }
+
+        #endregion
     }
 }

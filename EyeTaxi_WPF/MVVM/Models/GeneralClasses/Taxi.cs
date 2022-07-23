@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EyeTaxi_WPF.MVVM.Models.BaseClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace EyeTaxi_WPF.MVVM.Models.GeneralClasses
     {
 
         #region Members
+
+        public TaxiTypeBase Type { get; set; }
 
         public string Model { get; set; } = string.Empty;
 

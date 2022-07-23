@@ -1,5 +1,7 @@
 ﻿using EyeTaxi_WPF.MVVM.Models.GeneralClasses;
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace EyeTaxi_WPF.MVVM.Models.BaseClasses
 {
@@ -8,13 +10,26 @@ namespace EyeTaxi_WPF.MVVM.Models.BaseClasses
 
         #region Members
 
-        public string Username { get; set; } = string.Empty;
+        private Guid guid;
+        private string username = string.Empty;
+        private Hash password = new();
+        private string email = string.Empty;
+        private string phone = string.Empty;
 
-        public Hash Password { get; set; } = new();
 
-        public string Email { get; set; } = string.Empty;
+        public Guid ID
+        {
+            get { return guid; }
+            set { guid = value; }
+        }
 
-        public string Phone { get; set; } = string.Empty;
+        public string Username { get => username; set { username = value; OnPropertyChanged(); } }
+
+        public Hash Password { get => password; set { password = value; OnPropertyChanged(); } }
+
+        public string Email { get => email; set { email = value; OnPropertyChanged(); } }
+
+        public string Phone { get => phone; set { phone = value; OnPropertyChanged(); } }
 
         public abstract string SubFilePath { get; }
 
@@ -26,17 +41,25 @@ namespace EyeTaxi_WPF.MVVM.Models.BaseClasses
 
         #endregion
 
-        public Human() { }
+        #region PropertyChangedEventHandler
 
-        protected Human(string username, string password, string email, string phone)
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            Username = username;
-            Password = new Hash(password);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        #endregion
+
+        public Human() { ID = new(); }
+
+        protected Human(string username, string password, string email, string phone) : this(username, password)
+        {
             Email = email;
             Phone = phone;
         }
 
-        protected Human(string username, string password)
+        protected Human(string username, string password) : this()
         {
             Username = username;
             Password = new Hash(password);

@@ -1,5 +1,6 @@
 ﻿using EyeTaxi_WPF.Commands;
 using EyeTaxi_WPF.Interfaces;
+using EyeTaxi_WPF.MVVM.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +48,7 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
         #region Commands
 
         public RelayCommand LoginLocal { get; set; }
-
+         
         public RelayCommand UserClick { get; set; }
 
         #endregion
@@ -62,7 +63,10 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
 
         public void LoginRun(object param)
         {
-            // to dashboard
+            if (Password == "Admin123" && Username == "Admin") 
+            App.ToAdminPanel();
+            else
+                new MessageBoxCustom("Incorrect !", MessageType.Warning, MessageButtons.Ok).ShowDialog();
         }
 
         public bool LoginCanRun(object param) => AllInfoCorrect();

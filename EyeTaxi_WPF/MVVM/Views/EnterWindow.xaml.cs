@@ -1,5 +1,6 @@
 ﻿using EyeTaxi_WPF.Enums;
 using EyeTaxi_WPF.Facade;
+using EyeTaxi_WPF.Interfaces;
 using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
 using EyeTaxi_WPF.MVVM.ViewModels;
 using System;
@@ -21,8 +22,15 @@ namespace EyeTaxi_WPF.MVVM.Views
     /// <summary>
     /// Interaction logic for EnterWindow.xaml
     /// </summary>
-    public partial class EnterWindow : Window
+    public partial class EnterWindow : Window, IResetable
     {
+
+        SignUp sign = new();
+
+        AdminLogin adminLogin = new();
+
+        LoginPage login = new();
+
         public EnterWindow()
         {
             InitializeComponent();
@@ -41,15 +49,17 @@ namespace EyeTaxi_WPF.MVVM.Views
                 MessageBox.Show(res.ToString());
             });
 
-            App.Container.GetInstance<LoginPageVM>().SignUpClick = new(p => { SignUp sign = new(); sign.Reset(); Frame.Navigate(sign); });
+            App.Container.GetInstance<LoginPageVM>().SignUpClick = new(p => { Frame.Navigate(sign); });
 
-            App.Container.GetInstance<LoginPageVM>().AdminClick = new(p => { AdminLogin login = new(); login.Reset(); Frame.Navigate(login); });
+            App.Container.GetInstance<LoginPageVM>().AdminClick = new(p => { Frame.Navigate(adminLogin); });
 
-            App.Container.GetInstance<SignUpVM>().SignIn = new(p => { LoginPage login = new(); login.Reset(); Frame.Navigate(login); });
+            App.Container.GetInstance<SignUpVM>().SignIn = new(p => { Frame.Navigate(login); });
 
-            App.Container.GetInstance<AdminLoginVM>().UserClick = new(p => { LoginPage login = new(); login.Reset(); Frame.Navigate(login); });
+            App.Container.GetInstance<AdminLoginVM>().UserClick = new(p => { Frame.Navigate(login); });
 
             #endregion
+
+            App.EnterWindow = this;
 
             Frame.Navigate(new LoginPage());
         }
@@ -62,13 +72,7 @@ namespace EyeTaxi_WPF.MVVM.Views
                 switch (btn.Content.ToString())
                 {
                     case "_":
-                        Application.Current.MainWindow.WindowState = WindowState.Minimized;
-                        break;
-                    case "❒":
-                        if (Application.Current.MainWindow.WindowState == WindowState.Maximized)
-                            Application.Current.MainWindow.WindowState = WindowState.Normal;
-                        else
-                            Application.Current.MainWindow.WindowState = WindowState.Maximized;
+                        this.WindowState = WindowState.Minimized;
                         break;
                     case "X":
                         Application.Current.Shutdown();
@@ -84,5 +88,13 @@ namespace EyeTaxi_WPF.MVVM.Views
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
+
+        public void Reset()
+        {
+            sign.Reset();
+            adminLogin.Reset();
+            login.Reset();
+        }
+
     }
 }

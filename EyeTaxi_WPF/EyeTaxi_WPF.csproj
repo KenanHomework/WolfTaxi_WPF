@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GoogleApi" Version="4.2.2" />
     <PackageReference Include="Lorem.Universal.Net" Version="4.0.80" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
     <PackageReference Include="SimpleInjector" Version="5.3.3" />

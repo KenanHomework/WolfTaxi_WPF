@@ -1,6 +1,8 @@
 ﻿using EyeTaxi_WPF.MVVM.Models.BaseClasses;
 using EyeTaxi_WPF.MVVM.Models.GeneralClasses;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 {
@@ -9,9 +11,22 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 
         #region Members
 
-        public List<Move> History { get; set; } = new();
+        private List<Move> history = new();
+
+
+        public List<Move> History { get => history; set { history = value; OnPropertyChanged(); } }
 
         public override string SubFilePath => App.UserSubFilePath;
+
+        #endregion
+
+        #region PropertyChangedEventHandler
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         #endregion
 
@@ -21,7 +36,7 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 
         #endregion
 
-        public User():base() { }
+        public User() : base() { }
 
         public User(string username, string password, string email, string phone) : base(username, password, email, phone) { }
 
