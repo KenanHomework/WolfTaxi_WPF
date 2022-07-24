@@ -34,8 +34,6 @@ namespace EyeTaxi_WPF
         public static string AdminSubFilePath = "dataset";
         public static string UserSubFilePath = "dataset/Users";
         public static string DriverSubFilePath = "dataset/Drivers";
-        private List<Driver> drivers = new();
-        public List<Driver> Drivers { get => drivers; set { drivers = value; OnPropertyChanged(); } }
 
         #endregion
 
@@ -54,10 +52,13 @@ namespace EyeTaxi_WPF
         {
             CreateDirectorys();
             Register();
-            //JSONService.Write($"{DriverSubFilePath}/drivers.json",new List<Driver>() { new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", ConsoleColor.Black)) });
-            Drivers = JSONService.Read<List<Driver>>($"{DriverSubFilePath}/drivers.json");
-            AdminPanel = new();
+            //JSONService.Write($"{DriverSubFilePath}/drivers.json",);
+            //AdminPanel = new();
             DataFacade.Load();
+            Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
+            //DataFacade.Drivers = new List<Driver>() { new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", ConsoleColor.Black)) };
+            //DataFacade.Save();
+
 
             //User user = new("test2", "testingEYETAXI1", "kenanysbv@gmail.com", "055");
             //UserService.Write(user);
@@ -84,6 +85,7 @@ namespace EyeTaxi_WPF
             Container.RegisterSingleton<DataFacade>();
             Container.RegisterSingleton<AdminLoginVM>();
             Container.RegisterSingleton<AdminPanelVM>();
+            Container.RegisterSingleton<EditDriverVM>();
             Container.RegisterSingleton<LoginPageVM>();
 
             Container.Verify();

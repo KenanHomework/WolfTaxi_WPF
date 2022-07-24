@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:EyeTaxi_WPF"
-             StartupUri="mvvm\views\adminpanel.xaml">
+             StartupUri="mvvm\views\editdriver.xaml">
+             <!--StartupUri="mvvm\views\adminpanel.xaml">-->
     <!--StartupUri="mvvm\views\enterwindow.xaml">-->
     <!--StartupUri="mvvm\views\appwindow.xaml">-->
     <Application.Resources>

@@ -63,6 +63,7 @@ namespace EyeTaxi_WPF.MVVM.Views
 
             Frame.Navigate(new LoginPage());
         }
+
         private void ResizeButton_Click(object sender, RoutedEventArgs e)
         {
 

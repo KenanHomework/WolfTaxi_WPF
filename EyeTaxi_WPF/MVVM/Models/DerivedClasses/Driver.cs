@@ -23,9 +23,14 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
         {
             get
             {
-                int totalRating = 0;
-                History.ForEach(m => totalRating += m.Rating);
-                return (int)(totalRating / History.Count);
+                try
+                {
+                    int totalRating = 0;
+                    History.ForEach(m => totalRating += m.Rating);
+                    return (int)(totalRating / History.Count);
+                }
+                catch (Exception) { }
+                return 0;
             }
             set { rating = value; }
         }
@@ -60,10 +65,26 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 
         public void AddMove(Move move) => History.Add(move);
 
+        public override bool Equals(object? obj) => this.ID == ((Driver)obj).ID;
+
         #endregion
 
 
         public Driver() : base() { }
+
+        public Driver(Driver driver) : base()
+        {
+            Username = driver.Username;
+            Password = driver.Password;
+            Phone = driver.Phone;
+            Email = driver.Email;
+            Rating = driver.Rating;
+            Balance = driver.Balance;
+            Location = driver.Location;
+            Taxi = driver.Taxi;
+            History = driver.History;
+            SourceOfPP = driver.SourceOfPP;
+        }
 
         public Driver(string username, string password, string email, string sourceOfPP, string phone, Location location, Taxi taxi) : base(username, password, email, phone)
         {

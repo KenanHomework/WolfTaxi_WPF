@@ -16,9 +16,12 @@ namespace EyeTaxi_WPF.Facade
 
         #region Members
 
-        public User User { get; set; } = new();
+        public User User { get; set; }
 
         public bool Remember { get; set; } = false;
+
+        private List<Driver> drivers;
+        public List<Driver> Drivers { get => drivers; set { drivers = value; OnPropertyChanged(); } }
 
         #endregion
 
@@ -38,6 +41,7 @@ namespace EyeTaxi_WPF.Facade
         {
             this.User = dataFacade.User;
             this.Remember = dataFacade.Remember;
+            this.Drivers = dataFacade.Drivers;
         }
 
         public void Save()
@@ -53,7 +57,6 @@ namespace EyeTaxi_WPF.Facade
             try
             {
                 loaded = JSONService.Read<DataFacade>("dataset/dataFacade.json");
-
                 ReadData(loaded);
             }
             catch (Exception) { }
@@ -88,6 +91,23 @@ namespace EyeTaxi_WPF.Facade
             }
 
             return ProcessResult.Success;
+        }
+
+        public void UpdateDriverInfo(Driver driver)
+        {
+            if (Drivers.Contains(driver))
+            {
+                Drivers.ForEach(d =>
+                {
+                    if (d.ID == driver.ID)
+                    {
+                        d = new Driver(driver);
+                        return;
+                    }
+
+
+                });
+            }
         }
 
         #endregion
