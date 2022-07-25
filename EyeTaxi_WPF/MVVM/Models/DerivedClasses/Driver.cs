@@ -99,8 +99,7 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
             Taxi = taxi;
         }
 
-        public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email} PricePerKm: {Taxi.Type.PricePerKm}
-        ~ Taxi ~ Model: {Taxi.Model} Year: {Taxi.Year} Color: {Taxi.Color}";
+        public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email} ";
 
 
     }

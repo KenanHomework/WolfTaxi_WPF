@@ -6,24 +6,32 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace EyeTaxi_WPF.MVVM.ViewModels
 {
-    public class EditDriverVM
+    public class EditTextblockVM
     {
 
         #region Members
 
-        private Driver driver;
+        private Binding text;
 
-        public Driver Driver
+        public Binding Text
         {
-            get { return driver; }
-            set { driver = value; OnPropertyChanged(); }
+            get { return text; }
+            set { text = value; OnPropertyChanged(); }
+        }
+
+        private string hit;
+
+        public string Hit
+        {
+            get { return hit; }
+            set { hit = value; OnPropertyChanged(); }
         }
 
         #endregion
-
 
         #region PropertyChangedEventHandler
 
@@ -32,12 +40,6 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-
-        #endregion
-
-        #region Methods
-
-        public void Save() => App.DataFacade.UpdateDriverInfo(Driver);
 
         #endregion
 

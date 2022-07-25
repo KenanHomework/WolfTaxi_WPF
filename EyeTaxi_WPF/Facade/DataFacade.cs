@@ -104,8 +104,6 @@ namespace EyeTaxi_WPF.Facade
                         d = new Driver(driver);
                         return;
                     }
-
-
                 });
             }
         }

@@ -34,6 +34,9 @@ namespace EyeTaxi_WPF
         public static string AdminSubFilePath = "dataset";
         public static string UserSubFilePath = "dataset/Users";
         public static string DriverSubFilePath = "dataset/Drivers";
+        public static string FastTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/EyeTaxi/taxi_type_fast.png";
+        public static string ComfortTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/EyeTaxi/taxi_type_comfort.png";
+        public static string LuxTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/EyeTaxi/taxi_type_lux.png";
 
         #endregion
 
@@ -54,9 +57,11 @@ namespace EyeTaxi_WPF
             Register();
             //JSONService.Write($"{DriverSubFilePath}/drivers.json",);
             //AdminPanel = new();
+
             DataFacade.Load();
             Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
-            //DataFacade.Drivers = new List<Driver>() { new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", ConsoleColor.Black)) };
+
+            //DataFacade.Drivers = new List<Driver>() { new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f, FastTaxiIconSource)) };
             //DataFacade.Save();
 
 
@@ -86,6 +91,7 @@ namespace EyeTaxi_WPF
             Container.RegisterSingleton<AdminLoginVM>();
             Container.RegisterSingleton<AdminPanelVM>();
             Container.RegisterSingleton<EditDriverVM>();
+            Container.RegisterSingleton<EditTextblockVM>();
             Container.RegisterSingleton<LoginPageVM>();
 
             Container.Verify();

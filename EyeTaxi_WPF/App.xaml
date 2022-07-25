@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:EyeTaxi_WPF"
              StartupUri="mvvm\views\editdriver.xaml">
-             <!--StartupUri="mvvm\views\adminpanel.xaml">-->
+    <!--StartupUri="mvvm\views\adminpanel.xaml">-->
     <!--StartupUri="mvvm\views\enterwindow.xaml">-->
     <!--StartupUri="mvvm\views\appwindow.xaml">-->
     <Application.Resources>
@@ -11,13 +11,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <SolidColorBrush x:Key="Main_Color" Color="#201a30"></SolidColorBrush>
+                    <SolidColorBrush x:Key="Test_Color" Color="#ffff"></SolidColorBrush>
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
 
-                                                         <ResourceDictionary Source="Styles/DriverCard.xaml"/>
+                <ResourceDictionary Source="Styles/DriverCard.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
