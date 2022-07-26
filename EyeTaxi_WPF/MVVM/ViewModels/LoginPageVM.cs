@@ -69,14 +69,22 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
             {
                 LoginClick.Execute(param);
             }
-
         }
 
         public bool AllInfoCorrect()
-            => !string.IsNullOrWhiteSpace(Password) &&
-               !string.IsNullOrWhiteSpace(Username) &&
-               Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$") &&
-               Regex.IsMatch(Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
+        {
+            if (!string.IsNullOrWhiteSpace(Password))
+                if (!string.IsNullOrWhiteSpace(Username))
+                    if (Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$"))
+                        if (Regex.IsMatch(Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"))
+                            return true;
+            return false;
+        }
+
+        //     !string.IsNullOrWhiteSpace(Password) &&
+        //!string.IsNullOrWhiteSpace(Username) &&
+        //Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$") &&
+        //Regex.IsMatch(Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
 
         public void Reset()
         {

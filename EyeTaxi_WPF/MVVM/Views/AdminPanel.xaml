@@ -39,9 +39,8 @@
         </Border>
 
         <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged"
-                   ItemsSource="{Binding ElementName=App, Path=Drivers,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                   ItemsSource="{Binding App.DataFacade.Drivers,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                    ItemContainerStyle="{StaticResource DriverItemViewCard}">
-
         </ListView>
     </DockPanel>
 

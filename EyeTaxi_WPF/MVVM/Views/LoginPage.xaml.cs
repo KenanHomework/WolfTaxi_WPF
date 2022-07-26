@@ -26,7 +26,7 @@ namespace EyeTaxi_WPF.MVVM.Views
     {
         public LoginPage()
         {
-            InitializeComponent();
+            InitializeComponent(); App.Container.GetInstance<LoginPageVM>();
             DataContext = App.Container.GetInstance<LoginPageVM>();
         }
 
@@ -36,6 +36,7 @@ namespace EyeTaxi_WPF.MVVM.Views
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             RegxService.CheckControl(ref Password, 8, Color.FromRgb(237, 236, 239), "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
+            App.Container.GetInstance<LoginPageVM>().Password = Password.Password;
         }
 
         public void Reset() => App.Container.GetInstance<LoginPageVM>().Reset();

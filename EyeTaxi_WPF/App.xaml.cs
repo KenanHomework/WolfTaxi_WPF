@@ -30,6 +30,7 @@ namespace EyeTaxi_WPF
         public static SimpleInjector.Container Container = new();
         public static DataFacade DataFacade = new();
         public static EnterWindow EnterWindow;
+        public static AppWindow AppWindow;
         public static AdminPanel AdminPanel;
         public static string AdminSubFilePath = "dataset";
         public static string UserSubFilePath = "dataset/Users";
@@ -56,12 +57,11 @@ namespace EyeTaxi_WPF
             CreateDirectorys();
             Register();
             //JSONService.Write($"{DriverSubFilePath}/drivers.json",);
-            //AdminPanel = new();
 
             DataFacade.Load();
-            Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
+            //Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
 
-            //DataFacade.Drivers = new List<Driver>() { new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f, FastTaxiIconSource)) };
+            DataFacade.Drivers = new List<Driver>() { new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f, FastTaxiIconSource)) };
             //DataFacade.Save();
 
 
@@ -112,6 +112,15 @@ namespace EyeTaxi_WPF
             AdminPanel.Reset();
             AdminPanel.Close();
             EnterWindow.ShowDialog();
+        }
+
+        public static void ToAppWindow()
+        {
+            EnterWindow.Reset();
+            AdminPanel.Reset();
+            AdminPanel.Close();
+            EnterWindow.Close();
+            AppWindow.ShowDialog();
         }
 
         #endregion

@@ -35,6 +35,9 @@ namespace EyeTaxi_WPF.MVVM.Views
         {
             InitializeComponent();
 
+            App.AppWindow = new();
+            App.AdminPanel = new();
+
             #region Implement Commands
 
             App.Container.GetInstance<LoginPageVM>().LoginClick = new(p =>
@@ -46,7 +49,8 @@ namespace EyeTaxi_WPF.MVVM.Views
                                                 );
 
 
-                MessageBox.Show(res.ToString());
+                if (res == ProcessResult.Success)
+                    App.ToAppWindow();
             });
 
             App.Container.GetInstance<LoginPageVM>().SignUpClick = new(p => { Frame.Navigate(sign); });
