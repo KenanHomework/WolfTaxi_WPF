@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using GoogleApi;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -12,10 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using GoogleApi.Entities.Common;
-using GoogleApi.Entities.Maps.Directions.Request;
-using GoogleApi.Entities.Maps.Directions.Response;
-using GoogleApi.Entities.Maps.Geocoding.PlusCode.Request;
+using EyeTaxi_WPF.MVVM.ViewModels;
+using Microsoft.Maps.MapControl.WPF;
 
 namespace EyeTaxi_WPF.MVVM.Views
 {
@@ -24,9 +21,18 @@ namespace EyeTaxi_WPF.MVVM.Views
     /// </summary>
     public partial class AppWindow : Window
     {
+        #region Members
+
+
+
+        #endregion
+
         public AppWindow()
         {
             InitializeComponent();
+            DataContext = App.Container.GetInstance<AppWindowVM>();
+            Map.Children.Add(new Pushpin() { Location = new(40.4149839, 49.8532762) });
+            
         }
 
         private void ResizeButton_Click(object sender, RoutedEventArgs e)

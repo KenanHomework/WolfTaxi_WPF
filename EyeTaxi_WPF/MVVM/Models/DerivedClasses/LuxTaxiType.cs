@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
 {
-    public class LuxTaxiType : TaxiTypeBase
+    public class LuxTaxiType 
     {
 
-        public LuxTaxiType() : base(Enums.TaxiTypes.Lux, 2.5f, "https://res.cloudinary.com/kysbv/image/upload/v1658306801/EyeTaxi/taxi_type_lux.png") { }
 
     }
 }

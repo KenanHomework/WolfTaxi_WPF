@@ -89,6 +89,7 @@ namespace EyeTaxi_WPF
             Container.RegisterSingleton<ForgotPasswordVM>();
             Container.RegisterSingleton<DataFacade>();
             Container.RegisterSingleton<AdminLoginVM>();
+            Container.RegisterSingleton<AppWindowVM>();
             Container.RegisterSingleton<AdminPanelVM>();
             Container.RegisterSingleton<EditDriverVM>();
             Container.RegisterSingleton<EditTextblockVM>();
