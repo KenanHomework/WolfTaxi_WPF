@@ -14,7 +14,7 @@ namespace EyeTaxi_WPF.Services
         {
             MailMessage message = new MailMessage();
             message.To.Add(ToAdress);
-            message.From = new MailAddress("eyetaxi.team@gmail.com", displayName);
+            message.From = new MailAddress("wolftaxi.team@gmail.com", displayName);
             message.Subject = subject;
             message.Body = body;
 
@@ -23,7 +23,7 @@ namespace EyeTaxi_WPF.Services
             smtpClient.EnableSsl = true;
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Host = "smtp.gmail.com";
-            smtpClient.Credentials = new NetworkCredential("eyetaxi.team@gmail.com", "ynkipwgyattyuixm");
+            smtpClient.Credentials = new NetworkCredential("wolftaxi.team@gmail.com", "qxnpvlnncwkvxzrl");
             smtpClient.Send(message);
         }
     }

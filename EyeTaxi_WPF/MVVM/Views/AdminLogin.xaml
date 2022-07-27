@@ -17,11 +17,11 @@
 
         <!-- Brand Area -->
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1658261750/EyeTaxi/admin_icon_kwclcm.png" Stretch="Uniform" Margin="10 0"
-                   Width="110" Height="110"/>
+            <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1658261750/EyeTaxi/wolf_logo.png" Stretch="Uniform" Margin="10 0"
+                   Width="120" Height="120"/>
             <StackPanel Height="110">
-                <Label Content="EyeTaxi" Foreground="#f6ba2b" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="45"></Label>
-                <Label Content="Next level service." Foreground="#f6ba2b" FontFamily="Bauhaus 93" FontWeight="SemiBold" FontSize="25"></Label>
+                <Label Content="EyeTaxi" Foreground="Aqua" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="45"></Label>
+                <Label Content="Next level service." Foreground="#FF28ABAB" FontFamily="Bauhaus 93" FontWeight="SemiBold" FontSize="25"></Label>
             </StackPanel>
         </StackPanel>
 
@@ -44,8 +44,8 @@
 
         <StackPanel Grid.Row="3" >
 
-            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="60" Background="#0ef5e3" Command="{Binding LoginLocal}" TabIndex="2" materialDesign:ButtonAssist.CornerRadius="25" Margin="10 20 10 0">
-                <Label Content="Login" Foreground="{StaticResource  Main_Color}" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Height="60" Background="Transparent" Command="{Binding LoginLocal}" TabIndex="2" materialDesign:ButtonAssist.CornerRadius="25" Margin="10 20 10 0">
+                <Label Content="Login" Foreground="Aqua" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
             </Button>
 
             <Button Content="User" Foreground="#0ef5e3" VerticalAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" 

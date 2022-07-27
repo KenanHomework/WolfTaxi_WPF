@@ -37,8 +37,7 @@ namespace EyeTaxi_WPF
         public static string DriverSubFilePath = "dataset/Drivers";
         public static string FastTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/EyeTaxi/taxi_type_fast.png";
         public static string ComfortTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/EyeTaxi/taxi_type_comfort.png";
-        public static string LuxTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/EyeTaxi/taxi_type_lux.png";
-
+        public static string WolfLogoSource = "https://res.cloudinary.com/kysbv/image/upload/v1658898883/EyeTaxi/wolf_logo.png";
         #endregion
 
         #region PropertyChangedEventHandler
@@ -89,6 +88,7 @@ namespace EyeTaxi_WPF
             Container.RegisterSingleton<ForgotPasswordVM>();
             Container.RegisterSingleton<DataFacade>();
             Container.RegisterSingleton<AdminLoginVM>();
+            Container.RegisterSingleton<WelcomePageVM>();
             Container.RegisterSingleton<AppWindowVM>();
             Container.RegisterSingleton<AdminPanelVM>();
             Container.RegisterSingleton<EditDriverVM>();

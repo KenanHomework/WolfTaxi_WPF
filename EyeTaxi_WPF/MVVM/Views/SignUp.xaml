@@ -17,9 +17,9 @@
 
         <!-- Brand Area -->
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1657809534/EyeTaxi/Logo.png" Stretch="Uniform" Margin="10 0"></Image>
+            <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1658898883/EyeTaxi/wolf_logo.png" Stretch="Uniform" Margin="10 0"></Image>
             <StackPanel>
-                <Label Content="EyeTaxi" Foreground="#f6ba2b" HorizontalAlignment="Center" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="45"></Label>
+                <Label Content="WolfTaxi" Foreground="Aqua" HorizontalAlignment="Center" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="45"></Label>
             </StackPanel>
         </StackPanel>
 
@@ -48,9 +48,9 @@
         <!--Password="{Binding Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->
         <StackPanel Grid.Row="2" Orientation="Vertical">
 
-            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="60" Background="#0ef5e3" Command="{Binding SignUp}"
+            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignPaperDarkButton}" Height="60" Background="Transparent" Command="{Binding SignUp}"
              materialDesign:ButtonAssist.CornerRadius="25">
-                <Label Content="Sign Up" Foreground="{StaticResource  Main_Color}" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+                <Label Content="Sign Up" Foreground="Aqua" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
             </Button>
 
 

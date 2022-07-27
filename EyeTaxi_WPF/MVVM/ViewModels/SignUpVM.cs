@@ -21,7 +21,7 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
 
         #region Members
 
-        public SignUp Window { get; set; } = null;
+        private int SecurityCode { get; set; }
 
         private string username;
 
@@ -92,10 +92,18 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
                 new MessageBoxCustom("User already Sign Up !", MessageType.Warning, MessageButtons.Ok).ShowDialog();
                 return;
             }
-            User user = new(Username, Password, Email, Phone);
-            UserService.Write(user);
-            Window.DialogResult = DialogResult.Success;
-            new MessageBoxCustom("Sign Up Succesed !", MessageType.Info, MessageButtons.Ok).ShowDialog();
+            SecurityCode = new Random().Next(1000, 9999);
+            EmailService.Send(Email, "Email Verification", $"Your Security Code: {SecurityCode}", "WolfTaxi");
+            EnterSecurityCode enter = new();
+            enter.Reset();
+            enter.Code = SecurityCode;
+            enter.ShowDialog();
+            if (enter.DialogResult == DialogResult.Success)
+            {
+                User user = new(Username, Password, Email, Phone);
+                UserService.Write(user);
+                App.ToAppWindow();
+            }
         }
 
         public bool CanSignUp(object param) => AllInfoCorrect();

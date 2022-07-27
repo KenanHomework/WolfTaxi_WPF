@@ -20,10 +20,10 @@
 
         <!-- Brand Area -->
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1657809534/EyeTaxi/Logo.png" Stretch="Uniform" Margin="10 0"></Image>
+            <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1658898883/EyeTaxi/wolf_logo.png" Stretch="Uniform" Margin="10 0"></Image>
             <StackPanel>
-                <Label Content="EyeTaxi" Foreground="#f6ba2b" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="45"></Label>
-                <Label Content="Next level service." Foreground="#f6ba2b" FontFamily="Bauhaus 93" FontWeight="SemiBold" FontSize="25"></Label>
+                <Label Content="WolfTaxi" Foreground="Aqua" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="45"></Label>
+                <Label Content="Next level service." Foreground="#FF28ABAB" FontFamily="Bauhaus 93" FontWeight="SemiBold" FontSize="25"></Label>
             </StackPanel>
         </StackPanel>
 
@@ -47,9 +47,9 @@
         <!--Password="{Binding Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->
         <StackPanel Grid.Row="5" Orientation="Vertical">
 
-            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Height="60" Background="#0ef5e3" Command="{Binding LoginLocal}" TabIndex="2"
+            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignPaperDarkButton}" Height="60" Background="Transparent" Command="{Binding LoginLocal}" TabIndex="2"
              materialDesign:ButtonAssist.CornerRadius="25">
-                <Label Content="Login" Foreground="{StaticResource  Main_Color}" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+                <Label Content="Login" Foreground="Aqua" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
             </Button>
 
             <Button Content="Forgot Password ?" Foreground="#109793" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontFamily="Segoe UI Symbol" FontWeight="Heavy" Click="ResetPassword" Background="Transparent"
@@ -58,7 +58,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="6" Orientation="Vertical" Margin="0 10">
-            <StackPanel Orientation="Horizontal" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
                 <Label Content="Don't have an account ?" Foreground="#645c64" FontSize="20" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
 

@@ -28,7 +28,6 @@ namespace EyeTaxi_WPF.MVVM.Views
         {
             InitializeComponent();
             DataContext = App.Container.GetInstance<SignUpVM>();
-            App.Container.GetInstance<SignUpVM>().Window = this;
         }
 
         public DialogResult DialogResult { get; set; } = DialogResult.Cancel;

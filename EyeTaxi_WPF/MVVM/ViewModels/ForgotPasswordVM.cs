@@ -22,7 +22,7 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
 
         public ForgotPassword Window { get; set; } = null;
 
-        public int SecurityCode { get; set; }
+        private int SecurityCode { get; set; }
 
         private string usernam;
 
@@ -102,6 +102,7 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
             EnterSecurityCode enter = new();
             enter.Reset();
             enter.Code = SecurityCode;
+            Window.Visibility = System.Windows.Visibility.Hidden;
             enter.ShowDialog();
             if (enter.DialogResult == DialogResult.Success)
             {
@@ -118,13 +119,17 @@ namespace EyeTaxi_WPF.MVVM.ViewModels
                     Window.Close();
                 }
             }
+            else if (enter.DialogResult == DialogResult.Cancel)
+                Window.Visibility = System.Windows.Visibility.Visible;
+
+
         }
 
         public void SendMail()
         {
             Time = DateTime.Now;
             SecurityCode = new Random().Next(1000, 9999);
-            EmailService.Send(Email, "Reset Password Security Code", $"Your Reset Code: {SecurityCode}", "EyeTaxi");
+            EmailService.Send(Email, "Reset Password Security Code", $"Your Reset Code: {SecurityCode}", "WolfTaxi");
         }
 
         public bool CheckEmailAndUsername(object param)

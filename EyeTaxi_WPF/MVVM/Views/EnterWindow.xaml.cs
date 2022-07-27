@@ -51,6 +51,8 @@ namespace EyeTaxi_WPF.MVVM.Views
 
                 if (res == ProcessResult.Success)
                     App.ToAppWindow();
+                else
+                    new MessageBoxCustom(res.ToString(), MessageType.Warning, MessageButtons.Ok).ShowDialog();
             });
 
             App.Container.GetInstance<LoginPageVM>().SignUpClick = new(p => { Frame.Navigate(sign); });
@@ -61,11 +63,15 @@ namespace EyeTaxi_WPF.MVVM.Views
 
             App.Container.GetInstance<AdminLoginVM>().UserClick = new(p => { Frame.Navigate(login); });
 
+            App.Container.GetInstance<WelcomePageVM>().SignUp = new(p => { Frame.Navigate(sign); });
+
+            App.Container.GetInstance<WelcomePageVM>().SignIn = new(p => { Frame.Navigate(login); });
+
             #endregion
 
             App.EnterWindow = this;
 
-            Frame.Navigate(new LoginPage());
+            Frame.Navigate(new WelcomePage());
         }
 
         private void ResizeButton_Click(object sender, RoutedEventArgs e)
