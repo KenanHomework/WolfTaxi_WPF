@@ -1,6 +1,6 @@
-﻿using EyeTaxi_WPF.Enums;
-using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
-using EyeTaxi_WPF.Services;
+﻿using WolfTaxi_WPF.Enums;
+using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
+using WolfTaxi_WPF.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.Facade
+namespace WolfTaxi_WPF.Facade
 {
     public class DataFacade
     {

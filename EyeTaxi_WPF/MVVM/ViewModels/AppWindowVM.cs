@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.MVVM.ViewModels
+namespace WolfTaxi_WPF.MVVM.ViewModels
 {
     public class AppWindowVM
     {

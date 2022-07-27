@@ -1,4 +1,4 @@
-﻿using EyeTaxi_WPF.MVVM.ViewModels;
+﻿using WolfTaxi_WPF.MVVM.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EyeTaxi_WPF.Usercontrols
+namespace WolfTaxi_WPF.Usercontrols
 {
     /// <summary>
     /// Interaction logic for EditTexblock.xaml

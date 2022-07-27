@@ -1,5 +1,5 @@
-﻿using EyeTaxi_WPF.Enums;
-using EyeTaxi_WPF.MVVM.Models.BaseClasses;
+﻿using WolfTaxi_WPF.Enums;
+using WolfTaxi_WPF.MVVM.Models.BaseClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.MVVM.Models.GeneralClasses
+namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 {
     public class Taxi
     {

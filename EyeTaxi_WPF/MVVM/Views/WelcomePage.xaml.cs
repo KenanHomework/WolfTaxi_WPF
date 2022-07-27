@@ -1,4 +1,4 @@
-﻿using EyeTaxi_WPF.MVVM.ViewModels;
+﻿using WolfTaxi_WPF.MVVM.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EyeTaxi_WPF.MVVM.Views
+namespace WolfTaxi_WPF.MVVM.Views
 {
     /// <summary>
     /// Interaction logic for WelcomePage.xaml

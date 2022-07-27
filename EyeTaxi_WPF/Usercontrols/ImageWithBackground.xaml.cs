@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EyeTaxi_WPF.Usercontrols
+namespace WolfTaxi_WPF.Usercontrols
 {
     /// <summary>
     /// Interaction logic for ImageWithBackground.xaml

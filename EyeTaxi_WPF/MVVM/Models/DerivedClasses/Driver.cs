@@ -1,11 +1,11 @@
-﻿using EyeTaxi_WPF.MVVM.Models.BaseClasses;
-using EyeTaxi_WPF.MVVM.Models.GeneralClasses;
+﻿using WolfTaxi_WPF.MVVM.Models.BaseClasses;
+using WolfTaxi_WPF.MVVM.Models.GeneralClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
+namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 {
     public class Driver : Human
     {
@@ -16,7 +16,7 @@ namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
         private Location location = new();
         private Taxi taxi = new();
         private List<Move> history = new();
-        private string sourceOfPP = "https://res.cloudinary.com/kysbv/image/upload/v1658570801/EyeTaxi/driver_pp.png";
+        private string sourceOfPP = "https://res.cloudinary.com/kysbv/image/upload/v1658570801/WolfTaxi/driver_pp.png";
         private int rating = 0;
 
         public int Rating

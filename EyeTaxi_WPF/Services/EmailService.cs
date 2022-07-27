@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
 
-namespace EyeTaxi_WPF.Services
+namespace WolfTaxi_WPF.Services
 {
     public abstract class EmailService
     {

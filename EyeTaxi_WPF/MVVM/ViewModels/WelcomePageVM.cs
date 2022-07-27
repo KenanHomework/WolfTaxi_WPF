@@ -1,11 +1,11 @@
-﻿using EyeTaxi_WPF.Commands;
+﻿using WolfTaxi_WPF.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.MVVM.ViewModels
+namespace WolfTaxi_WPF.MVVM.ViewModels
 {
     public class WelcomePageVM
     {

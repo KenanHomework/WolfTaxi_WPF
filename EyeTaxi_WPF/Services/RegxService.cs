@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace EyeTaxi_WPF.Services
+namespace WolfTaxi_WPF.Services
 {
     public abstract class RegxService
     {

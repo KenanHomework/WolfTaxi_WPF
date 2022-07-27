@@ -1,4 +1,4 @@
-﻿using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
+﻿using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.Services
+namespace WolfTaxi_WPF.Services
 {
     public static class JSONService
     {

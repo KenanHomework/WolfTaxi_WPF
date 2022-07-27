@@ -1,9 +1,9 @@
-﻿using EyeTaxi_WPF.MVVM.Models.GeneralClasses;
+﻿using WolfTaxi_WPF.MVVM.Models.GeneralClasses;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace EyeTaxi_WPF.MVVM.Models.BaseClasses
+namespace WolfTaxi_WPF.MVVM.Models.BaseClasses
 {
     public abstract class Human
     {

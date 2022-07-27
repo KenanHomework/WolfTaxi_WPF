@@ -1,10 +1,10 @@
-﻿using EyeTaxi_WPF.MVVM.Models.BaseClasses;
-using EyeTaxi_WPF.MVVM.Models.GeneralClasses;
+﻿using WolfTaxi_WPF.MVVM.Models.BaseClasses;
+using WolfTaxi_WPF.MVVM.Models.GeneralClasses;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace EyeTaxi_WPF.MVVM.Models.DerivedClasses
+namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 {
     public class User : Human
     {

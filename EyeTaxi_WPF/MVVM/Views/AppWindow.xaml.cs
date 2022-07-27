@@ -11,10 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using EyeTaxi_WPF.MVVM.ViewModels;
+using WolfTaxi_WPF.MVVM.ViewModels;
 using Microsoft.Maps.MapControl.WPF;
 
-namespace EyeTaxi_WPF.MVVM.Views
+namespace WolfTaxi_WPF.MVVM.Views
 {
     /// <summary>
     /// Interaction logic for AppWindow.xaml

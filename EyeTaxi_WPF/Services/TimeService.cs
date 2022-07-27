@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.Services
+namespace WolfTaxi_WPF.Services
 {
     public abstract class TimeService
     {

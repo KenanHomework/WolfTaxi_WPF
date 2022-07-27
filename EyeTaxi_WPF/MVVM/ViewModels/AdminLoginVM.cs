@@ -1,6 +1,6 @@
-﻿using EyeTaxi_WPF.Commands;
-using EyeTaxi_WPF.Interfaces;
-using EyeTaxi_WPF.MVVM.Views;
+﻿using WolfTaxi_WPF.Commands;
+using WolfTaxi_WPF.Interfaces;
+using WolfTaxi_WPF.MVVM.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.MVVM.ViewModels
+namespace WolfTaxi_WPF.MVVM.ViewModels
 {
     public class AdminLoginVM : IEnterPage, IResetable
     {

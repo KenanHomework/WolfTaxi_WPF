@@ -1,11 +1,11 @@
-﻿using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
+﻿using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.MVVM.Models.GeneralClasses
+namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 {
     public class Move
     {

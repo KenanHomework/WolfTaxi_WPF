@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.Enums
+namespace WolfTaxi_WPF.Enums
 {
     public enum ProcessResult { Success, NotFound, Empty, IncorrectPassword, FileError }
 

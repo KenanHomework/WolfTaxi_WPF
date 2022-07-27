@@ -1,4 +1,4 @@
-﻿using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
+﻿using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace EyeTaxi_WPF.MVVM.ViewModels
+namespace WolfTaxi_WPF.MVVM.ViewModels
 {
     public class EditTextblockVM
     {

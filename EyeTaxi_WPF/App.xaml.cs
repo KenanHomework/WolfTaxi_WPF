@@ -6,18 +6,18 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using EyeTaxi_WPF.MVVM.ViewModels;
-using EyeTaxi_WPF.MVVM.Views;
-using EyeTaxi_WPF.Facade;
-using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
-using EyeTaxi_WPF.MVVM.Models.GeneralClasses;
-using EyeTaxi_WPF.Enums;
-using EyeTaxi_WPF.Services;
+using WolfTaxi_WPF.MVVM.ViewModels;
+using WolfTaxi_WPF.MVVM.Views;
+using WolfTaxi_WPF.Facade;
+using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
+using WolfTaxi_WPF.MVVM.Models.GeneralClasses;
+using WolfTaxi_WPF.Enums;
+using WolfTaxi_WPF.Services;
 using System.IO;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace EyeTaxi_WPF
+namespace WolfTaxi_WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -35,9 +35,9 @@ namespace EyeTaxi_WPF
         public static string AdminSubFilePath = "dataset";
         public static string UserSubFilePath = "dataset/Users";
         public static string DriverSubFilePath = "dataset/Drivers";
-        public static string FastTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/EyeTaxi/taxi_type_fast.png";
-        public static string ComfortTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/EyeTaxi/taxi_type_comfort.png";
-        public static string WolfLogoSource = "https://res.cloudinary.com/kysbv/image/upload/v1658898883/EyeTaxi/wolf_logo.png";
+        public static string FastTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_fast.png";
+        public static string ComfortTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_comfort.png";
+        public static string WolfLogoSource = "https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png";
         #endregion
 
         #region PropertyChangedEventHandler
@@ -64,7 +64,7 @@ namespace EyeTaxi_WPF
             //DataFacade.Save();
 
 
-            //User user = new("test2", "testingEYETAXI1", "kenanysbv@gmail.com", "055");
+            //User user = new("test2", "testingWolfTAXI1", "kenanysbv@gmail.com", "055");
             //UserService.Write(user);
             // kenanShekili2
 

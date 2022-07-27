@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace EyeTaxi_WPF.Commands
+namespace WolfTaxi_WPF.Commands
 {
     public class RelayCommand : ICommand
     {

@@ -1,5 +1,5 @@
-﻿using EyeTaxi_WPF.Commands;
-using EyeTaxi_WPF.Enums;
+﻿using WolfTaxi_WPF.Commands;
+using WolfTaxi_WPF.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeTaxi_WPF.MVVM.ViewModels
+namespace WolfTaxi_WPF.MVVM.ViewModels
 {
     public class EnterSecurityVM
     {

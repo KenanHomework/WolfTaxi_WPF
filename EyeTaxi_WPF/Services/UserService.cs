@@ -1,10 +1,10 @@
-﻿using EyeTaxi_WPF.Enums;
-using EyeTaxi_WPF.MVVM.Models.BaseClasses;
-using EyeTaxi_WPF.MVVM.Models.DerivedClasses;
+﻿using WolfTaxi_WPF.Enums;
+using WolfTaxi_WPF.MVVM.Models.BaseClasses;
+using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
 using System;
 using System.IO;
 
-namespace EyeTaxi_WPF.Services
+namespace WolfTaxi_WPF.Services
 {
     public class UserService
     {
