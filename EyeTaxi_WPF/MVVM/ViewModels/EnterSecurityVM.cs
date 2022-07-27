@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WolfTaxi_WPF.MVVM.ViewModels
+namespace WolfTaxi_WPF.MVVM.ViewModels 
 {
     public class EnterSecurityVM
     {
