@@ -8,7 +8,9 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 {
     public class AdminPanelVM
     {
-
+        public AdminPanelVM()
+        {
+        }
 
     }
 }

@@ -19,6 +19,13 @@ using System.Runtime.CompilerServices;
 
 namespace WolfTaxi_WPF
 {
+
+    public class MyClass
+    {
+
+        public string Name { get; set; } = "TestBindingName_From_MyClass_App.xaml.cs_";
+    }
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -26,9 +33,10 @@ namespace WolfTaxi_WPF
     {
 
         #region Members
+        private static DataFacade dataFacade = new();
 
+        public static DataFacade DataFacade { get => dataFacade; set { dataFacade = value; } }
         public static SimpleInjector.Container Container = new();
-        public static DataFacade DataFacade = new();
         public static EnterWindow EnterWindow;
         public static AppWindow AppWindow;
         public static AdminPanel AdminPanel;
@@ -38,6 +46,9 @@ namespace WolfTaxi_WPF
         public static string FastTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_fast.png";
         public static string ComfortTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_comfort.png";
         public static string WolfLogoSource = "https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png";
+
+
+
         #endregion
 
         #region PropertyChangedEventHandler
@@ -60,7 +71,10 @@ namespace WolfTaxi_WPF
             DataFacade.Load();
             //Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
 
-            DataFacade.Drivers = new List<Driver>() { new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f, FastTaxiIconSource)) };
+            DataFacade.Drivers = new List<Driver>() {
+                new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f, FastTaxiIconSource)),
+                new Driver("Driver 2.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f, FastTaxiIconSource))
+            };
             //DataFacade.Save();
 
 

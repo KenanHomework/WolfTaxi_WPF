@@ -24,7 +24,7 @@ namespace WolfTaxi_WPF.MVVM.Views
         public AdminPanel()
         {
             InitializeComponent();
-            DataContext = App.Container.GetInstance<AdminPanelVM>();
+            DataContext = App.DataFacade;
         }
 
         private void ResizeButton_Click(object sender, RoutedEventArgs e)

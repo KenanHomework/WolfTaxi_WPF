@@ -34,7 +34,7 @@
         <StackPanel Grid.Row="2" >
             <TextBox Foreground="#edecef" Background="#38304c" Margin="15"  TabIndex="0" 
                 Text="{Binding Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="20" materialDesign:HintAssist.Hint="Username"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="20" materialDesign:HintAssist.Hint="Name"
                 materialDesign:HintAssist.Background="#38304c" TextChanged="Username_TextChanged" Name="Username"/>
 
             <PasswordBox Foreground="#edecef" Background="#38304c" Margin="15" materialDesign:HintAssist.Hint="Password" MaxLength="20"

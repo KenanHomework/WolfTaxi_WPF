@@ -67,6 +67,8 @@ namespace WolfTaxi_WPF.MVVM.Views
 
             App.Container.GetInstance<WelcomePageVM>().SignIn = new(p => { Frame.Navigate(login); });
 
+            App.Container.GetInstance<WelcomePageVM>().Admin = new(p => { Frame.Navigate(adminLogin); });
+
             #endregion
 
             App.EnterWindow = this;

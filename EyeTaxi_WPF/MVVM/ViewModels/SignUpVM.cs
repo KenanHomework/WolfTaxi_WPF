@@ -102,6 +102,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             {
                 User user = new(Username, Password, Email, Phone);
                 UserService.Write(user);
+                App.DataFacade.User = user;
                 App.ToAppWindow();
             }
         }

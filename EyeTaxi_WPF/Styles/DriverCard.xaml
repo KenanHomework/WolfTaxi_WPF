@@ -1,14 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="DriverItemViewCard" TargetType="ListViewItem">
+    <Style x:Key="DriverCard" TargetType="ListViewItem">
+        <Style.Triggers>
+            <!--- Hover Effect-->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#2c2b3f"/>
+            </Trigger>
+        </Style.Triggers>
         <Setter Property="Width" Value="1050"/>
-        <Setter Property="Height" Value="50"/>
+        <Setter Property="Height" Value="65"/>
         <Setter Property="Background"  Value="#200a30"/>
         <Setter Property="Foreground"  Value="#f8f9fd"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
-                    <Border>
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5" Background="{TemplateBinding Background}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -53,9 +59,14 @@
                                 </Grid.RowDefinitions>
 
 
-
-                                <TextBlock Name="Balance"  Grid.Row="1" Foreground="#f8f9fd" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" 
+                                <StackPanel Orientation="Horizontal"  Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center">
+                                    
+                                <TextBlock Name="Balance" Foreground="#f8f9fd" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" 
                              Text="{Binding Balance,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"  FontFamily="Bahnschrift Condensed" Margin="0 0 5 0" />
+
+                                    <TextBlock  Foreground="#f8f9fd" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" TextWrapping="Wrap" 
+                               FontFamily="Bahnschrift Condensed" Margin="0 5 5 0" Text="₼"/>
+                                </StackPanel>
 
                             </Grid>
 

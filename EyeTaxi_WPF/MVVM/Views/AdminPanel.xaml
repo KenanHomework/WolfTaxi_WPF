@@ -38,10 +38,12 @@
             </Grid>
         </Border>
 
-        <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged"
-                   ItemsSource="{Binding App.DataFacade.Drivers,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
-                   ItemContainerStyle="{StaticResource DriverItemViewCard}">
+        <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged"  Margin="20" Padding="0 10"
+                   ItemsSource="{Binding Drivers,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                   ItemContainerStyle="{StaticResource DriverCard}" HorizontalAlignment="Center" VerticalAlignment="Top">
         </ListView>
+
+        <TextBlock></TextBlock>
     </DockPanel>
 
 </Window>

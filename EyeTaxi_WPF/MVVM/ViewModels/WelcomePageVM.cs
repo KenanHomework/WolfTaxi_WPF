@@ -15,6 +15,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public RelayCommand SignIn { get; set; }
 
+        public RelayCommand Admin { get; set; }
+
         #endregion
     }
 }

@@ -10,10 +10,10 @@
     <Page.Background>
         <ImageBrush ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1658860109/WolfTaxi/enterwinfdow_background_nzzj8v.png"/>
     </Page.Background>
-    <Grid Height="400" Width="600" HorizontalAlignment="Center" Margin=" 0 0 0 60">
+    <Grid Height="500" Width="600" HorizontalAlignment="Center" Margin=" 0 10 17 60">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
-            <RowDefinition/>
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <!-- Brand Area -->
@@ -37,6 +37,10 @@
 
             <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Content="Sign In" Margin="0 20" 
                     Background="Transparent" Foreground="Aqua" Width="200" Command="{Binding SignIn}"/>
+
+            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Content="Admin" Margin="0 20" 
+                    Background="Transparent" Foreground="Aqua" Width="200" Command="{Binding Admin}"/>
+
         </StackPanel>
 
     </Grid>
