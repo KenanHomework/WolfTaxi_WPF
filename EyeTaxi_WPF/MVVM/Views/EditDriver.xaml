@@ -44,7 +44,8 @@
         <Grid Grid.Row="1" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <!-- Driver Info  -->
@@ -119,7 +120,7 @@
                 <!--#endregion-->
 
                 <!-- Rating -->
-                <materialDesign:RatingBar Grid.Row="7" x:Name="ReadOnlyRatingBar" Value="{Binding Driver.Rating}" IsReadOnly="True" HorizontalAlignment="Center"/>
+                <materialDesign:RatingBar Grid.Row="7" x:Name="ReadOnlyRatingBar" Height="30" Value="{Binding Driver.Rating}" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             </Grid>
 
@@ -176,6 +177,28 @@
                 <!--#endregion-->
 
             </Grid>
+
+            <!--- Footer -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center"  HorizontalAlignment="Center">
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" VerticalAlignment="Center" 
+                    Background="Transparent" Foreground="Aqua" Width="200" Click="CancelClick">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ContentSaveOff" />
+                        <TextBlock Margin="15 0">Cancel</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="20 0"  VerticalAlignment="Center"
+                    Background="Transparent" Foreground="Aqua" Width="200" Click="SaveClick">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ContentSave" Foreground="Aqua"/>
+                        <TextBlock Margin="15 0">Save</TextBlock>
+                    </StackPanel>
+                </Button>
+
+
+
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

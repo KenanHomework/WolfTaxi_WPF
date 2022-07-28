@@ -26,8 +26,8 @@
         </StackPanel>
 
         <!-- Page Info Area -->
-        <StackPanel Grid.Row="1" Margin="0 5">
-            <Label Content="Login" Foreground="#e6e1e4" FontSize="35" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+        <StackPanel Grid.Row="1" Margin="10 5">
+            <Label Content="Admin Login" Foreground="#e6e1e4" FontSize="35" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
             <Label Content="Plese sing in to continue " Foreground="#645c64" FontSize="25" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
         </StackPanel>
 

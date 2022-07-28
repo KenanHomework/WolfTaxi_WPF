@@ -28,8 +28,6 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         private void ResizeButton_Click(object sender, RoutedEventArgs e)
         {
-
-
             if (sender is Button btn)
             {
                 switch (btn.Content.ToString())
@@ -38,6 +36,7 @@ namespace WolfTaxi_WPF.MVVM.Views
                         this.WindowState = WindowState.Minimized;
                         break;
                     case "X":
+                        App.DataFacade.Save();
                         Application.Current.Shutdown();
                         break;
                     default:
@@ -52,5 +51,15 @@ namespace WolfTaxi_WPF.MVVM.Views
                 DragMove();
         }
 
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void SaveClick(object sender, RoutedEventArgs e)
+        {
+            App.Container.GetInstance<EditDriverVM>().SaveCommand.Execute(this);
+            this.Close();
+        }
     }
 }

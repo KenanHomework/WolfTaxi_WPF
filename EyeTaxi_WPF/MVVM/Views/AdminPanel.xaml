@@ -37,13 +37,23 @@
                 </StackPanel>
             </Grid>
         </Border>
+        <StackPanel>
 
-        <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged"  Margin="20" Padding="0 10"
-                   ItemsSource="{Binding Drivers,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Top"
+                HorizontalAlignment="Left" Click="Back_Click"
+                    Background="Transparent" Foreground="Aqua" Width="200" Command="{Binding SignIn}">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ArrowLeft" />
+                    <TextBlock Margin="15 0">Back to Welcome Page</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged"  Margin="20" Padding="0 10"
+                   ItemsSource="{Binding Drivers,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="DriverListView"
                    ItemContainerStyle="{StaticResource DriverCard}" HorizontalAlignment="Center" VerticalAlignment="Top">
-        </ListView>
+            </ListView>
 
-        <TextBlock></TextBlock>
+        </StackPanel>
     </DockPanel>
 
 </Window>

@@ -88,6 +88,7 @@ namespace WolfTaxi_WPF.MVVM.Views
                         this.WindowState = WindowState.Minimized;
                         break;
                     case "X":
+                        App.DataFacade.Save();
                         Application.Current.Shutdown();
                         break;
                     default:

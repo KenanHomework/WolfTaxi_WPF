@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using WolfTaxi_WPF.Commands;
 
 namespace WolfTaxi_WPF.MVVM.ViewModels
 {
@@ -24,6 +25,11 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         #endregion
 
+        #region Commands
+
+        public RelayCommand SaveCommand { get; set; }
+
+        #endregion
 
         #region PropertyChangedEventHandler
 
@@ -37,9 +43,14 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         #region Methods
 
-        public void Save() => App.DataFacade.UpdateDriverInfo(Driver);
+        public void Save(object param) => App.DataFacade.UpdateDriverInfo(Driver);
 
         #endregion
+
+        public EditDriverVM()
+        {
+            SaveCommand = new(Save);
+        }
 
     }
 }

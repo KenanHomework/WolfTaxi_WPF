@@ -19,13 +19,6 @@ using System.Runtime.CompilerServices;
 
 namespace WolfTaxi_WPF
 {
-
-    public class MyClass
-    {
-
-        public string Name { get; set; } = "TestBindingName_From_MyClass_App.xaml.cs_";
-    }
-
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -125,6 +118,7 @@ namespace WolfTaxi_WPF
             EnterWindow.Reset();
             AdminPanel.Reset();
             AdminPanel.Close();
+            EnterWindow = new();
             EnterWindow.ShowDialog();
         }
 

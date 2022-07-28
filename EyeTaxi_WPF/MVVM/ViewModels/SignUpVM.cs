@@ -113,6 +113,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         => !string.IsNullOrWhiteSpace(Username) &&
             !string.IsNullOrWhiteSpace(Email) &&
             !string.IsNullOrWhiteSpace(Phone) &&
+            Phone.Length == 10 &&
             !string.IsNullOrWhiteSpace(Password) &&
             Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$") &&
             Regex.IsMatch(Email, "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b") &&

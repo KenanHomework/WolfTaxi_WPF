@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -37,6 +38,7 @@ namespace WolfTaxi_WPF.MVVM.Views
                         this.WindowState = WindowState.Minimized;
                         break;
                     case "X":
+                        App.DataFacade.Save();
                         Application.Current.Shutdown();
                         break;
                     default:
@@ -58,7 +60,15 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            EditDriver editDriver = new();
+            App.Container.GetInstance<EditDriverVM>().Driver = (Driver)DriverListView.SelectedItem;
+            editDriver.ShowDialog();
+        }
 
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            App.ToEnterWindow();
         }
     }
 }
