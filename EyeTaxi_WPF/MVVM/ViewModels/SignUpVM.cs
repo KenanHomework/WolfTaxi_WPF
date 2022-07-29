@@ -21,6 +21,15 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         #region Members
 
+        private bool remember = true;
+
+        public bool Remember
+        {
+            get { return remember; }
+            set { remember = value; OnPropertyChanged(); }
+        }
+
+
         private int SecurityCode { get; set; }
 
         private string username;
@@ -103,6 +112,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
                 User user = new(Username, Password, Email, Phone);
                 UserService.Write(user);
                 App.DataFacade.User = user;
+                App.DataFacade.Remember = Remember;
                 App.ToAppWindow();
             }
         }

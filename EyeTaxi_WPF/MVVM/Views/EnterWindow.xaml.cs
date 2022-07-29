@@ -38,6 +38,14 @@ namespace WolfTaxi_WPF.MVVM.Views
             App.AppWindow = new();
             App.AdminPanel = new();
 
+            if (App.DataFacade.Remember && App.DataFacade.User != null)
+            {
+                if (App.DataFacade.Login(App.DataFacade.User) == ProcessResult.Success)
+                {
+                    App.ToAppWindow();
+                }
+            }
+
             #region Implement Commands
 
             App.Container.GetInstance<LoginPageVM>().LoginClick = new(p =>
@@ -50,7 +58,10 @@ namespace WolfTaxi_WPF.MVVM.Views
 
 
                 if (res == ProcessResult.Success)
+                {
+                    App.DataFacade.Remember = App.Container.GetInstance<LoginPageVM>().Remember;
                     App.ToAppWindow();
+                }
                 else
                     new MessageBoxCustom(res.ToString(), MessageType.Warning, MessageButtons.Ok).ShowDialog();
             });

@@ -9,17 +9,15 @@
       Title="LoginPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.6*"></RowDefinition>
             <RowDefinition Height="1.2*"></RowDefinition>
-            <RowDefinition Height="10"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1.5*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <!-- Brand Area -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png" Stretch="Uniform" Margin="10 0"></Image>
             <StackPanel>
                 <Label Content="WolfTaxi" Foreground="Aqua" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="45"></Label>
@@ -28,12 +26,13 @@
         </StackPanel>
 
         <!-- Page Info Area -->
-        <StackPanel Grid.Row="3" Margin="0 5">
+        <StackPanel Grid.Row="1" Margin="0 5">
             <Label Content="Login" Foreground="#e6e1e4" FontSize="35" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
             <Label Content="Plese sing in to continue " Foreground="#645c64" FontSize="25" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" >
+        <!-- Input Area -->
+        <StackPanel Grid.Row="2" >
             <TextBox Foreground="#edecef" Background="#38304c" Margin="15"  TabIndex="0"
               Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="20"
               Text="{Binding Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
@@ -42,10 +41,27 @@
             <PasswordBox Foreground="#edecef" Background="#38304c" Margin="15" materialDesign:HintAssist.Hint="Password" MaxLength="20"
                 materialDesign:HintAssist.Background="#38304c" TabIndex="1"
                 PasswordChanged="PasswordBox_PasswordChanged"  Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Name="Password"/>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+
+                <ToggleButton  Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Remember,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Kind="AccountCancel" RenderTransformOrigin=".5,.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <RotateTransform Angle="45" />
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+                    <materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon Kind="AccountCheck" />
+                    </materialDesign:ToggleButtonAssist.OnContent>
+                </ToggleButton>
+
+                <Label Content="Remember Me" Foreground="Aqua" FontSize="24" FontFamily="Segoe UI Black" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            </StackPanel>
+
         </StackPanel>
 
-        <!--Password="{Binding Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->
-        <StackPanel Grid.Row="5" Orientation="Vertical">
+        <StackPanel Grid.Row="3" Orientation="Vertical">
 
             <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignPaperDarkButton}" Height="60" Background="Transparent" Command="{Binding LoginLocal}" TabIndex="2"
              materialDesign:ButtonAssist.CornerRadius="25">
@@ -57,7 +73,7 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Row="6" Orientation="Vertical" Margin="0 10">
+        <StackPanel Grid.Row="4" Orientation="Vertical" Margin="0 10">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
 
                 <Label Content="Don't have an account ?" Foreground="#645c64" FontSize="20" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>

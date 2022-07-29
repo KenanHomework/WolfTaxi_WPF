@@ -183,7 +183,7 @@
                 <Button Style="{StaticResource MaterialDesignPaperDarkButton}" VerticalAlignment="Center" 
                     Background="Transparent" Foreground="Aqua" Width="200" Click="CancelClick">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="ContentSaveOff" />
+                        <materialDesign:PackIcon Kind="ContentSaveOff" VerticalAlignment="Center" />
                         <TextBlock Margin="15 0">Cancel</TextBlock>
                     </StackPanel>
                 </Button>
@@ -191,7 +191,7 @@
                 <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="20 0"  VerticalAlignment="Center"
                     Background="Transparent" Foreground="Aqua" Width="200" Click="SaveClick">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="ContentSave" Foreground="Aqua"/>
+                        <materialDesign:PackIcon Kind="ContentSave" VerticalAlignment="Center" Foreground="Aqua"/>
                         <TextBlock Margin="15 0">Save</TextBlock>
                     </StackPanel>
                 </Button>

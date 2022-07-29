@@ -43,7 +43,7 @@
                 HorizontalAlignment="Left" Click="Back_Click"
                     Background="Transparent" Foreground="Aqua" Width="200" Command="{Binding SignIn}">
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ArrowLeft" />
+                    <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" />
                     <TextBlock Margin="15 0">Back to Welcome Page</TextBlock>
                 </StackPanel>
             </Button>

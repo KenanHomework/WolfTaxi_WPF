@@ -33,6 +33,14 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             set { password = value; OnPropertyChanged(); }
         }
 
+        private bool remeber = true;
+
+        public bool Remember
+        {
+            get { return remeber; }
+            set { remeber = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         #region PropertyChangedEventHandler

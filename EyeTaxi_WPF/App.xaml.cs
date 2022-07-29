@@ -107,27 +107,42 @@ namespace WolfTaxi_WPF
 
         public static void ToAdminPanel()
         {
-            EnterWindow.Reset();
+            if (EnterWindow != null)
+            {
+                EnterWindow.Reset();
+                EnterWindow.Close();
+            }
+            AdminPanel = new();
             AdminPanel.Reset();
-            EnterWindow.Close();
             AdminPanel.ShowDialog();
         }
 
         public static void ToEnterWindow()
         {
-            EnterWindow.Reset();
-            AdminPanel.Reset();
-            AdminPanel.Close();
+            if (AdminPanel != null)
+            {
+                AdminPanel.Reset();
+                AdminPanel.Close();
+            }
+
             EnterWindow = new();
+            EnterWindow.Reset();
             EnterWindow.ShowDialog();
         }
 
         public static void ToAppWindow()
         {
-            EnterWindow.Reset();
-            AdminPanel.Reset();
-            AdminPanel.Close();
-            EnterWindow.Close();
+            if (EnterWindow != null)
+            {
+                EnterWindow.Reset();
+                EnterWindow.Close();
+            }
+            if (AdminPanel != null)
+            {
+                AdminPanel.Reset();
+                AdminPanel.Close();
+            }
+            AppWindow = new();
             AppWindow.ShowDialog();
         }
 

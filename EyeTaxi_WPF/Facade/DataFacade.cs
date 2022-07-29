@@ -80,6 +80,16 @@ namespace WolfTaxi_WPF.Facade
             return result;
         }
 
+        public ProcessResult Login(User user)
+        {
+
+            ProcessResult result = UserService.Search(user);
+            if (result == ProcessResult.Success)
+                User = UserService.Read(user.Username);
+
+            return result;
+        }
+
         public ProcessResult Signin(User user, bool autoSaveUser = true)
         {
             ProcessResult result = UserService.Search(user);
