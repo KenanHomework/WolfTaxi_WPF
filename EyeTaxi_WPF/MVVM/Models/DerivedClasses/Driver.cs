@@ -65,10 +65,16 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         public void AddMove(Move move) => History.Add(move);
 
-        public override bool Equals(object? obj) => this.ID == ((Driver)obj).ID;
-
         #endregion
 
+        #region Override
+
+        public override bool Equals(object? obj) => this.ID == ((Driver)obj).ID;
+
+        public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email} ";
+
+
+        #endregion
 
         public Driver() : base() { }
 
@@ -98,9 +104,6 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
             Location = location;
             Taxi = taxi;
         }
-
-        public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email} ";
-
 
     }
 }

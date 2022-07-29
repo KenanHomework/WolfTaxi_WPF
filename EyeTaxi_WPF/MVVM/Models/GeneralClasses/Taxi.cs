@@ -54,14 +54,14 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 
         public Taxi() { }
 
-        public Taxi(string model, int year, string number, TaxiTypes type, float pricePerKm, string iconSource)
+        public Taxi(string model, int year, string number, TaxiTypes type, float pricePerKm)
         {
             Model = model;
             Year = year;
             Number = number;
             Type = type;
             PricePerKm = pricePerKm;
-            IconSource = iconSource;
+            IconSource = $"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{type.ToString().ToLower()}.png";
         }
     }
 }

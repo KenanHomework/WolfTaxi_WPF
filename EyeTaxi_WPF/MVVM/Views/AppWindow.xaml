@@ -37,7 +37,7 @@
                 <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Background="Transparent" BorderThickness="0" Width="40" Foreground="#f0f4fd" VerticalAlignment="Center" Content="_" Padding="0 0 0 8" Height="25" Click="ResizeButton_Click"/>
 
-                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="SaddleBrown" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"/>
+                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="DarkRed" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"/>
                 </StackPanel>
             </Grid>
         </Border>

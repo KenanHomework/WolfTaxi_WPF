@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -27,6 +29,23 @@ namespace WolfTaxi_WPF.MVVM.Views
             InitializeComponent();
             DataContext = App.DataFacade;
         }
+
+        #region Members
+
+        public bool State { get; set; } = false;
+
+        #endregion
+
+        #region PropertyChangedEventHandler
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        #endregion
+
 
         private void ResizeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -60,15 +79,61 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EditDriver editDriver = new();
-            App.Container.GetInstance<EditDriverVM>().Driver = (Driver)DriverListView.SelectedItem;
-            editDriver.ShowDialog();
+            if (!State && DriverListView.SelectedIndex >= 0)
+            {
+                EditDriver editDriver = new();
+                App.Container.GetInstance<EditDriverVM>().Driver = (Driver)DriverListView.SelectedItem;
+                editDriver.ShowDialog();
+            }
+            else
+                DriverListView.SelectedItems.Add(DriverListView.SelectedItem);
+
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             App.ToEnterWindow();
+        }
+
+        public void ReadyForDeleting()
+        {
+            InfoText.Text = State ? "Plese Select Driver(s) for delete." : String.Empty;
+            DeleteSatateButton.IsEnabled = !State;
+            Add.Visibility = State ? Visibility.Collapsed : Visibility.Visible;
+            Cancel.Visibility = Delete.Visibility = State ? Visibility.Visible : Visibility.Collapsed;
+            if (DriverListView.SelectionMode == SelectionMode.Extended) DriverListView.SelectedItems.Clear();
+            DriverListView.SelectionMode = State ? SelectionMode.Extended : SelectionMode.Single;
+        }
+
+        private void DeleteDrivers_Click(object sender, RoutedEventArgs e)
+        {
+            State = true;
+            ReadyForDeleting();
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            State = false;
+            ReadyForDeleting();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Driver item in DriverListView.SelectedItems)
+            {
+                try { App.DataFacade.DeleteDriver(item); }
+                catch (Exception) { }
+            }
+            State = false;
+            ReadyForDeleting();
+            DriverListView.ItemsSource = null;
+            DriverListView.ItemsSource = App.DataFacade.Drivers;
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Add new Driver!");
         }
     }
 }

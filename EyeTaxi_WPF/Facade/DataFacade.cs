@@ -118,6 +118,32 @@ namespace WolfTaxi_WPF.Facade
             }
         }
 
+        public ProcessResult AddDriver(Driver driver)
+        {
+            if (!Drivers.Contains(driver))
+            {
+                drivers.Add(driver);
+                return ProcessResult.Success;
+            }
+            return ProcessResult.Existed;
+        }
+
+        public void DeleteDriver(Driver driver) => Drivers.Remove(driver);
+
+        public void DeleteDriver(Guid ID) => Drivers.ForEach(d =>
+        {
+            if (d.ID == ID)
+            {
+                Drivers.Remove(d);
+                return;
+            }
+        });
+        public void DeleteDriver(IList<Driver> drivers) => drivers.ToList().ForEach(d =>
+        {
+            try { DeleteDriver(d); }
+            catch (Exception) { }
+        });
+
         #endregion
 
         public DataFacade() { }

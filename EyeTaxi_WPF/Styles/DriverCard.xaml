@@ -6,6 +6,11 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#2c2b3f"/>
             </Trigger>
+
+            <!-- Selected -->
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#292d2e"/>
+            </Trigger>
         </Style.Triggers>
         <Setter Property="Width" Value="1050"/>
         <Setter Property="Height" Value="65"/>
@@ -61,8 +66,8 @@
                                 <materialDesign:RatingBar Grid.Row="0" x:Name="ReadOnlyRatingBar" Height="30" Value="{Binding Rating,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                                 <StackPanel Orientation="Horizontal"  Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center">
-                                    
-                                <TextBlock Name="Balance" Foreground="#f8f9fd" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" 
+
+                                    <TextBlock Name="Balance" Foreground="#f8f9fd" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" 
                              Text="{Binding Balance,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  FontFamily="Bahnschrift Condensed" Margin="0 0 5 0" />
 
                                     <TextBlock  Foreground="#f8f9fd" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" TextWrapping="Wrap" 

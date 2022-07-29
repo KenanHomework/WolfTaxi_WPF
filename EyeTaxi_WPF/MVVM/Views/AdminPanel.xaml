@@ -33,27 +33,75 @@
                 <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Background="Transparent" BorderThickness="0" Width="40" Foreground="#f0f4fd" VerticalAlignment="Center" Content="_" Padding="0 0 0 8" Height="25" Click="ResizeButton_Click"/>
 
-                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="SaddleBrown" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"/>
+                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="DarkRed" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
-        <StackPanel>
 
-            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Top"
-                HorizontalAlignment="Left" Click="Back_Click"
-                    Background="Transparent" Foreground="Aqua" Width="200" Command="{Binding SignIn}">
+        <Grid Height="50" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
+                HorizontalAlignment="Center" Click="Back_Click" Grid.Column="0" BorderThickness="2"
+                    Background="Transparent" Foreground="Aqua" Width="200">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" />
-                    <TextBlock Margin="15 0">Back to Welcome Page</TextBlock>
+                    <TextBlock Margin="15 0" Width="149">Back Welcome Page</TextBlock>
                 </StackPanel>
             </Button>
 
-            <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged"  Margin="20" Padding="0 10"
+            <TextBlock Grid.Column="1" x:Name="InfoText" Foreground="SaddleBrown" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="3"/>
+
+            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
+                HorizontalAlignment="Center" Click="DeleteDrivers_Click" Grid.Column="2" BorderBrush="Red"  BorderThickness="2"
+                    Background="Transparent" Foreground="DarkRed" Width="200" Name="DeleteSatateButton">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Delete" />
+                    <TextBlock Margin="15 0">Delete Drivers</TextBlock>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+
+        <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" DockPanel.Dock="Top"  Margin="20" Padding="0 10"
                    ItemsSource="{Binding Drivers,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="DriverListView"
                    ItemContainerStyle="{StaticResource DriverCard}" HorizontalAlignment="Center" VerticalAlignment="Top">
-            </ListView>
+        </ListView>
 
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="50" HorizontalAlignment="Center"  
+                    VerticalAlignment="Center">
+
+            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
+                HorizontalAlignment="Center" Click="Cancel_Click" Visibility="Collapsed"  BorderThickness="2"
+                    Background="Transparent" Foreground="DarkRed" Width="150" Name="Cancel" BorderBrush="SaddleBrown">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Cancel" VerticalAlignment="Center" />
+                    <TextBlock Margin="15 0" Text="Cancel"/>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
+                HorizontalAlignment="Center" Click="Add_Click" BorderThickness="2" Padding="0"
+                    Background="Transparent" Foreground="Aqua" Width="50" Height="50" Name="Add">
+                <materialDesign:PackIcon Kind="PlusCircle" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Button>
+
+
+            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
+                HorizontalAlignment="Center" Click="Delete_Click" Visibility="Collapsed"  BorderThickness="2"
+                    Background="Transparent" Foreground="DarkRed" Width="150" Name="Delete" BorderBrush="SaddleBrown">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="DeleteEmpty" VerticalAlignment="Center" />
+                    <TextBlock Margin="15 0" Text="Delete"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
+
+
     </DockPanel>
 
 </Window>

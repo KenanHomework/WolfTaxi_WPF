@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WolfTaxi_WPF.Enums
 {
-    public enum ProcessResult { Success, NotFound, Empty, IncorrectPassword, FileError }
+    public enum ProcessResult { Success, NotFound, Empty, IncorrectPassword, Existed, FileError }
 
     public enum DialogResult { Success, Cancel, Ok, No, Yes }
 
