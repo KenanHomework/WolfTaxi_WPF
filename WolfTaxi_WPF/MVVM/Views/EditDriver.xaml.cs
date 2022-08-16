@@ -37,7 +37,7 @@ namespace WolfTaxi_WPF.MVVM.Views
                         break;
                     case "X":
                         App.DataFacade.Save();
-                        Application.Current.Shutdown();
+                        this.Close();
                         break;
                     default:
                         break;

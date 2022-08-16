@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WolfTaxi_WPF", "EyeTaxi_WPF\WolfTaxi_WPF.csproj", "{FC5357C4-4E94-44AF-A171-5D61D3303510}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WolfTaxi_WPF", "WolfTaxi_WPF\WolfTaxi_WPF.csproj", "{FC5357C4-4E94-44AF-A171-5D61D3303510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,6 +16,7 @@ using WolfTaxi_WPF.Services;
 using System.IO;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using CloudinaryDotNet;
 
 namespace WolfTaxi_WPF
 {
@@ -31,6 +32,7 @@ namespace WolfTaxi_WPF
         public static DataFacade DataFacade { get => dataFacade; set { dataFacade = value; } }
         public static SimpleInjector.Container Container = new();
         public static EnterWindow EnterWindow;
+        public static Cloudinary cloudinary = new(new Account("kysbv", "338497835255375", "iz_nsuDxVjxd-zU2xeDncLQDt64"));
         public static AppWindow AppWindow;
         public static AdminPanel AdminPanel;
         public static string AdminSubFilePath = "dataset";
@@ -104,6 +106,7 @@ namespace WolfTaxi_WPF
             Container.RegisterSingleton<WelcomePageVM>();
             Container.RegisterSingleton<AppWindowVM>();
             Container.RegisterSingleton<AdminPanelVM>();
+            Container.RegisterSingleton<AddDriverVM>();
             Container.RegisterSingleton<EditDriverVM>();
             Container.RegisterSingleton<EditTextblockVM>();
             Container.RegisterSingleton<LoginPageVM>();

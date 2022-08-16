@@ -57,7 +57,7 @@
             <TextBlock Grid.Column="1" x:Name="InfoText" Foreground="SaddleBrown" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="3"/>
 
             <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
-                HorizontalAlignment="Center" Click="DeleteDrivers_Click" Grid.Column="2" BorderBrush="Red"  BorderThickness="2"
+                HorizontalAlignment="Center" Click="DeleteDrivers_Click" Grid.Column="2" BorderBrush="Red"  BorderThickness="0"
                     Background="Transparent" Foreground="DarkRed" Width="200" Name="DeleteSatateButton">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Delete" />
@@ -85,7 +85,7 @@
             </Button>
 
             <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
-                HorizontalAlignment="Center" Click="Add_Click" BorderThickness="2" Padding="0"
+                HorizontalAlignment="Center" Click="Add_Click" BorderThickness="0" Padding="0"
                     Background="Transparent" Foreground="Aqua" Width="50" Height="50" Name="Add">
                 <materialDesign:PackIcon Kind="PlusCircle" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button>

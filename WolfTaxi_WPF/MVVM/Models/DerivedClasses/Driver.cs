@@ -76,9 +76,21 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         #endregion
 
-        public Driver() : base() { }
+        public Driver() : base()
+        {
+            Username = " ";
+            Password = new();
+            Phone = " ";
+            Email = " ";
+            Rating = 0;
+            Balance = 0;
+            Location = new();
+            Taxi = new();
+            History = new();
+            SourceOfPP = "https://res.cloudinary.com/kysbv/image/upload/v1658570801/WolfTaxi/driver_pp.png";
+        }
 
-        public Driver(Driver driver) : base()
+        public Driver(Driver driver) : this()
         {
             Username = driver.Username;
             Password = driver.Password;

@@ -34,7 +34,12 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
         public TaxiTypes Type
         {
             get { return taxiTypes; }
-            set { taxiTypes = value; OnPropertyChanged(); }
+            set
+            {
+                taxiTypes = value;
+                IconSource = $"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{value.ToString().ToLower()}.png";
+                OnPropertyChanged();
+            }
         }
         public string Model { get => model; set { model = value; OnPropertyChanged(); } }
         public int Year { get => year; set { year = value; OnPropertyChanged(); } }
@@ -52,7 +57,15 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
         #endregion
 
 
-        public Taxi() { }
+        public Taxi()
+        {
+            Model = " ";
+            Year = 1970;
+            Number = " ";
+            Type = TaxiTypes.Fast;
+            PricePerKm = 1;
+            IconSource = $"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_fast.png";
+        }
 
         public Taxi(string model, int year, string number, TaxiTypes type, float pricePerKm)
         {

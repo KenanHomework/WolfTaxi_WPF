@@ -127,13 +127,19 @@ namespace WolfTaxi_WPF.MVVM.Views
             }
             State = false;
             ReadyForDeleting();
+            RefreshDriversListViewSource();
+        }
+
+        public void RefreshDriversListViewSource()
+        {
             DriverListView.ItemsSource = null;
             DriverListView.ItemsSource = App.DataFacade.Drivers;
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Add new Driver!");
+            AddDriver addDriver = new();
+            addDriver.ShowDialog();
         }
     }
 }
