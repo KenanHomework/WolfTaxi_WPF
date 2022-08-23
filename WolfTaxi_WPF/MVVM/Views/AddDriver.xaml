@@ -50,11 +50,12 @@
             <!-- Driver Info  -->
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.2*"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
 
                 <!--#region Profile Photo -->
@@ -73,7 +74,7 @@
                         <StackPanel Orientation="Horizontal" Margin="10 0 0 0" Background="Transparent">
                             <Ellipse x:Name="PP" Height="50" Width="50">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding Driver.SourceOfPP,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                    <ImageBrush x:Name="ProfilePhoto" ImageSource="{Binding Driver.SourceOfPP,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </StackPanel>
@@ -85,28 +86,36 @@
                 <Label Content="Username ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="1"
                 VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="1"/>
+                <TextBox Text="{Binding Driver.Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="1"
+                  Name="Username" TextChanged="Username_TextChanged"/>
                 <!--#endregion-->
 
                 <!--#region Phone -->
                 <Label Content="Phone ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="2"
                 VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="2"/>
+                <TextBox Text="{Binding Driver.Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="2" Name="Phone" TextChanged="Phone_TextChanged" MaxLength="10"/>
                 <!--#endregion-->
 
                 <!--#region Email -->
                 <Label Content="Email ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
                     VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="3"/>
+                <TextBox Text="{Binding Driver.Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="3" Name="Email" TextChanged="Email_TextChanged"/>
                 <!--#endregion-->
 
                 <!--#region Lcoation -->
                 <Label Content="Location ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="4"
                     VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Taxi.Type.PricePerKm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="4"/>
+                <TextBox Text="{Binding Driver.Taxi.Type.PricePerKm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="4" Name="Location" TextChanged="Locatoion_TextChanged"/>
+                <!--#endregion-->
+
+                <!--#region Password -->
+                <Label Content="Password ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="5"
+                    VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
+
+                <PasswordBox Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" x:Name="Password" PasswordChanged="Password_PasswordChanged" Grid.Row="5"/>
                 <!--#endregion-->
 
             </Grid>
@@ -132,7 +141,7 @@
                         <StackPanel Orientation="Horizontal" Margin="10 0 0 0" Background="Transparent">
                             <Ellipse  Height="50" Width="50">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding Driver.Taxi.IconSource,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                    <ImageBrush ImageSource="{Binding Driver.Taxi.IconSource,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" x:Name="TaxiIcon"/>
                                 </Ellipse.Fill>
                             </Ellipse>
                         </StackPanel>
@@ -143,7 +152,7 @@
                 <!--#region Model -->
                 <Label Grid.Row="1" Content="Model ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Taxi.Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="1"/>
+                <TextBox Text="{Binding Driver.Taxi.Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="1" Name="Model" TextChanged="Model_TextChanged"/>
                 <!--#endregion-->
 
                 <!--#region Year  -->
@@ -151,7 +160,7 @@
                 <Label Content="Year ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="2"
                            VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Taxi.Year,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="2"/>
+                <TextBox Text="{Binding Driver.Taxi.Year,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="2" Name="Year" TextChanged="Year_TextChanged"/>
 
                 <!--#endregion-->
 
@@ -159,7 +168,7 @@
                 <Label Content="Number ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
                            VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Taxi.Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="3"/>
+                <TextBox Text="{Binding Driver.Taxi.Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="3" Name="Number" TextChanged="Number_TextChanged" MaxLength="7"/>
 
                 <!--#endregion-->
 

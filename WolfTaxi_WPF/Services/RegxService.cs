@@ -22,6 +22,29 @@ namespace WolfTaxi_WPF.Services
             return false;
         }
 
+        public static bool CheckControl(ref TextBox tbx, int minLenght, Color defColor)
+        {
+            if (tbx.Text.Length >= minLenght)
+            {
+                tbx.Foreground = new SolidColorBrush(defColor);
+                return true;
+            }
+            tbx.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            return false;
+        }
+
+        public static bool CheckCarYear(ref TextBox tbx, Color defColor)
+        {
+            if (Convert.ToUInt32(tbx.Text) >= 1970 && Convert.ToUInt32(tbx.Text) <= DateTime.Now.Year)
+            {
+                tbx.Foreground = new SolidColorBrush(defColor);
+                return true;
+            }
+            tbx.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            return false;
+        }
+
+
         public static bool CheckControl(ref PasswordBox tbx, int minLenght, Color defColor, string regex)
         {
             if (tbx.Password.Length >= minLenght && new Regex(regex).IsMatch(tbx.Password))

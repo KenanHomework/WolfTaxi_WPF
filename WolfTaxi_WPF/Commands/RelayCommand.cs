@@ -25,7 +25,8 @@ namespace WolfTaxi_WPF.Commands
         }
 
         public bool CanExecute(object parameter)
-                => canExecute == null || canExecute(parameter);
+                => 
+            canExecute == null || canExecute(parameter);
 
         public void Execute(object parameter)
                  => execute.Invoke(parameter);

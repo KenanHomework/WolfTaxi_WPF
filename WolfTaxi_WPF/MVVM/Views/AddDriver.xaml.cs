@@ -16,6 +16,10 @@ using CloudinaryDotNet.Actions;
 using WolfTaxi_WPF.MVVM.ViewModels;
 using WolfTaxi_WPF.Enums;
 using MaterialDesignThemes.Wpf;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using WolfTaxi_WPF.Services;
+using System.IO;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -24,21 +28,58 @@ namespace WolfTaxi_WPF.MVVM.Views
     /// </summary>
     public partial class AddDriver : Window
     {
+
         public AddDriver()
         {
             InitializeComponent();
+            App.Container.GetInstance<AddDriverVM>().Reset();
+            App.Container.GetInstance<AddDriverVM>().Window = this;
             DataContext = App.Container.GetInstance<AddDriverVM>();
             TaxiTypeComboBox.ItemsSource = Enum.GetValues(typeof(TaxiTypes));
         }
 
-        private void BrowsePP_Click(object sender, RoutedEventArgs e)
+        #region PropertyChangedEventHandler
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            //    var uploadParams = new ImageUploadParams()
-            //    {
-            //        File = new FileDescription(@"c:\my_image.jpg")
-            //    };
-            //    var uploadResult = App.cloudinary.Upload(uploadParams);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        #endregion
+
+        #region Controls Checks
+
+        private void Username_TextChanged(object sender, TextChangedEventArgs e)
+                        => RegxService.CheckControl(ref Username, 3, Color.FromRgb(179, 179, 179), "^([A-Za-z0-9]){4,20}$");
+
+
+        private void Email_TextChanged(object sender, TextChangedEventArgs e)
+                    => RegxService.CheckControl(ref Email, 3, Color.FromRgb(179, 179, 179), "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b");
+
+
+        private void Phone_TextChanged(object sender, TextChangedEventArgs e)
+                    => RegxService.CheckControl(ref Phone, 10, Color.FromRgb(179, 179, 179), "(\\+?( |-|\\.)?\\d{3}( |-|\\.)?)?(\\(?\\d{3}\\)?|\\d{2})( |-|\\.)?\\d{2}\\d{2}");
+
+        private void Password_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            RegxService.CheckControl(ref Password, 8, Color.FromRgb(179, 179, 179), "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
+            App.Container.GetInstance<SignUpVM>().Password = Password.Password;
+        }
+
+        private void Locatoion_TextChanged(object sender, TextChangedEventArgs e)
+                         => RegxService.CheckControl(ref Location, 3, Color.FromRgb(179, 179, 179));
+
+        private void Model_TextChanged(object sender, TextChangedEventArgs e)
+                           => RegxService.CheckControl(ref Model, 3, Color.FromRgb(179, 179, 179));
+
+        private void Year_TextChanged(object sender, TextChangedEventArgs e)
+                           => RegxService.CheckCarYear(ref Year, Color.FromRgb(179, 179, 179));
+
+        private void Number_TextChanged(object sender, TextChangedEventArgs e)
+                         => RegxService.CheckControl(ref Number, 7, Color.FromRgb(179, 179, 179));
+
+        #endregion
 
         private void ResizeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -65,15 +106,11 @@ namespace WolfTaxi_WPF.MVVM.Views
                 DragMove();
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void TaxiTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             App.Container.GetInstance<AddDriverVM>().Driver.Taxi.Type = (TaxiTypes)TaxiTypeComboBox.SelectedItem;
-            App.Container.GetInstance<AddDriverVM>().Driver.Taxi.IconSource = $"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{TaxiTypeComboBox.SelectedItem.ToString().ToLower()}.png";
+            TaxiIcon.ImageSource = BitmapService.GetBitmapImageFromUrl(App.Container.GetInstance<AddDriverVM>().Driver.Taxi.IconSource.ToString());
         }
+
     }
 }

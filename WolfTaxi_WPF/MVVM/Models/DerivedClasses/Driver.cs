@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using WolfTaxi_WPF.Interfaces;
 
 namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 {
@@ -16,7 +17,7 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
         private Location location = new();
         private Taxi taxi = new();
         private List<Move> history = new();
-        private string sourceOfPP = "https://res.cloudinary.com/kysbv/image/upload/v1658570801/WolfTaxi/driver_pp.png";
+        private string sourceOfPP = App.DriverProfilePhoto;
         private int rating = 0;
 
         public int Rating
@@ -71,8 +72,7 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         public override bool Equals(object? obj) => this.ID == ((Driver)obj).ID;
 
-        public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email} ";
-
+        public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email} ID:{ID} ";
 
         #endregion
 

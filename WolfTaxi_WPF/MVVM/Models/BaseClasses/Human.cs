@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using WolfTaxi_WPF.Interfaces;
 
 namespace WolfTaxi_WPF.MVVM.Models.BaseClasses
 {

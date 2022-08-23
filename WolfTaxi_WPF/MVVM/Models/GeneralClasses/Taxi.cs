@@ -20,7 +20,7 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 
 
         private float pricePerKm;
-        private string iconSource;
+        private Uri iconSource;
         private string model = string.Empty;
         private int year = 1970;
         private string number = String.Empty;
@@ -30,14 +30,14 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
             get { return pricePerKm; }
             set { pricePerKm = value; OnPropertyChanged(); }
         }
-        public string IconSource { get => iconSource; set { iconSource = value; OnPropertyChanged(); } }
+        public Uri IconSource { get => iconSource; set { iconSource = value; OnPropertyChanged(); } }
         public TaxiTypes Type
         {
             get { return taxiTypes; }
             set
             {
                 taxiTypes = value;
-                IconSource = $"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{value.ToString().ToLower()}.png";
+                IconSource =new Uri( $"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{value.ToString().ToLower()}.png");
                 OnPropertyChanged();
             }
         }
@@ -64,7 +64,6 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
             Number = " ";
             Type = TaxiTypes.Fast;
             PricePerKm = 1;
-            IconSource = $"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_fast.png";
         }
 
         public Taxi(string model, int year, string number, TaxiTypes type, float pricePerKm)
@@ -74,7 +73,6 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
             Number = number;
             Type = type;
             PricePerKm = pricePerKm;
-            IconSource = $"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{type.ToString().ToLower()}.png";
         }
     }
 }

@@ -1,20 +1,34 @@
-﻿using System;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 using WolfTaxi_WPF.Commands;
+using WolfTaxi_WPF.Interfaces;
 using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
+using WolfTaxi_WPF.MVVM.Views;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.ViewModels
 {
-    public class AddDriverVM
+    public class AddDriverVM : IResetable
     {
         #region Members
 
+        public AddDriver Window { get; set; }
+
         private Driver driver = new();
+
+        bool dialogResult = false;
+        OpenFileDialog ofd;
 
         public Driver Driver
         {
@@ -43,23 +57,60 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         #endregion
 
         #region Methods
-
+            
         public void Browse(object param)
         {
-
+            ofd = new OpenFileDialog();
+            ofd.Filter = "Image File (* png)| *.png";
+            dialogResult = (bool)ofd.ShowDialog();
+            CloudinaryService.UploadImage(ofd.FileName, "tempdriverprofilephoto", App.TempCloudinaryFoldePath);
+            Window.ProfilePhoto.ImageSource = BitmapService.GetBitmapImageFromUrl(CloudinaryService.GetSource(App.TempCloudinaryFoldePath, "tempdriverprofilephoto"));
         }
+
+        public bool CandAddDriver(object param) => AllInfoCorrect();
 
         public void AddDriver(object param)
         {
-
+            if (dialogResult)
+                CloudinaryService.DestroyImage("tempdriverprofilephoto");
+            Driver.SourceOfPP = dialogResult ? CloudinaryService.UploadImage(ofd.FileName, Driver.Username, App.DriverCloudinaryFoldePath) : App.DriverProfilePhoto;
+            App.DataFacade.AddDriver(Driver);
+            Reset();
+            Window.Close();
         }
+
+        public void Reset()
+        {
+            Driver = new();
+            Driver.Username = "Username";
+            Driver.Email = "example@example.host";
+            Driver.Phone = "0000000000";
+            Driver.Password = new("abcd");
+        }
+
+        public bool AllInfoCorrect()
+            => !string.IsNullOrWhiteSpace(Driver.Username) &&
+               !string.IsNullOrWhiteSpace(Driver.Email) &&
+               !string.IsNullOrWhiteSpace(Driver.Phone) &&
+               !string.IsNullOrWhiteSpace(Driver.Taxi.Model) &&
+               !string.IsNullOrWhiteSpace(Driver.Taxi.Number) &&
+               Driver.Phone.Length == 10 &&
+               !string.IsNullOrWhiteSpace(Window.Password.Password) &&
+               Regex.IsMatch(Driver.Username, "^([A-Za-z0-9]){4,20}$") &&
+               Regex.IsMatch(Driver.Email, "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b") &&
+               Regex.IsMatch(Window.Password.Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$") &&
+               Regex.IsMatch(Driver.Phone, "(\\+?( |-|\\.)?\\d{3}( |-|\\.)?)?(\\(?\\d{3}\\)?|\\d{2})( |-|\\.)?\\d{2}\\d{2}") &&
+               RegxService.CheckControl(ref Window.Location, 3, Color.FromRgb(179, 179, 179)) &&
+            RegxService.CheckControl(ref Window.Model, 3, Color.FromRgb(179, 179, 179)) &&
+            RegxService.CheckCarYear(ref Window.Year, Color.FromRgb(179, 179, 179)) &&
+            RegxService.CheckControl(ref Window.Number, 7, Color.FromRgb(179, 179, 179));
 
         #endregion
 
         public AddDriverVM()
         {
             BrowsePPSource = new(Browse);
-            Add = new(AddDriver);
+            Add = new(AddDriver, CandAddDriver);
         }
     }
 }

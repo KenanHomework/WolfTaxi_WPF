@@ -4,10 +4,11 @@ using System.Linq;
 using LoremNET;
 using System.Text;
 using System.Threading.Tasks;
+using WolfTaxi_WPF.Interfaces;
 
 namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 {
-    public class Hash
+    public class Hash : ICanCheckOwnMembers
     {
 
         #region Members
@@ -48,6 +49,13 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 
         public void UpdateValue(string value)
             => Value = HashValue(value);
+
+        #endregion
+
+        #region Implements
+
+        public string AllMembersTrue()
+            => string.IsNullOrWhiteSpace(Value) ? "Hash Password Value can't be empty" : "1";
 
         #endregion
 

@@ -98,7 +98,8 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         public void ReadyForDeleting()
         {
-            InfoText.Text = State ? "Plese Select Driver(s) for delete." : String.Empty;
+            InfoText.Foreground = new SolidColorBrush(State ? Color.FromRgb(244, 164, 96) : Color.FromRgb(0,255,255));
+            InfoText.Text = State ? "Plese Select Driver(s) for delete." : "Select Driver(s) for view / edit";
             DeleteSatateButton.IsEnabled = !State;
             Add.Visibility = State ? Visibility.Collapsed : Visibility.Visible;
             Cancel.Visibility = Delete.Visibility = State ? Visibility.Visible : Visibility.Collapsed;

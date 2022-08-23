@@ -54,7 +54,7 @@
                 </StackPanel>
             </Button>
 
-            <TextBlock Grid.Column="1" x:Name="InfoText" Foreground="SaddleBrown" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="3"/>
+            <TextBlock Grid.Column="1" x:Name="InfoText" Foreground="Aqua" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="3" Text="Select Driver(s) for view / edit"/>
 
             <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
                 HorizontalAlignment="Center" Click="DeleteDrivers_Click" Grid.Column="2" BorderBrush="Red"  BorderThickness="0"

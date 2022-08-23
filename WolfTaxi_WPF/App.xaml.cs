@@ -42,6 +42,10 @@ namespace WolfTaxi_WPF
         public static string ComfortTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_comfort.png";
         public static string LuxTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_lux.png";
         public static string WolfLogoSource = "https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png";
+        public static string DriverProfilePhoto = "https://res.cloudinary.com/kysbv/image/upload/v1658570801/WolfTaxi/driver_pp.png";
+        public static string DriverCloudinaryFoldePath = "WolfTaxi/ClientPhotos/DriverPhotos";
+        public static string UserCloudinaryFoldePath = "WolfTaxi/ClientPhotos/UserPhotos";
+        public static string TempCloudinaryFoldePath = "WolfTaxi/ClientPhotos/TempPhotos";
 
 
 
@@ -77,7 +81,6 @@ namespace WolfTaxi_WPF
                 new Driver("Driver 5.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m235i xDrive ", 2022, "77-ZZ-777", TaxiTypes.Comfort, 1.4f))
             };
             //DataFacade.Save();
-
 
             //User user = new("test2", "testingWolfTAXI1", "kenanysbv@gmail.com", "055");
             //UserService.Write(user);

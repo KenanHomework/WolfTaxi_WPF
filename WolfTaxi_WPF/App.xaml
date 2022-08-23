@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WolfTaxi_WPF"
     StartupUri="mvvm\views\enterwindow.xaml">
+    
     <!--StartupUri="mvvm\views\appwindow.xaml">-->
     <!--StartupUri="mvvm\views\editdriver.xaml">-->
     <!--StartupUri="mvvm\views\adminpanel.xaml">-->
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -24,4 +26,4 @@
         </ResourceDictionary>
 
     </Application.Resources>
-</Application>
+</Application> 
