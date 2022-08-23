@@ -18,7 +18,8 @@ namespace WolfTaxi_WPF.Services
             {
                 File = new FileDescription(path),
                 Folder = cloudinaryFoldePath,
-                PublicId = TextService.GetFileName(name)
+                PublicId = name,
+                DisplayName = name
             };
             App.cloudinary.Upload(uploadParams);
             return GetSource(cloudinaryFoldePath, name);

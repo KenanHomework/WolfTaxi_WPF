@@ -87,35 +87,35 @@
                 VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
                 <TextBox Text="{Binding Driver.Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="1"
-                  Name="Username" TextChanged="Username_TextChanged"/>
+                  Name="Username" TextChanged="Username_TextChanged" MinWidth="50"/>
                 <!--#endregion-->
 
                 <!--#region Phone -->
                 <Label Content="Phone ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="2"
                 VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="2" Name="Phone" TextChanged="Phone_TextChanged" MaxLength="10"/>
+                <TextBox Text="{Binding Driver.Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" MinWidth="50" TextWrapping="Wrap" Grid.Row="2" Name="Phone" TextChanged="Phone_TextChanged" MaxLength="10"/>
                 <!--#endregion-->
 
                 <!--#region Email -->
                 <Label Content="Email ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
                     VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="3" Name="Email" TextChanged="Email_TextChanged"/>
+                <TextBox Text="{Binding Driver.Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" MinWidth="50" TextWrapping="Wrap" Grid.Row="3" Name="Email" TextChanged="Email_TextChanged"/>
                 <!--#endregion-->
 
                 <!--#region Lcoation -->
                 <Label Content="Location ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="4"
                     VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Taxi.Type.PricePerKm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="4" Name="Location" TextChanged="Locatoion_TextChanged"/>
+                <TextBox Text="{Binding Driver.Taxi.Type.PricePerKm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="50" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="4" Name="Location" TextChanged="Locatoion_TextChanged"/>
                 <!--#endregion-->
 
                 <!--#region Password -->
                 <Label Content="Password ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="5"
                     VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <PasswordBox Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" x:Name="Password" PasswordChanged="Password_PasswordChanged" Grid.Row="5"/>
+                <PasswordBox Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" x:Name="Password" PasswordChanged="Password_PasswordChanged" Grid.Row="5" MinWidth="50" MaxLength="20"/>
                 <!--#endregion-->
 
             </Grid>
@@ -152,7 +152,7 @@
                 <!--#region Model -->
                 <Label Grid.Row="1" Content="Model ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Taxi.Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="1" Name="Model" TextChanged="Model_TextChanged"/>
+                <TextBox Text="{Binding Driver.Taxi.Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" MinWidth="50" Grid.Row="1" Name="Model" TextChanged="Model_TextChanged"/>
                 <!--#endregion-->
 
                 <!--#region Year  -->
@@ -160,7 +160,7 @@
                 <Label Content="Year ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="2"
                            VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Taxi.Year,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="2" Name="Year" TextChanged="Year_TextChanged"/>
+                <TextBox Text="{Binding Driver.Taxi.Year,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" MinWidth="50" TextWrapping="Wrap" Grid.Row="2" Name="Year" TextChanged="Year_TextChanged"/>
 
                 <!--#endregion-->
 
@@ -168,7 +168,7 @@
                 <Label Content="Number ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
                            VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Taxi.Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="3" Name="Number" TextChanged="Number_TextChanged" MaxLength="7"/>
+                <TextBox Text="{Binding Driver.Taxi.Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" MinWidth="50" Grid.Row="3" Name="Number" TextChanged="Number_TextChanged" MaxLength="7"/>
 
                 <!--#endregion-->
 
@@ -184,7 +184,7 @@
             <!--- Footer -->
             <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center"  HorizontalAlignment="Center">
                 <Button Style="{StaticResource MaterialDesignPaperDarkButton}" VerticalAlignment="Center"  BorderBrush="SaddleBrown"
-                    Background="Transparent" Foreground="DarkRed" Width="200" Name="Cancel">
+                    Background="Transparent" Foreground="DarkRed" Width="200" Name="Cancel" Command="{Binding Close}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="AccountCancel" VerticalAlignment="Center" />
                         <TextBlock Margin="15 0">Cancel</TextBlock>

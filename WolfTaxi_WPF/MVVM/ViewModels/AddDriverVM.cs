@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using WolfTaxi_WPF.Commands;
 using WolfTaxi_WPF.Interfaces;
 using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
@@ -54,17 +55,20 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public RelayCommand Add { get; set; }
 
+        public RelayCommand Close { get; set; }
+
         #endregion
 
         #region Methods
-            
+
         public void Browse(object param)
         {
             ofd = new OpenFileDialog();
             ofd.Filter = "Image File (* png)| *.png";
             dialogResult = (bool)ofd.ShowDialog();
-            CloudinaryService.UploadImage(ofd.FileName, "tempdriverprofilephoto", App.TempCloudinaryFoldePath);
-            Window.ProfilePhoto.ImageSource = BitmapService.GetBitmapImageFromUrl(CloudinaryService.GetSource(App.TempCloudinaryFoldePath, "tempdriverprofilephoto"));
+            CloudinaryService.UploadImage(ofd.FileName, "tempdriverpp", App.TempCloudinaryFolderPath);
+            Window.ProfilePhoto.ImageSource = null;
+            Window.ProfilePhoto.ImageSource = BitmapService.GetBitmapImageFromUrl(CloudinaryService.GetSource(App.TempCloudinaryFolderPath, "tempdriverpp"));
         }
 
         public bool CandAddDriver(object param) => AllInfoCorrect();
@@ -73,8 +77,14 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         {
             if (dialogResult)
                 CloudinaryService.DestroyImage("tempdriverprofilephoto");
-            Driver.SourceOfPP = dialogResult ? CloudinaryService.UploadImage(ofd.FileName, Driver.Username, App.DriverCloudinaryFoldePath) : App.DriverProfilePhoto;
+            Driver.SourceOfPP = dialogResult ? CloudinaryService.UploadImage(ofd.FileName, Driver.Username, App.DriverCloudinaryFolderPath) : App.DriverProfilePhoto;
             App.DataFacade.AddDriver(Driver);
+            Reset();
+            Window.Close();
+        }
+
+        public void CloseAD(object param)
+        {
             Reset();
             Window.Close();
         }
@@ -82,10 +92,6 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         public void Reset()
         {
             Driver = new();
-            Driver.Username = "Username";
-            Driver.Email = "example@example.host";
-            Driver.Phone = "0000000000";
-            Driver.Password = new("abcd");
         }
 
         public bool AllInfoCorrect()
@@ -111,6 +117,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         {
             BrowsePPSource = new(Browse);
             Add = new(AddDriver, CandAddDriver);
+            Close = new(CloseAD);
         }
     }
 }

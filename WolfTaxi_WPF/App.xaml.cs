@@ -43,9 +43,9 @@ namespace WolfTaxi_WPF
         public static string LuxTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_lux.png";
         public static string WolfLogoSource = "https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png";
         public static string DriverProfilePhoto = "https://res.cloudinary.com/kysbv/image/upload/v1658570801/WolfTaxi/driver_pp.png";
-        public static string DriverCloudinaryFoldePath = "WolfTaxi/ClientPhotos/DriverPhotos";
-        public static string UserCloudinaryFoldePath = "WolfTaxi/ClientPhotos/UserPhotos";
-        public static string TempCloudinaryFoldePath = "WolfTaxi/ClientPhotos/TempPhotos";
+        public static string DriverCloudinaryFolderPath = "WolfTaxi/ClientPhotos/DriverPhotos";
+        public static string UserCloudinaryFolderPath = "WolfTaxi/ClientPhotos/UserPhotos";
+        public static string TempCloudinaryFolderPath = "WolfTaxi/ClientPhotos/TempPhotos";
 
 
 
@@ -69,7 +69,7 @@ namespace WolfTaxi_WPF
             //JSONService.Write($"{DriverSubFilePath}/drivers.json",);
 
             DataFacade.Load();
-            DataFacade.Remember = false;
+            //DataFacade.Remember = false;
             //Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
 
             DataFacade.Drivers = new List<Driver>() {
