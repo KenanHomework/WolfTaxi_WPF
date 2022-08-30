@@ -6,6 +6,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
+using WolfTaxi_WPF.Enums;
 
 namespace WolfTaxi_WPF.Services
 {
@@ -21,18 +23,37 @@ namespace WolfTaxi_WPF.Services
                 PublicId = name,
                 DisplayName = name
             };
-            App.cloudinary.Upload(uploadParams);
-            return GetSource(cloudinaryFoldePath, name);
+            ImageUploadResult res;
+            try { res = App.cloudinary.Upload(uploadParams); }
+            catch (Exception) { return string.Empty; }
+            return res.Url.ToString();
         }
 
-        public static void DestroyImage(string publicId)
+        public static ProcessResult DestroyImage(string fileName,string folderPath)
         {
-            var destroyParams = new DeletionParams(publicId);
-            App.cloudinary.Destroy(destroyParams);
-
+            if (string.IsNullOrWhiteSpace(fileName) || string.IsNullOrWhiteSpace(folderPath))
+                return ProcessResult.EmptyArguments;
+            var destroyParams = new DeletionParams($"{folderPath}/{fileName}");
+            DeletionResult result = new();
+            try { result = App.cloudinary.Destroy(destroyParams); }
+            catch (Exception) { return ProcessResult.Error; }
+            return ProcessResult.Success;
         }
 
-        public static string GetSource(string folderPath, string name)
-            => $"https://res.cloudinary.com/kysbv/image/upload/v1661212843/{folderPath}/{name}.png";
+        public static string GetSource(string name, string folderPath)
+        {
+            try
+            {
+                SearchResult result = App.cloudinary.Search()
+                      .Expression($"resource_type:image AND folder={folderPath} AND filename={name}")
+                      .SortBy("public_id", "desc")
+                      .MaxResults(1)
+                      .Execute();
+                return result.Resources[0].Url;
+            }
+            catch (Exception) { return string.Empty; }
+
+            return string.Empty;
+        }
     }
 }

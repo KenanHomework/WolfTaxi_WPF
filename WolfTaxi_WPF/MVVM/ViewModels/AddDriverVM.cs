@@ -24,6 +24,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
     {
         #region Members
 
+        public string UrlTempPP { get; set; } = string.Empty;
+
         public AddDriver Window { get; set; }
 
         private Driver driver = new();
@@ -66,9 +68,10 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             ofd = new OpenFileDialog();
             ofd.Filter = "Image File (* png)| *.png";
             dialogResult = (bool)ofd.ShowDialog();
-            CloudinaryService.UploadImage(ofd.FileName, "tempdriverpp", App.TempCloudinaryFolderPath);
+            CloudinaryService.DestroyImage("tempdriverpp",App.TempCloudinaryFolderPath);
+            UrlTempPP = CloudinaryService.UploadImage(ofd.FileName, "tempdriverpp", App.TempCloudinaryFolderPath);
             Window.ProfilePhoto.ImageSource = null;
-            Window.ProfilePhoto.ImageSource = BitmapService.GetBitmapImageFromUrl(CloudinaryService.GetSource(App.TempCloudinaryFolderPath, "tempdriverpp"));
+            Window.ProfilePhoto.ImageSource = BitmapService.GetBitmapImageFromUrl(UrlTempPP);
         }
 
         public bool CandAddDriver(object param) => AllInfoCorrect();
@@ -76,8 +79,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         public void AddDriver(object param)
         {
             if (dialogResult)
-                CloudinaryService.DestroyImage("tempdriverprofilephoto");
-            Driver.SourceOfPP = dialogResult ? CloudinaryService.UploadImage(ofd.FileName, Driver.Username, App.DriverCloudinaryFolderPath) : App.DriverProfilePhoto;
+                CloudinaryService.DestroyImage("tempdriverpp",App.TempCloudinaryFolderPath);
+            Driver.SourceOfPP = dialogResult ? CloudinaryService.UploadImage(ofd.FileName, Driver.ID.ToString(), App.DriverCloudinaryFolderPath) : App.DriverProfilePhoto;
             App.DataFacade.AddDriver(Driver);
             Reset();
             Window.Close();
@@ -118,6 +121,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             BrowsePPSource = new(Browse);
             Add = new(AddDriver, CandAddDriver);
             Close = new(CloseAD);
+            UrlTempPP = CloudinaryService.GetSource("tempdriverpp", App.TempCloudinaryFolderPath);
         }
     }
 }
