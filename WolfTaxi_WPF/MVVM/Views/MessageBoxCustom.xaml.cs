@@ -41,12 +41,16 @@ namespace WolfTaxi_WPF.MVVM.Views
             {
 
                 case MessageType.Info:
-                    SoundService.Notification();
-                    txtTitle.Text = "Info";
+                    {
+                        SoundService.Notification();
+                        txtTitle.Text = "Info";
+                    }
                     break;
                 case MessageType.Confirmation:
-                    SoundService.Notification();
-                    txtTitle.Text = "Confirmation";
+                    {
+                        SoundService.Notification();
+                        txtTitle.Text = "Confirmation";
+                    }
                     break;
                 case MessageType.Success:
                     {
