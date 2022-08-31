@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,112 +8,160 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
-    public partial class MessageBoxCustom : Window
+    public partial class CMessageBox : Window
     {
-        public MessageBoxCustom(string Message, MessageType Type, MessageButtons Buttons)
+        public CMessageBox()
         {
             InitializeComponent();
-            txtMessage.Text = Message;
+            DataContext = this;
+        }
+        static CMessageBox cMessageBox;
+        static DialogResult result = System.Windows.Forms.DialogResult.No;
+        public CMessageTitle messageTitle { get; set; }
+        public enum CMessageButton
+        {
+            Ok,
+            Yes,
+            No,
+            Cancel,
+            Confirm,
+            None
 
-            switch (Buttons)
+        }
+        public string GetTitle(CMessageTitle value)
+        {
+            return Enum.GetName(typeof(CMessageTitle), value);
+        }
+        public string GetButtonText(CMessageButton value)
+        {
+            return Enum.GetName(typeof(CMessageButton), value);
+        }
+
+        public enum CMessageTitle
+        {
+            Error,
+            Info,
+            Warning,
+            Confirm
+        }
+        public static DialogResult Show(string message, CMessageTitle title, CMessageButton okButton, CMessageButton noButton)
+        {
+            cMessageBox = new CMessageBox();
+            cMessageBox.btnOk.Content = cMessageBox.GetButtonText(okButton);
+            cMessageBox.btnCancel.Content = cMessageBox.GetButtonText(noButton);
+            if (noButton == CMessageButton.None)
+                cMessageBox.btnCancel.Visibility = Visibility.Collapsed;
+            else
+                cMessageBox.btnCancel.Content = cMessageBox.GetButtonText(noButton);
+
+            cMessageBox.txtMessage.Text = message;
+            cMessageBox.txtTitle.Text = cMessageBox.GetTitle(title);
+
+            //icon
+            switch (title)
             {
-                case MessageButtons.OkCancel:
-                    btnYes.Visibility = Visibility.Collapsed; btnNo.Visibility = Visibility.Collapsed;
-                    break;
-                case MessageButtons.YesNo:
-                    btnOk.Visibility = Visibility.Collapsed; btnCancel.Visibility = Visibility.Collapsed;
-                    break;
-                case MessageButtons.Ok:
-                    btnOk.Visibility = Visibility.Visible;
-                    btnCancel.Visibility = Visibility.Collapsed;
-                    btnYes.Visibility = Visibility.Collapsed; btnNo.Visibility = Visibility.Collapsed;
-                    break;
-            }
-
-            switch (Type)
-            {
-
-                case MessageType.Info:
-                    {
-                        SoundService.Notification();
-                        txtTitle.Text = "Info";
-                    }
-                    break;
-                case MessageType.Confirmation:
-                    {
-                        SoundService.Notification();
-                        txtTitle.Text = "Confirmation";
-                    }
-                    break;
-                case MessageType.Success:
-                    {
-                        SoundService.Succes();
-                        txtTitle.Text = "Success";
-                    }
-                    break;
-                case MessageType.Warning:
+                case CMessageTitle.Error:
+                    cMessageBox.msgLogo.Kind = PackIconKind.Error;
                     SoundService.Error();
-                    txtTitle.Text = "Warning";
+                    cMessageBox.msgLogo.Foreground = Brushes.DarkRed;
                     break;
-                case MessageType.Error:
-                    {
-                        SoundService.Error();
-                        txtTitle.Text = "Error";
-                    }
+                case CMessageTitle.Info:
+                    SoundService.Notification();
+                    cMessageBox.msgLogo.Kind = PackIconKind.InfoCircle;
+                    cMessageBox.msgLogo.Foreground = Brushes.Blue;
+                    cMessageBox.btnCancel.Visibility = Visibility.Collapsed;
+                    cMessageBox.btnOk.SetValue(Grid.ColumnSpanProperty, 2);
+                    break;
+                case CMessageTitle.Warning:
+                    SoundService.Error();
+                    cMessageBox.msgLogo.Kind = PackIconKind.Warning;
+                    cMessageBox.msgLogo.Foreground = Brushes.Yellow;
+                    cMessageBox.btnCancel.Visibility = Visibility.Collapsed;
+                    cMessageBox.btnOk.SetValue(Grid.ColumnSpanProperty, 2);
+                    break;
+                case CMessageTitle.Confirm:
+                    SoundService.Notification();
+                    cMessageBox.msgLogo.Kind = PackIconKind.QuestionMark;
+                    cMessageBox.msgLogo.Foreground = Brushes.Gray;
                     break;
             }
+            cMessageBox.ShowDialog();
+            return result;
         }
 
-        private void btnYes_Click(object sender, RoutedEventArgs e)
+        private void BntOk_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
+            result = System.Windows.Forms.DialogResult.Yes;
+            Border border = new();
+
+            cMessageBox.Close();
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            result = System.Windows.Forms.DialogResult.No;
+            cMessageBox.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            Storyboard storyboard = new();
+
+            ScaleTransform scale = new(1.0, 1.0);
+            this.RenderTransformOrigin = new(0.5, 0.5);
+            this.RenderTransform = scale;
+
+            DoubleAnimation growAnimation = new();
+            growAnimation.Duration = TimeSpan.FromMilliseconds(300);
+            growAnimation.From = 0;
+            growAnimation.To = 1;
+            storyboard.Children.Add(growAnimation);
+
+            Storyboard.SetTargetProperty(growAnimation, new("RenderTransform.ScaleX"));
+            Storyboard.SetTarget(growAnimation, this);
+
+            storyboard.Begin();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            Closing -= Window_Closing;
+            e.Cancel = true;
+            Storyboard storyboard = new();
+
+            ScaleTransform scale = new(1.0, 1.0);
+            this.RenderTransformOrigin = new Point(0.5, 0.5);
+            this.RenderTransform = scale;
+
+            DoubleAnimation growAnimation = new();
+            growAnimation.Duration = TimeSpan.FromMilliseconds(300);
+            growAnimation.From = 1;
+            growAnimation.To = 0;
+            storyboard.Children.Add(growAnimation);
+
+            Storyboard.SetTargetProperty(growAnimation, new("RenderTransform.ScaleX"));
+            Storyboard.SetTarget(growAnimation, this);
+            growAnimation.Completed += GrowAnimation_Completed;
+
+            storyboard.Begin();
+        }
+
+        private void GrowAnimation_Completed(object sender, EventArgs e)
+        {
             this.Close();
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
-        }
-
-        private void btnOk_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-            this.Close();
-        }
-
-        private void btnNo_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            this.Close();
-        }
-    }
-    public enum MessageType
-    {
-        Info,
-        Confirmation,
-        Success,
-        Warning,
-        Error,
-    }
-    public enum MessageButtons
-    {
-        OkCancel,
-        YesNo,
-        Ok,
     }
 }

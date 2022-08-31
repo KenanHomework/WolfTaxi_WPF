@@ -63,7 +63,8 @@ namespace WolfTaxi_WPF.MVVM.Views
                     App.ToAppWindow();
                 }
                 else
-                    new MessageBoxCustom(res.ToString(), MessageType.Warning, MessageButtons.Ok).ShowDialog();
+                    CMessageBox.Show(res.ToString(), CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+
             });
 
             App.Container.GetInstance<LoginPageVM>().SignUpClick = new(p => { Frame.Navigate(sign); });

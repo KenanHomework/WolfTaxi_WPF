@@ -98,7 +98,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         {
             if (File.Exists($"{App.UserSubFilePath}/{Username}.json"))
             {
-                new MessageBoxCustom("User already Sign Up !", MessageType.Warning, MessageButtons.Ok).ShowDialog();
+                CMessageBox.Show("User already Sign Up !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+
                 return;
             }
             SecurityCode = new Random().Next(1000, 9999);

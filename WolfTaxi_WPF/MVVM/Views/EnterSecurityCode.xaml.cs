@@ -19,7 +19,7 @@ namespace WolfTaxi_WPF.MVVM.Views
     /// <summary>
     /// Interaction logic for EnterSecurityCode.xaml
     /// </summary>
-    public partial class EnterSecurityCode : Window,IResetable
+    public partial class EnterSecurityCode : Window, IResetable
     {
         public EnterSecurityCode()
         {
@@ -42,7 +42,8 @@ namespace WolfTaxi_WPF.MVVM.Views
         {
             if (Code != Convert.ToInt32(SecurityCode.Text))
             {
-                new MessageBoxCustom("Incorrect Security Code !", MessageType.Error, MessageButtons.Ok).ShowDialog();
+                CMessageBox.Show("Incorrect Security Code !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+
                 SecurityCode.Text = String.Empty;
             }
             else

@@ -68,7 +68,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
                 App.ToAdminPanel();
             else
             {
-                new MessageBoxCustom("Incorrect !", MessageType.Warning, MessageButtons.Ok).ShowDialog();
+                CMessageBox.Show("Incorrect !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok,CMessageBox.CMessageButton.Ok);
 
             }
         }
