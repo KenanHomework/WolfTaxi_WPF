@@ -99,7 +99,6 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             if (File.Exists($"{App.UserSubFilePath}/{Username}.json"))
             {
                 CMessageBox.Show("User already Sign Up !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
-
                 return;
             }
             SecurityCode = new Random().Next(1000, 9999);
@@ -114,6 +113,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
                 UserService.Write(user);
                 App.DataFacade.User = user;
                 App.DataFacade.Remember = Remember;
+                SoundService.Succes();
                 App.ToAppWindow();
             }
         }

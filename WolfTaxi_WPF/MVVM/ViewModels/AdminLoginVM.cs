@@ -65,10 +65,13 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         public void LoginRun(object param)
         {
             if (Password == "Admin123" && Username == "Admin")
+            {
+                SoundService.Succes();
                 App.ToAdminPanel();
+            }
             else
             {
-                CMessageBox.Show("Incorrect !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok,CMessageBox.CMessageButton.Ok);
+                CMessageBox.Show("Incorrect !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
 
             }
         }

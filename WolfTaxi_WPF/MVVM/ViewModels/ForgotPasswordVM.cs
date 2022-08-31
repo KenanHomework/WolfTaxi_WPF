@@ -116,6 +116,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
                     user.Password.UpdateValue(password.Password.Text);
                     UserService.Write(user);
                     Window.DialogResult = DialogResult.Success;
+                    SoundService.Succes();
                     Window.Close();
                 }
             }
@@ -136,7 +137,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         {
             if (!File.Exists($"{App.UserSubFilePath}/{Username}.json"))
             {
-                CMessageBox.Show("User not found !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.Ok);
+                CMessageBox.Show("User not found !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
 
                 return false;
             }
@@ -144,18 +145,18 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             try { data = JSONService.Read<User>($"{App.UserSubFilePath}/{Username}.json"); }
             catch (Exception)
             {
-                CMessageBox.Show("User Empty !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.Ok);
+                CMessageBox.Show("User Empty !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
                 ; return false;
             }
 
             if (data.Email == Email)
             {
-                CMessageBox.Show("                CMessageBox.Show(\"Incorrect !\", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok,CMessageBox.CMessageButton.Ok);\r\n", CMessageBox.CMessageTitle.Confirm, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.Ok);
+                CMessageBox.Show("Security code sended. If don't see mail plese view SPAM.\nPlese write securuty code under 2 minute.", CMessageBox.CMessageTitle.Confirm, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
 
                 return true;
             }
             else
-                CMessageBox.Show($"Incorrect Email For {Username}", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+                CMessageBox.Show($"Incorrect Email For {Username}", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.No, CMessageBox.CMessageButton.None);
 
             return false;
         }

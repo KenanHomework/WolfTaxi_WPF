@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -53,6 +54,7 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         private void CancelClick(object sender, RoutedEventArgs e)
         {
+            SoundService.Notification();
             this.Close();
         }
 

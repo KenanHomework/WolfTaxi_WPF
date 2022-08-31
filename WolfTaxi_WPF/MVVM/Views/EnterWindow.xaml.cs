@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -42,6 +43,7 @@ namespace WolfTaxi_WPF.MVVM.Views
             {
                 if (App.DataFacade.Login(App.DataFacade.User) == ProcessResult.Success)
                 {
+                    SoundService.Succes();
                     App.ToAppWindow();
                 }
             }
@@ -60,6 +62,7 @@ namespace WolfTaxi_WPF.MVVM.Views
                 if (res == ProcessResult.Success)
                 {
                     App.DataFacade.Remember = App.Container.GetInstance<LoginPageVM>().Remember;
+                    SoundService.Succes();
                     App.ToAppWindow();
                 }
                 else

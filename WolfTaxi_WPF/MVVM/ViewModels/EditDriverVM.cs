@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using WolfTaxi_WPF.Commands;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.ViewModels
 {
@@ -43,7 +44,11 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         #region Methods
 
-        public void Save(object param) => App.DataFacade.UpdateDriverInfo(Driver);
+        public void Save(object param)
+        {
+            App.DataFacade.UpdateDriverInfo(Driver);
+            SoundService.Succes();
+        }
 
         #endregion
 

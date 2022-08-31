@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -43,12 +44,12 @@ namespace WolfTaxi_WPF.MVVM.Views
             if (Code != Convert.ToInt32(SecurityCode.Text))
             {
                 CMessageBox.Show("Incorrect Security Code !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
-
                 SecurityCode.Text = String.Empty;
             }
             else
             {
                 DialogResult = DialogResult.Success;
+                SoundService.Succes();
                 Close();
             }
         }

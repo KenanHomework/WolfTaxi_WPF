@@ -11,7 +11,7 @@
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      FontFamily="Open Sans"
-        Title="CMessageBox" Height="150" Width="300" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="CMessageBox" Height="250" Width="400" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
     <Border CornerRadius="5" Background="#201a30">
 
         <Grid>
@@ -38,7 +38,7 @@
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
                 <materialDesign:PackIcon Name="msgLogo" Kind="Error" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" Foreground="DarkRed"/>
-                <TextBlock Name="txtMessage" Grid.Column="1" Text="An Error Occured in the Application" Foreground="#f0f4fd" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                <TextBlock Name="txtMessage" Grid.Column="1" Text="An Error Occured in the Application" Foreground="#f0f4fd" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
