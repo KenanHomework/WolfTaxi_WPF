@@ -18,15 +18,15 @@ namespace WolfTaxi_WPF.Services
 {
     public class SoundService
     {
-        public static MediaPlayer mediaPlayer = new MediaPlayer();
+        public static MediaPlayer MediaPlayer = new MediaPlayer();
         public static void Succes() => PlaySoundWithUrl(App.SuccesSoundEffect);
         public static void Error() => PlaySoundWithUrl(App.ErrorSoundEffect);
         public static void Notification() => PlaySoundWithUrl(App.NotificationSoundEffect);
 
         public static void PlaySoundWithUrl(string url)
         {
-            mediaPlayer.Open(new(url));
-            mediaPlayer.Play();
+            MediaPlayer.Open(new(url));
+            MediaPlayer.Play();
         }
     }
 }
