@@ -51,7 +51,7 @@ namespace WolfTaxi_WPF.MVVM.Views
         #region Controls Checks
 
         private void Username_TextChanged(object sender, TextChangedEventArgs e)
-                        => RegxService.CheckControl(ref Username, 3, Color.FromRgb(237, 236, 239), "(-?([A-Z].\\s)?([A-Z][a-z]+)\\s?)+([A-Z]'([A-Z][a-z]+))?");
+                        => RegxService.CheckControl(ref Username, 4, Color.FromRgb(237, 236, 239), "(-?([A-Z].\\s)?([A-Z][a-z]+)\\s?)+([A-Z]'([A-Z][a-z]+))?");
 
 
         private void Email_TextChanged(object sender, TextChangedEventArgs e)
