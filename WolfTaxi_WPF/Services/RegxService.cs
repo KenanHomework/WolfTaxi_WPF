@@ -35,11 +35,16 @@ namespace WolfTaxi_WPF.Services
 
         public static bool CheckCarYear(ref TextBox tbx, Color defColor)
         {
-            if (Convert.ToUInt32(tbx.Text) >= 1970 && Convert.ToUInt32(tbx.Text) <= DateTime.Now.Year)
+            try
             {
-                tbx.Foreground = new SolidColorBrush(defColor);
-                return true;
+
+                if (!string.IsNullOrWhiteSpace(tbx.Text) && Convert.ToUInt32(tbx.Text) >= 1970 && Convert.ToUInt32(tbx.Text) <= DateTime.Now.Year)
+                {
+                    tbx.Foreground = new SolidColorBrush(defColor);
+                    return true;
+                }
             }
+            catch (Exception) { }
             tbx.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
             return false;
         }

@@ -59,9 +59,9 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 
         public Taxi()
         {
-            Model = " ";
+            Model = string.Empty;
             Year = 1970;
-            Number = " ";
+            Number = string.Empty;
             Type = TaxiTypes.Fast;
             PricePerKm = 1;
         }

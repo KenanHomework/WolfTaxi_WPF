@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.ViewModels
 {
@@ -48,7 +49,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         #region Commands
 
         public RelayCommand LoginLocal { get; set; }
-         
+
         public RelayCommand UserClick { get; set; }
 
         #endregion
@@ -63,10 +64,13 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public void LoginRun(object param)
         {
-            if (Password == "Admin123" && Username == "Admin") 
-            App.ToAdminPanel();
+            if (Password == "Admin123" && Username == "Admin")
+                App.ToAdminPanel();
             else
+            {
                 new MessageBoxCustom("Incorrect !", MessageType.Warning, MessageButtons.Ok).ShowDialog();
+
+            }
         }
 
         public bool LoginCanRun(object param) => AllInfoCorrect();

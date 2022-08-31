@@ -1,13 +1,32 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using VisioForge.Libs.NAudio.Wave;
+using BlockAlignReductionStream = NAudio.Wave.BlockAlignReductionStream;
+using PlaybackState = NAudio.Wave.PlaybackState;
+using WaveCallbackInfo = NAudio.Wave.WaveCallbackInfo;
+using WaveOut = NAudio.Wave.WaveOut;
+using WaveStream = NAudio.Wave.WaveStream;
 
 namespace WolfTaxi_WPF.Services
 {
     public class SoundService
     {
+        public static MediaPlayer mediaPlayer = new MediaPlayer();
+        public static void Succes() => PlaySoundWithUrl(App.SuccesSoundEffect);
+        public static void Error() => PlaySoundWithUrl(App.ErrorSoundEffect);
+        public static void Notification() => PlaySoundWithUrl(App.NotificationSoundEffect);
 
+        public static void PlaySoundWithUrl(string url)
+        {
+            mediaPlayer.Open(new(url));
+            mediaPlayer.Play();
+        }
     }
 }

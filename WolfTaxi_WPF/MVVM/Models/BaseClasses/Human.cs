@@ -6,7 +6,7 @@ using WolfTaxi_WPF.Interfaces;
 
 namespace WolfTaxi_WPF.MVVM.Models.BaseClasses
 {
-    public abstract class Human
+    public abstract class Human:IComparable
     {
 
         #region Members
@@ -49,6 +49,31 @@ namespace WolfTaxi_WPF.MVVM.Models.BaseClasses
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        #endregion
+
+        #region Implemets
+
+        public int CompareTo(Human? other)
+        {
+            if (this.guid == other.guid) return 0;
+            else return -1;
+        }
+
+        public int CompareTo(object? obj)
+        {
+            if(obj is Human other)
+            {
+                if (this.guid == other.guid) return 0;
+                else return -1;
+            }
+            else
+            {
+                if (this.ToString() == obj.ToString()) return 0;
+                else return -1;
+            }
+        }
+
 
         #endregion
 

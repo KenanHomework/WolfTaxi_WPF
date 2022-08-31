@@ -78,10 +78,10 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         public Driver() : base()
         {
-            Username = " ";
+            Username = String.Empty;
             Password = new();
-            Phone = " ";
-            Email = " ";
+            Phone = String.Empty;
+            Email = String.Empty;
             Rating = 0;
             Balance = 0;
             Location = new();

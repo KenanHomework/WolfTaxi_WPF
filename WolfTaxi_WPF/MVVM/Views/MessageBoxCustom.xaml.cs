@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -20,29 +21,7 @@ namespace WolfTaxi_WPF.MVVM.Views
         {
             InitializeComponent();
             txtMessage.Text = Message;
-            switch (Type)
-            {
 
-                case MessageType.Info:
-                    txtTitle.Text = "Info";
-                    break;
-                case MessageType.Confirmation:
-                    txtTitle.Text = "Confirmation";
-                    break;
-                case MessageType.Success:
-                    {
-                        txtTitle.Text = "Success";
-                    }
-                    break;
-                case MessageType.Warning:
-                    txtTitle.Text = "Warning";
-                    break;
-                case MessageType.Error:
-                    {
-                        txtTitle.Text = "Error";
-                    }
-                    break;
-            }
             switch (Buttons)
             {
                 case MessageButtons.OkCancel:
@@ -55,6 +34,35 @@ namespace WolfTaxi_WPF.MVVM.Views
                     btnOk.Visibility = Visibility.Visible;
                     btnCancel.Visibility = Visibility.Collapsed;
                     btnYes.Visibility = Visibility.Collapsed; btnNo.Visibility = Visibility.Collapsed;
+                    break;
+            }
+
+            switch (Type)
+            {
+
+                case MessageType.Info:
+                    SoundService.Notification();
+                    txtTitle.Text = "Info";
+                    break;
+                case MessageType.Confirmation:
+                    SoundService.Notification();
+                    txtTitle.Text = "Confirmation";
+                    break;
+                case MessageType.Success:
+                    {
+                        SoundService.Succes();
+                        txtTitle.Text = "Success";
+                    }
+                    break;
+                case MessageType.Warning:
+                    SoundService.Error();
+                    txtTitle.Text = "Warning";
+                    break;
+                case MessageType.Error:
+                    {
+                        SoundService.Error();
+                        txtTitle.Text = "Error";
+                    }
                     break;
             }
         }

@@ -98,7 +98,7 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         public void ReadyForDeleting()
         {
-            InfoText.Foreground = new SolidColorBrush(State ? Color.FromRgb(244, 164, 96) : Color.FromRgb(0,255,255));
+            InfoText.Foreground = new SolidColorBrush(State ? Color.FromRgb(244, 164, 96) : Color.FromRgb(0, 255, 255));
             InfoText.Text = State ? "Plese Select Driver(s) for delete." : "Select Driver(s) for view / edit";
             DeleteSatateButton.IsEnabled = !State;
             Add.Visibility = State ? Visibility.Collapsed : Visibility.Visible;
@@ -141,6 +141,7 @@ namespace WolfTaxi_WPF.MVVM.Views
         {
             AddDriver addDriver = new();
             addDriver.ShowDialog();
+            RefreshDriversListViewSource();
         }
     }
 }

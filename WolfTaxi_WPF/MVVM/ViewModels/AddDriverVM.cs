@@ -105,7 +105,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
                !string.IsNullOrWhiteSpace(Driver.Taxi.Number) &&
                Driver.Phone.Length == 10 &&
                !string.IsNullOrWhiteSpace(Window.Password.Password) &&
-               Regex.IsMatch(Driver.Username, "^([A-Za-z0-9]){4,20}$") &&
+               Regex.IsMatch(Driver.Username, "(-?([A-Z].\\s)?([A-Z][a-z]+)\\s?)+([A-Z]'([A-Z][a-z]+))?") &&
                Regex.IsMatch(Driver.Email, "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b") &&
                Regex.IsMatch(Window.Password.Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$") &&
                Regex.IsMatch(Driver.Phone, "(\\+?( |-|\\.)?\\d{3}( |-|\\.)?)?(\\(?\\d{3}\\)?|\\d{2})( |-|\\.)?\\d{2}\\d{2}") &&

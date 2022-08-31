@@ -17,6 +17,8 @@ using System.IO;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using CloudinaryDotNet;
+using Org.BouncyCastle.Tls;
+using System.Windows.Media;
 
 namespace WolfTaxi_WPF
 {
@@ -35,6 +37,7 @@ namespace WolfTaxi_WPF
         public static Cloudinary cloudinary = new(new Account("kysbv", "338497835255375", "iz_nsuDxVjxd-zU2xeDncLQDt64"));
         public static AppWindow AppWindow;
         public static AdminPanel AdminPanel;
+        public static Comparer.Comparer Comparer = new Comparer.Comparer();
         public static string AdminSubFilePath = "dataset";
         public static string UserSubFilePath = "dataset/Users";
         public static string DriverSubFilePath = "dataset/Drivers";
@@ -43,6 +46,9 @@ namespace WolfTaxi_WPF
         public static string LuxTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_lux.png";
         public static string WolfLogoSource = "https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png";
         public static string DriverProfilePhoto = "https://res.cloudinary.com/kysbv/image/upload/v1658570801/WolfTaxi/driver_pp.png";
+        public static string SuccesSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661935108/WolfTaxi/success-sound-effect.mp3";
+        public static string ErrorSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661936264/WolfTaxi/error-sound.mp3";
+        public static string NotificationSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661940169/WolfTaxi/notification-sound.mp3";
         public static string DriverCloudinaryFolderPath = "WolfTaxi/ClientPhotos/DriverPhotos";
         public static string UserCloudinaryFolderPath = "WolfTaxi/ClientPhotos/UserPhotos";
         public static string TempCloudinaryFolderPath = "WolfTaxi/ClientPhotos/TempPhotos";
@@ -157,7 +163,6 @@ namespace WolfTaxi_WPF
             AppWindow = new();
             AppWindow.ShowDialog();
         }
-
         #endregion
     }
 }
