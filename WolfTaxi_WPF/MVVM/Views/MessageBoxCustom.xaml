@@ -11,14 +11,14 @@
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      FontFamily="Open Sans"
-        Title="CMessageBox" Height="250" Width="400" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="CMessageBox" Height="270" Width="400" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
     <Border CornerRadius="5" Background="#201a30">
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20*"/>
-                <RowDefinition Height="60*"/>
-                <RowDefinition Height="20*"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition />
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Background="#2c2b3f">
                 <Grid.ColumnDefinitions>
@@ -38,7 +38,10 @@
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
                 <materialDesign:PackIcon Name="msgLogo" Kind="Error" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50" Foreground="DarkRed"/>
-                <TextBlock Name="txtMessage" Grid.Column="1" Text="An Error Occured in the Application" Foreground="#f0f4fd" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow"/>
+                <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <TextBlock Name="txtMessage"  Text="An Error Occured in the Application" Foreground="#f0f4fd" FontSize="14"     
+                        TextWrapping="Wrap" />
+                </ScrollViewer>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
