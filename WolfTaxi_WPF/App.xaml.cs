@@ -74,7 +74,7 @@ namespace WolfTaxi_WPF
             //JSONService.Write($"{DriverSubFilePath}/drivers.json",);
 
             DataFacade.Load();
-            DataFacade.Remember = false;
+            //DataFacade.Remember = false;
             //Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
 
             DataFacade.Drivers = new List<Driver>() {

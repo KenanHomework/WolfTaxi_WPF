@@ -151,7 +151,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
             if (data.Email == Email)
             {
-                CMessageBox.Show("Security code sended. If don't see mail plese view SPAM.\nPlese write securuty code under 2 minute.", CMessageBox.CMessageTitle.Info, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+                CMessageBox.Show("Security code sended. If don't see mail plese view SPAM.\nPlese write security code under 2 minute.", CMessageBox.CMessageTitle.Info, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
 
                 return true;
             }

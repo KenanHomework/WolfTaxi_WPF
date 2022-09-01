@@ -33,6 +33,19 @@ namespace WolfTaxi_WPF.MVVM.Views
             
         }
 
+        #region Methods
+
+        private void FooterMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var uri = "https://github.com/KenanHomework/WolfTaxi_WPF.git";
+            var psi = new System.Diagnostics.ProcessStartInfo();
+            psi.UseShellExecute = true;
+            psi.FileName = uri;
+            System.Diagnostics.Process.Start(psi);
+        }
+
+        #endregion
+
         private void ResizeButton_Click(object sender, RoutedEventArgs e)
         {
 
