@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WolfTaxi_WPF.MVVM.ViewModels;
-using Microsoft.Maps.MapControl.WPF;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -31,7 +30,6 @@ namespace WolfTaxi_WPF.MVVM.Views
         {
             InitializeComponent();
             DataContext = App.Container.GetInstance<AppWindowVM>();
-            Map.Children.Add(new Pushpin() { Location = new(40.4149839, 49.8532762) });
             
         }
 

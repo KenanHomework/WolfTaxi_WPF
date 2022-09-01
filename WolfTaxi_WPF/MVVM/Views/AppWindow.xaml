@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" WindowStyle="None" WindowStartupLocation="CenterScreen"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WolfTaxi_WPF.MVVM.Views" 
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:map="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" mc:Ignorable="d" Icon="https://res.cloudinary.com/kysbv/image/upload/v1658741206/WolfTaxi/map_icon.png"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  mc:Ignorable="d" Icon="https://res.cloudinary.com/kysbv/image/upload/v1658741206/WolfTaxi/map_icon.png"
         Title="AppWindow" Height="800" Width="500">
     <Grid Background="#201a30">
         <Grid.RowDefinitions>
@@ -55,7 +55,7 @@
 
         <!--#region Map -->
         <!--Grid.RowSpan="2" Grid.Row="1"-->
-        <map:Map Name="Map" Grid.RowSpan="2" Grid.Row="1" CredentialsProvider="4Bn0zCsJjBjcRwKl3FV1~eELkvHhe_-FHbJ4TNzWLsA~AhUxslqtFx6dSGjQP807W4HaZZD7IQY1WAABzdFp3lBfBp2hpp3GTiQ5PGL3B7LT"/>
+        <!--<map:Map Name="Map" Grid.RowSpan="2" Grid.Row="1" CredentialsProvider="4Bn0zCsJjBjcRwKl3FV1~eELkvHhe_-FHbJ4TNzWLsA~AhUxslqtFx6dSGjQP807W4HaZZD7IQY1WAABzdFp3lBfBp2hpp3GTiQ5PGL3B7LT"/>-->
         <!--#endregion-->
 
         <!--#region Route -->

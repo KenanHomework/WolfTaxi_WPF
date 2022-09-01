@@ -7,7 +7,6 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
-using VisioForge.Libs.NAudio.Wave;
 using BlockAlignReductionStream = NAudio.Wave.BlockAlignReductionStream;
 using PlaybackState = NAudio.Wave.PlaybackState;
 using WaveCallbackInfo = NAudio.Wave.WaveCallbackInfo;

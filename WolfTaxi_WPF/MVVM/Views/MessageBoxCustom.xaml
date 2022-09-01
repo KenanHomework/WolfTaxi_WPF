@@ -18,7 +18,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="45"/>
                 <RowDefinition />
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="45"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Background="#2c2b3f">
                 <Grid.ColumnDefinitions>
@@ -51,10 +51,10 @@
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
                 <Button Name="btnOk" Grid.Column="1" Content="OK"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BntOk_Click" Background="#FF698EF1" BorderBrush="{x:Null}" 
-                    Style="{StaticResource btnStyle}" Foreground="White" Height="20"/>
+                    Style="{StaticResource btnStyle}" Foreground="White" Height="25"/>
 
 
-                <Button Name="btnCancel" Grid.Column="2" Content="Close" Height="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BtnCancel_Click"  Background="#FFE60000" BorderBrush="{x:Null}" Style="{StaticResource btnStyle}" Foreground="White"/>
+                <Button Name="btnCancel" Grid.Column="2" Content="Close" Height="25"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BtnCancel_Click"  Background="#FFE60000" BorderBrush="{x:Null}" Style="{StaticResource btnStyle}" Foreground="White"/>
             </Grid>
         </Grid>
     </Border>

@@ -72,7 +72,6 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             else
             {
                 CMessageBox.Show("Incorrect !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
-
             }
         }
 
