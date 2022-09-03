@@ -12,14 +12,14 @@
                 <Setter Property="Background" Value="#292d2e"/>
             </Trigger>
         </Style.Triggers>
-        <Setter Property="Width" Value="1050"/>
+        <Setter Property="Width" Value="1030"/>
         <Setter Property="Height" Value="65"/>
         <Setter Property="Background"  Value="#200a30"/>
         <Setter Property="Foreground"  Value="#f8f9fd"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
-                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5" Background="{TemplateBinding Background}">
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="1020" Margin="0 5" Background="{TemplateBinding Background}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />

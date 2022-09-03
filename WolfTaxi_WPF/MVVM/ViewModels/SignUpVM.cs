@@ -98,11 +98,11 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         {
             if (File.Exists($"{App.UserSubFilePath}/{Username}.json"))
             {
-                CMessageBox.Show("User already Sign Up !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+                CMessageBox.Show("User already Sign Up !", CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
                 return;
             }
             SecurityCode = new Random().Next(1000, 9999);
-            CMessageBox.Show("Security code sended. If don't see mail plese view SPAM.\nPlese write security code under 2 minute.", CMessageBox.CMessageTitle.Info, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+            CMessageBox.Show("Security code sended. If don't see mail plese view SPAM.\nPlese write security code under 2 minute.", CMessageTitle.Info,CMessageButton.Ok, CMessageButton.None);
             EmailService.Send(Email, "Email Verification", $"Your Security Code: {SecurityCode}", "WolfTaxi");
             EnterSecurityCode enter = new();
             enter.Reset();

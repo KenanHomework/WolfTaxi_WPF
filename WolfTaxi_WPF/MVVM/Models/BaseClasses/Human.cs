@@ -6,7 +6,7 @@ using WolfTaxi_WPF.Interfaces;
 
 namespace WolfTaxi_WPF.MVVM.Models.BaseClasses
 {
-    public abstract class Human:IComparable
+    public abstract class Human : IComparable
     {
 
         #region Members
@@ -62,7 +62,7 @@ namespace WolfTaxi_WPF.MVVM.Models.BaseClasses
 
         public int CompareTo(object? obj)
         {
-            if(obj is Human other)
+            if (obj is Human other)
             {
                 if (this.guid == other.guid) return 0;
                 else return -1;
@@ -77,7 +77,7 @@ namespace WolfTaxi_WPF.MVVM.Models.BaseClasses
 
         #endregion
 
-        public Human() { ID = new(); }
+        public Human() { ID = Guid.NewGuid(); }
 
         protected Human(string username, string password, string email, string phone) : this(username, password)
         {

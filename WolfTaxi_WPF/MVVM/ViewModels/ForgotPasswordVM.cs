@@ -137,7 +137,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         {
             if (!File.Exists($"{App.UserSubFilePath}/{Username}.json"))
             {
-                CMessageBox.Show("User not found !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+                CMessageBox.Show("User not found !", CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
 
                 return false;
             }
@@ -145,18 +145,18 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             try { data = JSONService.Read<User>($"{App.UserSubFilePath}/{Username}.json"); }
             catch (Exception)
             {
-                CMessageBox.Show("User Empty !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+                CMessageBox.Show("User Empty !", CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
                 ; return false;
             }
 
             if (data.Email == Email)
             {
-                CMessageBox.Show("Security code sended. If don't see mail plese view SPAM.\nPlese write security code under 2 minute.", CMessageBox.CMessageTitle.Info, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+                CMessageBox.Show("Security code sended. If don't see mail plese view SPAM.\nPlese write security code under 2 minute.", CMessageTitle.Info, CMessageButton.Ok, CMessageButton.None);
 
                 return true;
             }
             else
-                CMessageBox.Show($"Incorrect Email For {Username}", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.No, CMessageBox.CMessageButton.None);
+                CMessageBox.Show($"Incorrect Email For {Username}", CMessageTitle.Warning, CMessageButton.No, CMessageButton.None);
 
             return false;
         }

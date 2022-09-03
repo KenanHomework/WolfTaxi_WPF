@@ -74,12 +74,12 @@ namespace WolfTaxi_WPF
             //JSONService.Write($"{DriverSubFilePath}/drivers.json",);
 
             DataFacade.Load();
-            //DataFacade.Remember = false;
+            DataFacade.Remember = false;
             //Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
 
             DataFacade.Drivers = new List<Driver>() {
                 new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f)),
-                new Driver("Driver 2.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
+                new Driver("Driver 1.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
                 new Driver("Driver 2.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
                 new Driver("Driver 3.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
                 new Driver("Driver 4.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,

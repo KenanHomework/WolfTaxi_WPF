@@ -120,7 +120,7 @@ namespace WolfTaxi_WPF.Facade
 
         public ProcessResult AddDriver(Driver driver)
         {
-            if (!Drivers.Contains(driver,App.Comparer))
+            if (!Drivers.Contains(driver))
             {
                 drivers.Add(driver);
                 return ProcessResult.Success;

@@ -14,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WolfTaxi_WPF.Enums;
 using WolfTaxi_WPF.Services;
+using DialogResult = System.Windows.Forms.DialogResult;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -28,16 +30,7 @@ namespace WolfTaxi_WPF.MVVM.Views
         static CMessageBox cMessageBox;
         static DialogResult result = System.Windows.Forms.DialogResult.No;
         public CMessageTitle messageTitle { get; set; }
-        public enum CMessageButton
-        {
-            Ok,
-            Yes,
-            No,
-            Cancel,
-            Confirm,
-            None
 
-        }
         public string GetTitle(CMessageTitle value)
         {
             return Enum.GetName(typeof(CMessageTitle), value);
@@ -47,13 +40,6 @@ namespace WolfTaxi_WPF.MVVM.Views
             return Enum.GetName(typeof(CMessageButton), value);
         }
 
-        public enum CMessageTitle
-        {
-            Error,
-            Info,
-            Warning,
-            Confirm
-        }
         public static DialogResult Show(string message, CMessageTitle title, CMessageButton okButton, CMessageButton noButton)
         {
             cMessageBox = new CMessageBox();

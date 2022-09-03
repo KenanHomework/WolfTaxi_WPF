@@ -43,7 +43,7 @@ namespace WolfTaxi_WPF.MVVM.Views
         {
             if (Code != Convert.ToInt32(SecurityCode.Text))
             {
-                CMessageBox.Show("Incorrect Security Code !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+                CMessageBox.Show("Incorrect Security Code !", CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
                 SecurityCode.Text = String.Empty;
             }
             else

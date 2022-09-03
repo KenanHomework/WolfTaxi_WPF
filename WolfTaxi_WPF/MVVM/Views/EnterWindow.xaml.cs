@@ -66,7 +66,7 @@ namespace WolfTaxi_WPF.MVVM.Views
                     App.ToAppWindow();
                 }
                 else
-                    CMessageBox.Show(res.ToString(), CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+                    CMessageBox.Show(res.ToString(), CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
 
             });
 

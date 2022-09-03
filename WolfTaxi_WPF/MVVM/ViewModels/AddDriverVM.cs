@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WolfTaxi_WPF.Commands;
+using WolfTaxi_WPF.Enums;
 using WolfTaxi_WPF.Interfaces;
 using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
 using WolfTaxi_WPF.MVVM.Views;
@@ -85,6 +86,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             App.DataFacade.AddDriver(Driver);
             Reset();
             SoundService.Succes();
+            CMessageBox.Show(App.DataFacade.Drivers.Count.ToString(), CMessageTitle.Info, CMessageButton.Ok, CMessageButton.None);
             Window.Close();
         }
 

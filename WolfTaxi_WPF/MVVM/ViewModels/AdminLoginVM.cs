@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WolfTaxi_WPF.Services;
+using WolfTaxi_WPF.Enums;
 
 namespace WolfTaxi_WPF.MVVM.ViewModels
 {
@@ -71,7 +72,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             }
             else
             {
-                CMessageBox.Show("Incorrect !", CMessageBox.CMessageTitle.Warning, CMessageBox.CMessageButton.Ok, CMessageBox.CMessageButton.None);
+                CMessageBox.Show("Incorrect !", CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
             }
         }
 
