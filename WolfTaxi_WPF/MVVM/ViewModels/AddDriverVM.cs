@@ -86,7 +86,6 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             App.DataFacade.AddDriver(Driver);
             Reset();
             SoundService.Succes();
-            CMessageBox.Show(App.DataFacade.Drivers.Count.ToString(), CMessageTitle.Info, CMessageButton.Ok, CMessageButton.None);
             Window.Close();
         }
 

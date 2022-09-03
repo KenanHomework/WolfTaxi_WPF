@@ -70,8 +70,12 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         #region Override
 
-        public override bool Equals(object? obj) => this.ID == ((Driver)obj).ID;
-
+        public override bool Equals(object? obj)
+        {
+            try { return this.ID == ((Driver)obj).ID; }
+            catch (Exception) { }
+            return false;
+        }
         public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email} ID:{ID} ";
 
         #endregion

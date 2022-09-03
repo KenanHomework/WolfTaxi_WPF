@@ -128,19 +128,21 @@ namespace WolfTaxi_WPF.Facade
             return ProcessResult.Existed;
         }
 
-        public void DeleteDriver(Driver driver) => Drivers.Remove(driver);
+        public void DeleteDriver(Driver driver) => DeleteDriver(driver.ID);
 
         public void DeleteDriver(Guid ID) => Drivers.ForEach(d =>
         {
             if (d.ID == ID)
             {
                 Drivers.Remove(d);
+                try { CloudinaryService.DestroyImage(ID.ToString(), App.DriverCloudinaryFolderPath); }
+                catch (Exception) { }
                 return;
             }
         });
         public void DeleteDriver(IList<Driver> drivers) => drivers.ToList().ForEach(d =>
         {
-            try { DeleteDriver(d); }
+            try { DeleteDriver(d.ID); }
             catch (Exception) { }
         });
 
