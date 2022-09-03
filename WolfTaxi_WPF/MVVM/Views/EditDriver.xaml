@@ -131,8 +131,6 @@
                         <RowDefinition Height="1.2*"/>
                         <RowDefinition/>
                         <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
                     </Grid.RowDefinitions>
 
                     <!--#region Taxi Icon -->
@@ -162,21 +160,15 @@
 
                     <!--#endregion-->
 
-                    <!--#region Number -->
-                    <Label Content="Number ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
+                    <!--#region Number-->
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Number ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
                            VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                    <TextBox Text="{Binding Driver.Taxi.Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="3"/>
-
+                        <TextBox Text="{Binding Driver.Taxi.Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="3"/>
+                    </StackPanel>
                     <!--#endregion-->
-
-                    <!--#region Price Per Km -->
-                    <Label Content="Price Km ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="4"
-                           VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
-
-                    <TextBox Text="{Binding Driver.Taxi.PricePerKm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="4"/>
-                    <!--#endregion-->
-
+                    
                 </Grid>
 
                 <!--- Footer -->

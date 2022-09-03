@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WolfTaxi_WPF.Interfaces;
 using WolfTaxi_WPF.MVVM.ViewModels;
 
 namespace WolfTaxi_WPF.MVVM.Views
@@ -18,9 +19,15 @@ namespace WolfTaxi_WPF.MVVM.Views
     /// <summary>
     /// Interaction logic for AppWindow.xaml
     /// </summary>
-    public partial class AppWindow : Window
+    public partial class AppWindow : Window, IResetable
     {
         #region Members
+        private AppWindowVM datacontextconverted;
+
+        public AppWindowVM DatacontextConverted
+        {
+            get => ((AppWindowVM)DataContext);
+        }
 
 
 
@@ -30,18 +37,53 @@ namespace WolfTaxi_WPF.MVVM.Views
         {
             InitializeComponent();
             DataContext = App.Container.GetInstance<AppWindowVM>();
-            
+            DatacontextConverted.Window = this;
         }
 
         #region Methods
 
-        private void FooterMenuItem_Click(object sender, RoutedEventArgs e)
+        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
-            var uri = "https://github.com/KenanHomework/WolfTaxi_WPF.git";
-            var psi = new System.Diagnostics.ProcessStartInfo();
-            psi.UseShellExecute = true;
-            psi.FileName = uri;
-            System.Diagnostics.Process.Start(psi);
+            // Set tooltip visibility
+            Visibility visibility = Tg_Btn.IsChecked == true ? Visibility.Collapsed : Visibility.Visible;
+            tt_profile.Visibility = visibility;
+            tt_maps.Visibility = visibility;
+            tt_history.Visibility = visibility;
+            tt_about.Visibility = visibility;
+            tt_logout.Visibility = visibility;
+            tt_adjustment.Visibility = visibility;
+        }
+
+        private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SideBarGridColumn.Width = new GridLength(65);
+
+            img_bg.Opacity = 1;
+        }
+
+        private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
+        {
+            SideBarGridColumn.Width = new GridLength(200);
+            img_bg.Opacity = 0.3;
+        }
+
+        private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Tg_Btn.IsChecked = false;
+        }
+
+        private void LV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (LV.SelectedIndex)
+            {
+                case 5: // Logout
+                    {
+                        DatacontextConverted.LogoutClick();
+                        break;
+                    }
+                default:
+                    break;
+            }
         }
 
         #endregion
@@ -73,5 +115,8 @@ namespace WolfTaxi_WPF.MVVM.Views
                 DragMove();
         }
 
+        public void Reset()
+        {
+        }
     }
 }

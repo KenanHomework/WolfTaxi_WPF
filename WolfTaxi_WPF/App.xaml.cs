@@ -48,11 +48,18 @@ namespace WolfTaxi_WPF
         public static string SuccesSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661935108/WolfTaxi/success-sound-effect.mp3";
         public static string ErrorSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661936264/WolfTaxi/error-sound.mp3";
         public static string NotificationSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661940169/WolfTaxi/notification-sound.mp3";
+        public static string ImgContact = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_contact.png";
+        public static string ImgHistory  = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_history.png";
+        public static string ImgMap  = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_map.png";
+        public static string ImgInfo  = "https://res.cloudinary.com/kysbv/image/upload/v1662239917/WolfTaxi/img_info.png";
+        public static string ImgLogout  = "https://res.cloudinary.com/kysbv/image/upload/v1662240039/WolfTaxi/img_logout.png";
+        public static string ImgAdjusment  = "https://res.cloudinary.com/kysbv/image/upload/v1662242706/WolfTaxi/img_adjustment.png";
+        public static string TgBtnMouseOver = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/tgBtn_MouseOver.png";
+        public static string TgBtnDefault = "https://res.cloudinary.com/kysbv/image/upload/v1662239448/WolfTaxi/tgBtn_default.png";
         public static string DriverCloudinaryFolderPath = "WolfTaxi/ClientPhotos/DriverPhotos";
         public static string UserCloudinaryFolderPath = "WolfTaxi/ClientPhotos/UserPhotos";
         public static string TempCloudinaryFolderPath = "WolfTaxi/ClientPhotos/TempPhotos";
-
-
+        public static List<float> TypeOfPPK = new() { 1.2f, 2f, 4f };
 
         #endregion
 
@@ -73,8 +80,10 @@ namespace WolfTaxi_WPF
             Register();
             //JSONService.Write($"{DriverSubFilePath}/drivers.json",);
 
+            // Paraol -> Kenan : kenanTest123
+
             DataFacade.Load();
-            DataFacade.Remember = false;
+            //DataFacade.Remember = false;
             //Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
 
             DataFacade.Drivers = new List<Driver>() {
@@ -144,6 +153,11 @@ namespace WolfTaxi_WPF
             {
                 AdminPanel.Reset();
                 AdminPanel.Close();
+            }
+            if (AppWindow != null)
+            {
+                AppWindow.Reset();
+                AppWindow.Close();
             }
 
             EnterWindow = new();

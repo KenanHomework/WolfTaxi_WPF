@@ -7,202 +7,194 @@
         Title="AddDriver" Height="800" Width="600">
     <Border CornerRadius="15" BorderThickness="0.3" Background="{StaticResource Main_Color}" Padding="0">
         <Grid Margin="0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <!-- Title Bar -->
-        <Border Background="#2c2b3f" CornerRadius="15 15 0 0"  Height="25" MouseDown="Border_MouseDown" Padding="0">
-            <Grid Margin="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width  ="25"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!-- Title Bar -->
+            <Border Background="#2c2b3f" CornerRadius="15 15 0 0"  Height="25" MouseDown="Border_MouseDown" Padding="0">
+                <Grid Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width  ="25"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
 
 
-                <Image Grid.Column="0" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    <Image Grid.Column="0" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" 
                  Source="https://res.cloudinary.com/kysbv/image/upload/v1659124152/WolfTaxi/add_new_driver.png"/>
 
-                <Label Grid.Column="1" Foreground="#f0f4fd" Margin="2 0"  FontWeight="SemiBold" Content="Edit Dtriver"/>
+                    <Label Grid.Column="1" Foreground="#f0f4fd" Margin="2 0"  FontWeight="SemiBold" Content="Edit Dtriver"/>
 
-                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Background="Transparent" BorderThickness="0" Width="40" Foreground="#f0f4fd" VerticalAlignment="Center" Content="_" Padding="0 0 0 8" Height="25" Click="ResizeButton_Click"/>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Background="Transparent" BorderThickness="0" Width="40" Foreground="#f0f4fd" VerticalAlignment="Center" Content="_" Padding="0 0 0 8" Height="25" Click="ResizeButton_Click"/>
 
-                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="DarkRed" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"/>
-                </StackPanel>
-            </Grid>
-        </Border>
+                        <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="DarkRed" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-        <!-- Input Area -->
-        <Grid Grid.Row="1" Margin="5">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="0.7*"/>
-                <RowDefinition Height="60"/>
-            </Grid.RowDefinitions>
-
-            <!-- Driver Info  -->
-            <Grid>
+            <!-- Input Area -->
+            <Grid Grid.Row="1" Margin="5">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition/>
+                    <RowDefinition Height="0.7*"/>
+                    <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <!--#region Profile Photo -->
-                <Grid Grid.Row="0" >
+                <!-- Driver Info  -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                    <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="20 0"  VerticalAlignment="Center"
+                    <!--#region Profile Photo -->
+                    <Grid Grid.Row="0" >
+
+                        <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="20 0"  VerticalAlignment="Center"
                     Background="Transparent" Foreground="Aqua" Width="200" HorizontalAlignment="Left" Name="BrowsePP" 
                     Command="{Binding BrowsePPSource}">
-                        <StackPanel Orientation="Horizontal" >
-                            <materialDesign:PackIcon Kind="FileSearch" VerticalAlignment="Center" Foreground="Aqua"/>
-                            <TextBlock Margin="15 0">Browse</TextBlock>
-                        </StackPanel>
-                    </Button>
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Kind="FileSearch" VerticalAlignment="Center" Foreground="Aqua"/>
+                                <TextBlock Margin="15 0">Browse</TextBlock>
+                            </StackPanel>
+                        </Button>
 
-                    <Border x:Name="BorderCard" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Background="Transparent" CornerRadius="5">
-                        <StackPanel Orientation="Horizontal" Margin="10 0 0 0" Background="Transparent">
-                            <Ellipse x:Name="PP" Height="50" Width="50">
-                                <Ellipse.Fill>
-                                    <ImageBrush x:Name="ProfilePhoto" ImageSource="{Binding Driver.SourceOfPP,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
-                        </StackPanel>
-                    </Border>
-                </Grid>
-                <!--#endregion-->
+                        <Border x:Name="BorderCard" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Background="Transparent" CornerRadius="5">
+                            <StackPanel Orientation="Horizontal" Margin="10 0 0 0" Background="Transparent">
+                                <Ellipse x:Name="PP" Height="50" Width="50">
+                                    <Ellipse.Fill>
+                                        <ImageBrush x:Name="ProfilePhoto" ImageSource="{Binding Driver.SourceOfPP,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    <!--#endregion-->
 
-                <!--#region Username -->
-                <Label Content="Username ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="1"
+                    <!--#region Username -->
+                    <Label Content="Username ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="1"
                 VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="1"
+                    <TextBox Text="{Binding Driver.Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="1"
                   Name="Username" TextChanged="Username_TextChanged" MinWidth="50"/>
-                <!--#endregion-->
+                    <!--#endregion-->
 
-                <!--#region Phone -->
-                <Label Content="Phone ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="2"
+                    <!--#region Phone -->
+                    <Label Content="Phone ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="2"
                 VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" MinWidth="50" TextWrapping="Wrap" Grid.Row="2" Name="Phone" TextChanged="Phone_TextChanged" MaxLength="10"/>
-                <!--#endregion-->
+                    <TextBox Text="{Binding Driver.Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" MinWidth="50" TextWrapping="Wrap" Grid.Row="2" Name="Phone" TextChanged="Phone_TextChanged" MaxLength="10"/>
+                    <!--#endregion-->
 
-                <!--#region Email -->
-                <Label Content="Email ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
+                    <!--#region Email -->
+                    <Label Content="Email ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
                     VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" MinWidth="50" TextWrapping="Wrap" Grid.Row="3" Name="Email" TextChanged="Email_TextChanged"/>
-                <!--#endregion-->
+                    <TextBox Text="{Binding Driver.Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" MinWidth="50" TextWrapping="Wrap" Grid.Row="3" Name="Email" TextChanged="Email_TextChanged"/>
+                    <!--#endregion-->
 
-                <!--#region Lcoation -->
-                <Label Content="Location ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="4"
+                    <!--#region Lcoation -->
+                    <Label Content="Location ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="4"
                     VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <TextBox Text="{Binding Driver.Taxi.Type.PricePerKm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="50" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="4" Name="Location" TextChanged="Locatoion_TextChanged"/>
-                <!--#endregion-->
+                    <TextBox Text="{Binding Driver.Taxi.Type.PricePerKm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="50" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="4" Name="Location" TextChanged="Locatoion_TextChanged"/>
+                    <!--#endregion-->
 
-                <!--#region Password -->
-                <Label Content="Password ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="5"
+                    <!--#region Password -->
+                    <Label Content="Password ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="5"
                     VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
 
-                <PasswordBox Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" x:Name="Password" PasswordChanged="Password_PasswordChanged" Grid.Row="5" MinWidth="50" MaxLength="20"/>
-                <!--#endregion-->
+                    <PasswordBox Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" x:Name="Password" PasswordChanged="Password_PasswordChanged" Grid.Row="5" MinWidth="50" MaxLength="20"/>
+                    <!--#endregion-->
 
-            </Grid>
+                </Grid>
 
-            <!-- Taxi Info -->
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1.2*"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                <!-- Taxi Info -->
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.2*"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <!--#region Taxi Icon -->
-                <Grid Grid.Row="0" >
-                    <ComboBox x:Name="TaxiTypeComboBox" Height="40" materialDesign:HintAssist.Hint="Taxi Type" HorizontalAlignment="Left" 
+                    <!--#region Taxi Icon -->
+                    <Grid Grid.Row="0" >
+                        <ComboBox x:Name="TaxiTypeComboBox" Height="40" materialDesign:HintAssist.Hint="Taxi Type" HorizontalAlignment="Left" 
                     Foreground="Aqua" ItemsSource="{Binding TaxiTypes,Mode=OneTime,UpdateSourceTrigger=PropertyChanged}"  Width="150" Margin="5 0 " 
                     Style="{StaticResource ComboBoxFlatStyle}" BorderBrush="#FF512DA8" Background="#2c2b3f" SelectionChanged="TaxiTypeComboBox_SelectionChanged" />
 
 
-                    <Border Grid.Row="0" HorizontalAlignment="Center" Background="Transparent" CornerRadius="5" Panel.ZIndex="2">
-                        <StackPanel Orientation="Horizontal" Margin="10 0 0 0" Background="Transparent">
-                            <Ellipse  Height="50" Width="50">
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding Driver.Taxi.IconSource,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" x:Name="TaxiIcon"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
-                        </StackPanel>
-                    </Border>
+                        <Border Grid.Row="0" HorizontalAlignment="Center" Background="Transparent" CornerRadius="5" Panel.ZIndex="2">
+                            <StackPanel Orientation="Horizontal" Margin="10 0 0 0" Background="Transparent">
+                                <Ellipse  Height="50" Width="50">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding Driver.Taxi.IconSource,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" x:Name="TaxiIcon"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Model -->
+                    <Label Grid.Row="1" Content="Model ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
+
+                    <TextBox Text="{Binding Driver.Taxi.Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" MinWidth="50" Grid.Row="1" Name="Model" TextChanged="Model_TextChanged"/>
+                    <!--#endregion-->
+
+                    <!--#region Year  -->
+
+                    <Label Content="Year ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="2"
+                           VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
+
+                    <TextBox Text="{Binding Driver.Taxi.Year,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" MinWidth="50" TextWrapping="Wrap" Grid.Row="2" Name="Year" TextChanged="Year_TextChanged"/>
+
+                    <!--#endregion-->
+
+                    <!--#region Number -->
+                    <Label Content="Number ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
+                           VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
+
+                    <TextBox Text="{Binding Driver.Taxi.Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" MinWidth="50" Grid.Row="3" Name="Number" TextChanged="Number_TextChanged" MaxLength="7"/>
+
+                    <!--#endregion-->
+
                 </Grid>
-                <!--#endregion-->
 
-                <!--#region Model -->
-                <Label Grid.Row="1" Content="Model ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
-
-                <TextBox Text="{Binding Driver.Taxi.Model,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" MinWidth="50" Grid.Row="1" Name="Model" TextChanged="Model_TextChanged"/>
-                <!--#endregion-->
-
-                <!--#region Year  -->
-
-                <Label Content="Year ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="2"
-                           VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
-
-                <TextBox Text="{Binding Driver.Taxi.Year,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" MinWidth="50" TextWrapping="Wrap" Grid.Row="2" Name="Year" TextChanged="Year_TextChanged"/>
-
-                <!--#endregion-->
-
-                <!--#region Number -->
-                <Label Content="Number ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="3"
-                           VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
-
-                <TextBox Text="{Binding Driver.Taxi.Number,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" MinWidth="50" Grid.Row="3" Name="Number" TextChanged="Number_TextChanged" MaxLength="7"/>
-
-                <!--#endregion-->
-
-                <!--#region Price Per Km -->
-                <Label Content="Price Km ~ " Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" Grid.Row="4"
-                           VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Margin="10 0"/>
-
-                <TextBox Text="{Binding Driver.Taxi.PricePerKm,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextWrapping="Wrap" Grid.Row="4"/>
-                <!--#endregion-->
-
-            </Grid>
-
-            <!--- Footer -->
-            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center"  HorizontalAlignment="Center">
-                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" VerticalAlignment="Center"  BorderBrush="SaddleBrown"
+                <!--- Footer -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center"  HorizontalAlignment="Center">
+                    <Button Style="{StaticResource MaterialDesignPaperDarkButton}" VerticalAlignment="Center"  BorderBrush="SaddleBrown"
                     Background="Transparent" Foreground="DarkRed" Width="200" Name="Cancel" Command="{Binding Close}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="AccountCancel" VerticalAlignment="Center" />
-                        <TextBlock Margin="15 0">Cancel</TextBlock>
-                    </StackPanel>
-                </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountCancel" VerticalAlignment="Center" />
+                            <TextBlock Margin="15 0">Cancel</TextBlock>
+                        </StackPanel>
+                    </Button>
 
-                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="20 0"  VerticalAlignment="Center"
+                    <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="20 0"  VerticalAlignment="Center"
                     Background="Transparent" Foreground="Aqua" Width="200"  Name="Add" Command="{Binding Add}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="AccountPlus" VerticalAlignment="Center" Foreground="Aqua"/>
-                        <TextBlock Margin="15 0">Add</TextBlock>
-                    </StackPanel>
-                </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountPlus" VerticalAlignment="Center" Foreground="Aqua"/>
+                            <TextBlock Margin="15 0">Add</TextBlock>
+                        </StackPanel>
+                    </Button>
 
 
 
-            </StackPanel>
+                </StackPanel>
+            </Grid>
         </Grid>
-    </Grid>
     </Border>
 </Window>

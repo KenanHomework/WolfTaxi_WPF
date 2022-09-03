@@ -66,6 +66,8 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         public void AddMove(Move move) => History.Add(move);
 
+        public float GetPrice(float km) => km * App.TypeOfPPK[(int)Taxi.Type];
+
         #endregion
 
         #region Override

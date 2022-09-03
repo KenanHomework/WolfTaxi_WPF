@@ -108,7 +108,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             forgotPassword.ShowDialog();
             if (forgotPassword.DialogResult == DialogResult.Success)
             {
-                CMessageBox.Show("Succes Reset Password !", CMessageTitle.Confirm, CMessageButton.Ok, CMessageButton.None);
+                CMessageBox.Show("Succes Reset Password !", CMessageTitle.Info, CMessageButton.Ok, CMessageButton.None);
 
                 Username = ((ForgotPasswordVM)forgotPassword.DataContext).Username;
             }
