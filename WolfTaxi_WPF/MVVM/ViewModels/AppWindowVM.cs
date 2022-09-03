@@ -24,6 +24,15 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         #endregion
 
+        #region Commands
+
+        //public RelayCommand Logout { get; set; }
+
+        //public RelayCommand About { get; set; }
+
+
+        #endregion
+
         #region PropertyChangedEventHandler
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -36,13 +45,18 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         #region Methods
 
-        private void InfoGithubClick()
+        public void InfoGithubClick()
         {
             var uri = "https://github.com/KenanHomework/WolfTaxi_WPF.git";
             var psi = new System.Diagnostics.ProcessStartInfo();
             psi.UseShellExecute = true;
             psi.FileName = uri;
             System.Diagnostics.Process.Start(psi);
+        }
+
+        public void AboutClick()
+        {
+            InfoGithubClick();
         }
 
         public void LogoutClick()

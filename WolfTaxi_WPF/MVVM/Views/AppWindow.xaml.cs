@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WolfTaxi_WPF.Interfaces;
 using WolfTaxi_WPF.MVVM.ViewModels;
+using WolfTaxi_WPF.Usercontrols;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -22,6 +23,9 @@ namespace WolfTaxi_WPF.MVVM.Views
     public partial class AppWindow : Window, IResetable
     {
         #region Members
+
+        public int IndexSelected { get; set; } = -1;
+
         private AppWindowVM datacontextconverted;
 
         public AppWindowVM DatacontextConverted
@@ -74,9 +78,17 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         private void LV_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (LV.SelectedIndex == IndexSelected)
+                return;
+            IndexSelected = LV.SelectedIndex;
             switch (LV.SelectedIndex)
             {
-                case 5: // Logout
+                case 4:
+                    {
+                        DatacontextConverted.AboutClick();
+                        break;
+                    }
+                case 5:
                     {
                         DatacontextConverted.LogoutClick();
                         break;

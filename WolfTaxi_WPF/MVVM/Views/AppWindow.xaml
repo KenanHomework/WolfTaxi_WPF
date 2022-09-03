@@ -4,111 +4,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" WindowStyle="None" 
         WindowStartupLocation="CenterScreen" xmlns:local="clr-namespace:WolfTaxi_WPF.MVVM.Views" 
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:usercontrols="clr-namespace:WolfTaxi_WPF.Usercontrols" mc:Ignorable="d"
         Icon="https://res.cloudinary.com/kysbv/image/upload/v1658741206/WolfTaxi/map_icon.png"
         Title="AppWindow" Height="800" Width="1400" Background="Transparent" 
         AllowsTransparency="True">
-    <Window.Resources>
-
-        <!--// Toggle Button Style Template //-->
-
-        <ImageBrush x:Key="tb_mouse_over" ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/tgBtn_MouseOver.png"/>
-
-        <!--// Text font style //-->
-
-        <Style x:Key="font_style" TargetType="TextBlock">
-
-            <Setter Property="FontFamily"
-                    Value="Fonts/Roboto-Light.ttf #Roboto"/>
-
-            <Setter Property="VerticalAlignment"
-                    Value="Center"/>
-
-            <Setter Property="HorizontalAlignment"
-                    Value="Left"/>
-
-            <Setter Property="Foreground"
-                    Value="White"/>
-
-            <Setter Property="FontSize"
-                    Value="20"/>
-
-        </Style>
-
-        <!--// Tooltip Style Template //-->
-
-        <Style TargetType="ToolTip" x:Key="tt_style">
-
-            <Setter Property="Placement" Value="Right"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-            <Setter Property="Background" Value="#4A5668"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="Fonts/Roboto-Light.ttf #Roboto"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="PlacementRectangle" Value="60,0,0,0"/>
-            <Setter Property="HorizontalOffset" Value="15"/>
-            <Setter Property="VerticalOffset" Value="6"/>
-            <Setter Property="HasDropShadow" Value="True"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-
-        </Style>
-
-        <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
-
-            <Setter Property="Template">
-
-                <Setter.Value>
-
-                    <ControlTemplate TargetType="{x:Type ToggleButton}">
-
-                        <Border  x:Name="border"
-                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                 Background="{TemplateBinding Background}"
-                                 SnapsToDevicePixels="True">
-
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-
-                            <Trigger Property="IsMouseOver" Value="true">
-
-                                <Setter Property="Background"
-                                        TargetName="border"
-                                        Value="{StaticResource tb_mouse_over}"/>
-
-                                <Setter Property="BorderBrush"
-                                        TargetName="border"
-                                        Value="{StaticResource tb_mouse_over}"/>
-
-                            </Trigger>
-
-                            <Trigger Property="IsChecked" Value="true">
-
-                                <Setter Property="Background"
-                                        TargetName="border"
-                                        Value="{StaticResource tb_mouse_over}"/>
-
-                                <Setter Property="BorderBrush"
-                                        TargetName="border"
-                                        Value="{StaticResource tb_mouse_over}"/>
-
-                            </Trigger>
-
-                        </ControlTemplate.Triggers>
-
-                    </ControlTemplate>
-
-                </Setter.Value>
-
-            </Setter>
-
-        </Style>
-
-    </Window.Resources>
-
     <Border Background="#201a30" CornerRadius="15" BorderThickness="0.3">
         <Grid>
             <Grid.RowDefinitions>
@@ -151,7 +50,7 @@
                     <ColumnDefinition Width="65" x:Name="SideBarGridColumn"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                
+
                 <Grid x:Name="nav_pnl"
                     HorizontalAlignment="Left"
                     Width="65" Panel.ZIndex="2"
@@ -308,18 +207,7 @@
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                                <StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-                                    <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_map.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-                                    <TextBlock Text="Maps"
-                                           Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
-                                </StackPanel>
+                                <usercontrols:SidebarItem ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_map.png"/>
 
                                 <!--// Tooltip //-->
 
@@ -401,18 +289,7 @@
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                                <StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-                                    <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1662239917/WolfTaxi/img_info.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-                                    <TextBlock Text="About"
-                                           Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
-                                </StackPanel>
+                                <usercontrols:SidebarItem ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662239917/WolfTaxi/img_info.png" Text="About" x:Name="AboutSI"/>
 
                                 <!--// Tooltip //-->
 
@@ -426,24 +303,13 @@
 
                             </ListViewItem>
 
-                            <!--// Sign Out //-->
+                            <!--// Logout //-->
 
                             <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                                <StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-                                    <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1662240039/WolfTaxi/img_logout.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-                                    <TextBlock Text="Logout"
-                                           Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
-                                </StackPanel>
+                                <usercontrols:SidebarItem ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662240039/WolfTaxi/img_logout.png" Text="Logout" x:Name="LogoutSI"/>
 
                                 <!--// Tooltip //-->
 
