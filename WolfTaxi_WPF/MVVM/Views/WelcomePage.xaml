@@ -7,41 +7,43 @@
       mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       Height="670" Width="800"
       Title="WelcomePage">
-    <Page.Background>
-        <ImageBrush ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1658860109/WolfTaxi/enterwinfdow_background_nzzj8v.png"/>
-    </Page.Background>
-    <Grid Height="500" Width="600" HorizontalAlignment="Center" Margin=" 0 10 17 60">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
+    <Border CornerRadius="0 0 15 15 " BorderThickness="0.3">
+        <Border.Background>
+            <ImageBrush ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1658860109/WolfTaxi/enterwinfdow_background_nzzj8v.png"/>
+        </Border.Background>
+        <Grid Height="500" Width="600" HorizontalAlignment="Center" Margin=" 0 10 17 60">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-        <!-- Brand Area -->
-        <StackPanel>
-            <!-- Logo -->
-            <Grid>
-                <Image Panel.ZIndex="1" Source="https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png" Height="100" Width="100"/>
-                <Border Opacity="0.3" Background="#f4f6fc"  Height="110" Width="110" Padding="0" Margin="15" CornerRadius="100"/>
-            </Grid>
+            <!-- Brand Area -->
+            <StackPanel>
+                <!-- Logo -->
+                <Grid>
+                    <Image Panel.ZIndex="1" Source="https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png" Height="100" Width="100"/>
+                    <Border Opacity="0.3" Background="#f4f6fc"  Height="110" Width="110" Padding="0" Margin="15" CornerRadius="100"/>
+                </Grid>
 
-            <!-- Slogan -->
-            <TextBlock Text="Welcome to WolfTaxi !" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="Aqua" FontFamily="Segoe UI Black"/>
-            <TextBlock Text="Next level taxi service." FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="#FF28ABAB" FontFamily="Segoe UI Black" Margin="20"/>
+                <!-- Slogan -->
+                <TextBlock Text="Welcome to WolfTaxi !" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="Aqua" FontFamily="Segoe UI Black"/>
+                <TextBlock Text="Next level taxi service." FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="#FF28ABAB" FontFamily="Segoe UI Black" Margin="20"/>
 
-        </StackPanel>
+            </StackPanel>
 
-        <!-- Navigators -->
-        <StackPanel Grid.Row="1" >
-            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Content="Sign Up" Margin="0 20" 
+            <!-- Navigators -->
+            <StackPanel Grid.Row="1" >
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Content="Sign Up" Margin="0 20" 
                     Background="Transparent" Foreground="Aqua" Width="200" Command="{Binding SignUp}"/>
 
-            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Content="Sign In" Margin="0 20" 
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Content="Sign In" Margin="0 20" 
                     Background="Transparent" Foreground="Aqua" Width="200" Command="{Binding SignIn}"/>
 
-            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Content="Admin" Margin="0 20" 
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Content="Admin" Margin="0 20" 
                     Background="Transparent" Foreground="Aqua" Width="200" Command="{Binding Admin}"/>
 
-        </StackPanel>
+            </StackPanel>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Page>

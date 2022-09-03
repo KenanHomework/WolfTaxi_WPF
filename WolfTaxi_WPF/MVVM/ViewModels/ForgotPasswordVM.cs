@@ -40,24 +40,6 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             set { email = value; OnPropertyChanged(); }
         }
 
-        private string infoText;
-
-        public string InfoText
-        {
-            get { return infoText; }
-            set { infoText = value; OnPropertyChanged(); }
-        }
-
-        private string infoImg;
-
-        public string InfoImg
-        {
-            get { return infoImg; }
-            set { infoImg = value; OnPropertyChanged(); }
-        }
-
-
-
         public DateTime Time { get; set; }
 
         public DialogResult DialogResult { get; set; } = DialogResult.Cancel;
@@ -90,8 +72,6 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public bool CanSend(object param)
              => !string.IsNullOrWhiteSpace(Email) &&
-                !string.IsNullOrWhiteSpace(Username) &&
-                Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$") &&
                 Regex.IsMatch(Email, "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b");
 
         public void SendCode(object param)
@@ -137,7 +117,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         {
             if (!File.Exists($"{App.UserSubFilePath}/{Username}.json"))
             {
-                CMessageBox.Show("User not found !", CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
+                CMessageBox.Show($"{Username} not found !", CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
 
                 return false;
             }
@@ -166,8 +146,6 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         public ForgotPasswordVM()
         {
             SendCodeCommand = new(SendCode, CanSend);
-            InfoText = "Reset Password";
-            InfoImg = "https://cdn1.iconfinder.com/data/icons/web-programming-misc/80/change_password-reset_password-new_password-Forgot_password-1024.png";
         }
     }
 }

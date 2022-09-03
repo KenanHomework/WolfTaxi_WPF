@@ -25,13 +25,12 @@ namespace WolfTaxi_WPF.MVVM.Views
     /// <summary>
     /// Interaction logic for ForgotPassword.xaml
     /// </summary>
-    public partial class ForgotPassword : Window,IResetable
+    public partial class ForgotPassword : Window, IResetable
     {
-        public ForgotPassword()
+        public ForgotPassword(string username)
         {
             InitializeComponent();
-            DataContext = App.Container.GetInstance<ForgotPasswordVM>();
-            App.Container.GetInstance<ForgotPasswordVM>().Window = this;
+            DataContext = new ForgotPasswordVM() { Username = username,Window = this};
         }
 
         public bool EnterInfo { get; set; } = true;
@@ -47,9 +46,6 @@ namespace WolfTaxi_WPF.MVVM.Views
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
-
-        private void Username_TextChanged(object sender, TextChangedEventArgs e)
-                    => RegxService.CheckControl(ref Username, 3, Color.FromRgb(237, 236, 239), "^([A-Za-z0-9]){4,20}$");
 
         private void Email_TextChanged(object sender, TextChangedEventArgs e)
                     => RegxService.CheckControl(ref Email, 3, Color.FromRgb(237, 236, 239), "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b");

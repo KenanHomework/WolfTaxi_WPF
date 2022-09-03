@@ -3,17 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WolfTaxi_WPF.MVVM.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Background="{StaticResource Main_Color}" Icon="https://res.cloudinary.com/kysbv/image/upload/v1659124152/WolfTaxi/add_new_driver.png"
-        mc:Ignorable="d" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:WolfTaxi_WPF.MVVM.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Icon="https://res.cloudinary.com/kysbv/image/upload/v1659124152/WolfTaxi/add_new_driver.png" AllowsTransparency="True" mc:Ignorable="d" ResizeMode="NoResize" Background="Transparent" WindowStyle="None"  WindowStartupLocation="CenterScreen"
         Title="AddDriver" Height="800" Width="600">
-    <Grid>
+    <Border CornerRadius="15" BorderThickness="0.3" Background="{StaticResource Main_Color}" Padding="0">
+        <Grid Margin="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!-- Title Bar -->
-        <Border Background="#2c2b3f"  Height="25" MouseDown="Border_MouseDown">
-            <Grid>
+        <Border Background="#2c2b3f" CornerRadius="15 15 0 0"  Height="25" MouseDown="Border_MouseDown" Padding="0">
+            <Grid Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width  ="25"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -204,4 +204,5 @@
             </StackPanel>
         </Grid>
     </Grid>
+    </Border>
 </Window>

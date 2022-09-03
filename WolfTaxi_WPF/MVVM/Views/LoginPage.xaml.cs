@@ -41,17 +41,5 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         public void Reset() => App.Container.GetInstance<LoginPageVM>().Reset();
 
-        private void ResetPassword(object sender, RoutedEventArgs e)
-        {
-            ForgotPassword forgotPassword = new();
-            forgotPassword.Reset();
-            forgotPassword.ShowDialog();
-            if (forgotPassword.DialogResult == DialogResult.Success)
-            {
-                CMessageBox.Show("Succes Reset Password !", CMessageTitle.Confirm, CMessageButton.Ok, CMessageButton.None);
-
-                Username.Text = forgotPassword.Username.Text;
-            }
-        }
     }
 }

@@ -11,8 +11,8 @@
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
      FontFamily="Open Sans"
-        Title="CMessageBox" Height="270" Width="400" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
-    <Border CornerRadius="5" Background="#201a30">
+        Title="CMessageBox" Height="270" Width="600" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Border CornerRadius="15" Background="#201a30">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -45,16 +45,17 @@
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="185"/>
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button Name="btnOk" Grid.Column="1" Content="OK"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BntOk_Click" Background="#FF698EF1" BorderBrush="{x:Null}" 
-                    Style="{StaticResource btnStyle}" Foreground="White" Height="25"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Name="btnOk" Grid.Column="1" Content="OK"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BntOk_Click" Background="#FF698EF1" BorderBrush="{x:Null}" 
+                    Style="{StaticResource btnStyle}" Foreground="White" Height="25" Margin="0 0 20 0"/>
 
 
-                <Button Name="btnCancel" Grid.Column="2" Content="Close" Height="25"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BtnCancel_Click"  Background="#FFE60000" BorderBrush="{x:Null}" Style="{StaticResource btnStyle}" Foreground="White"/>
+                    <Button Name="btnCancel" Grid.Column="2" Content="Close" Height="25"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BtnCancel_Click"  Background="#FFE60000" BorderBrush="{x:Null}" Style="{StaticResource btnStyle}" Foreground="White"/>
+                </StackPanel>
             </Grid>
         </Grid>
     </Border>

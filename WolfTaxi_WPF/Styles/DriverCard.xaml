@@ -19,7 +19,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListViewItem">
-                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="1020" Margin="0 5" Background="{TemplateBinding Background}">
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Height="60" Width="1020" Margin="0 5" Background="{TemplateBinding Background}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />

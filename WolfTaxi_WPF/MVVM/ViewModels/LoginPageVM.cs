@@ -9,6 +9,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
+using WolfTaxi_WPF.MVVM.Views;
 
 namespace WolfTaxi_WPF.MVVM.ViewModels
 {
@@ -61,6 +63,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public RelayCommand ForgotPasswordClick { get; set; }
 
+        public RelayCommand ResetPasswordClick { get; set; }
+
         public RelayCommand SignUpClick { get; set; }
 
         public RelayCommand AdminClick { get; set; }
@@ -79,15 +83,12 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             }
         }
 
-        public bool AllInfoCorrect()
-        {
-            if (!string.IsNullOrWhiteSpace(Password))
-                if (!string.IsNullOrWhiteSpace(Username))
-                    if (Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$"))
-                        if (Regex.IsMatch(Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"))
-                            return true;
-            return false;
-        }
+        public bool AllInfoCorrect() =>
+            (!string.IsNullOrWhiteSpace(Password) &&
+            !string.IsNullOrWhiteSpace(Username) &&
+            Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$") &&
+            Regex.IsMatch(Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"));
+
 
         //     !string.IsNullOrWhiteSpace(Password) &&
         //!string.IsNullOrWhiteSpace(Username) &&
@@ -100,11 +101,27 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             Password = String.Empty;
         }
 
+        private void ResetPassword(object param)
+        {
+            ForgotPassword forgotPassword = new(Username);
+            forgotPassword.Reset();
+            forgotPassword.ShowDialog();
+            if (forgotPassword.DialogResult == DialogResult.Success)
+            {
+                CMessageBox.Show("Succes Reset Password !", CMessageTitle.Confirm, CMessageButton.Ok, CMessageButton.None);
+
+                Username = ((ForgotPasswordVM)forgotPassword.DataContext).Username;
+            }
+        }
+
+        public bool CanResetPassword(object param) => (!string.IsNullOrWhiteSpace(Username) && Regex.IsMatch(Username, "^([A-Za-z0-9]){4,20}$"));
+
         #endregion
 
         public LoginPageVM()
         {
             LoginLocal = new(Login, LoginCanRun);
+            ResetPasswordClick = new(ResetPassword, CanResetPassword);
         }
 
     }

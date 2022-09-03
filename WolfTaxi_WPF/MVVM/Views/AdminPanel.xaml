@@ -6,102 +6,103 @@
         xmlns:local="clr-namespace:WolfTaxi_WPF.MVVM.Views" WindowState="Normal"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:Wolftaxi_wpf="clr-namespace:WolfTaxi_WPF"
         mc:Ignorable="d" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        Icon="https://res.cloudinary.com/kysbv/image/upload/v1658261750/WolfTaxi/admin_icon_kwclcm.png"
+        Icon="https://res.cloudinary.com/kysbv/image/upload/v1658261750/WolfTaxi/admin_icon_kwclcm.png" AllowsTransparency="True" Background="Transparent"
         Title="AdminPanel" Height="600" Width="1100">
-    <DockPanel Background="#201a30">
+    <Border CornerRadius="15" BorderThickness="0.3" Background="#201a30">
+        <DockPanel>
+            <!-- Title Bar -->
+            <Border Background="#2c2b3f" DockPanel.Dock="Top" Height="25" MouseDown="Border_MouseDown" CornerRadius="15 15 0 0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width  ="25"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-        <!-- Title Bar -->
-        <Border Background="#2c2b3f" DockPanel.Dock="Top" Height="25" MouseDown="Border_MouseDown">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width  ="25"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
 
 
-                <Image Grid.Column="0" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    <Image Grid.Column="0" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" 
                  Source="https://res.cloudinary.com/kysbv/image/upload/v1658261750/WolfTaxi/admin_icon_kwclcm.png"/>
 
-                <Label Grid.Column="1" Foreground="#f0f4fd" Margin="2 0"  FontWeight="SemiBold" Content="Admin Panel"/>
+                    <Label Grid.Column="1" Foreground="#f0f4fd" Margin="2 0"  FontWeight="SemiBold" Content="Admin Panel"/>
 
-                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Background="Transparent" BorderThickness="0" Width="40" Foreground="#f0f4fd" VerticalAlignment="Center" Content="_" Padding="0 0 0 8" Height="25" Click="ResizeButton_Click"/>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Background="Transparent" BorderThickness="0" Width="40" Foreground="#f0f4fd" VerticalAlignment="Center" Content="_" Padding="0 0 0 8" Height="25" Click="ResizeButton_Click"/>
 
-                    <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="DarkRed" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"/>
-                </StackPanel>
-            </Grid>
-        </Border>
+                        <Button Background="Transparent" BorderThickness="0" Width="40" Height="25" Foreground="DarkRed" FontSize="10" VerticalAlignment="Center" Content="X" FontWeight="Bold" Click="ResizeButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-        <Grid Height="50" DockPanel.Dock="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+            <Grid Height="50" DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
                 HorizontalAlignment="Center" Click="Back_Click" Grid.Column="0" BorderThickness="2"
                     Background="Transparent" Foreground="Aqua" Width="200">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" />
-                    <TextBlock Margin="15 0" Width="149">Back Welcome Page</TextBlock>
-                </StackPanel>
-            </Button>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" />
+                        <TextBlock Margin="15 0" Width="149">Back Welcome Page</TextBlock>
+                    </StackPanel>
+                </Button>
 
-            <TextBlock Grid.Column="1" x:Name="InfoText" Foreground="Aqua" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="3" Text="Select Driver(s) for view / edit"/>
+                <TextBlock Grid.Column="1" x:Name="InfoText" Foreground="Aqua" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="3" Text="Select Driver(s) for view / edit"/>
 
-            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
                 HorizontalAlignment="Center" Click="DeleteDrivers_Click" Grid.Column="2" BorderBrush="Red"  BorderThickness="0"
                     Background="Transparent" Foreground="DarkRed" Width="200" Name="DeleteSatateButton">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Delete" />
-                    <TextBlock Margin="15 0">Delete Drivers</TextBlock>
-                </StackPanel>
-            </Button>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Delete" />
+                        <TextBlock Margin="15 0">Delete Drivers</TextBlock>
+                    </StackPanel>
+                </Button>
 
-        </Grid>
+            </Grid>
 
-        <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" DockPanel.Dock="Top"  Margin="20" Padding="0 10"
+            <ListView SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" DockPanel.Dock="Top"  Margin="20" Padding="0 10"
                    ItemsSource="{Binding Drivers,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Name="DriverListView"
                    ItemContainerStyle="{StaticResource DriverCard}" HorizontalAlignment="Center" VerticalAlignment="Top">
-        </ListView>
+            </ListView>
 
-        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="50" HorizontalAlignment="Center"  
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="50" HorizontalAlignment="Center"  
                     VerticalAlignment="Center">
 
-            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center" Panel.ZIndex="2"
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center" Panel.ZIndex="2"
                 HorizontalAlignment="Center" Click="Cancel_Click" Visibility="Collapsed"  BorderThickness="2"
                     Background="Transparent" Foreground="DarkRed" Width="150" Name="Cancel" BorderBrush="SaddleBrown">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Cancel" VerticalAlignment="Center" />
-                    <TextBlock Margin="15 0" Text="Cancel"/>
-                </StackPanel>
-            </Button>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cancel" VerticalAlignment="Center" />
+                        <TextBlock Margin="15 0" Text="Cancel"/>
+                    </StackPanel>
+                </Button>
 
-            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center" Panel.ZIndex="2"
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center" Panel.ZIndex="2"
                 HorizontalAlignment="Center" Click="Add_Click" BorderThickness="0" Padding="0"
                     Background="Transparent" Foreground="Aqua" Width="50" Height="50" Name="Add">
-                <materialDesign:PackIcon Kind="PlusCircle" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Button>
+                    <materialDesign:PackIcon Kind="PlusCircle" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
 
 
-            <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
+                <Button Style="{StaticResource MaterialDesignPaperDarkButton}" Margin="10" VerticalAlignment="Center"
                 HorizontalAlignment="Center" Click="Delete_Click" Visibility="Collapsed"  BorderThickness="2" Panel.ZIndex="2"
                     Background="Transparent" Foreground="DarkRed" Width="150" Name="Delete" BorderBrush="SaddleBrown">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="DeleteEmpty" VerticalAlignment="Center" />
-                    <TextBlock Margin="15 0" Text="Delete"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="DeleteEmpty" VerticalAlignment="Center" />
+                        <TextBlock Margin="15 0" Text="Delete"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
 
 
-    </DockPanel>
+        </DockPanel>
+    </Border>
 
 </Window>
