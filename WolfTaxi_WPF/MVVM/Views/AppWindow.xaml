@@ -176,18 +176,7 @@
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                                <StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-                                    <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_contact.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-                                    <TextBlock Text="Profile"
-                                           Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
-                                </StackPanel>
+                                <usercontrols:SidebarItem ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_contact.png" Text="Profile"/>
 
                                 <!--// Tooltip //-->
 
@@ -207,7 +196,7 @@
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                                <usercontrols:SidebarItem ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_map.png"/>
+                                <usercontrols:SidebarItem ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_map.png" Text="Map"/>
 
                                 <!--// Tooltip //-->
 
@@ -227,18 +216,7 @@
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                                <StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-                                    <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_history.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-                                    <TextBlock Text="History"
-                                           Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
-                                </StackPanel>
+                                <usercontrols:SidebarItem ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_history.png" Text="History"/>
 
                                 <!--// Tooltip //-->
 
@@ -258,18 +236,7 @@
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
                                       >
 
-                                <StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-                                    <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1662242706/WolfTaxi/img_adjustment.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-
-                                    <TextBlock Text="Adjustment"
-                                           Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
-                                </StackPanel>
+                                <usercontrols:SidebarItem ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662242706/WolfTaxi/img_adjustment.png" Text="Adjusment"/>
 
                                 <!--// Tooltip //-->
 
@@ -393,7 +360,7 @@
                     </StackPanel>
                 </Grid>
 
-                <Border Grid.Column="1" Width="1334"  Height="770" Background="Red"></Border>
+                <Frame Grid.Column="1" Width="1334"  Height="770" x:Name="Frame" />
             </Grid>
             <!--#endregion-->
         </Grid>

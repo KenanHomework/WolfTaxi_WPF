@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WolfTaxi_WPF.Services
 {
-    public static class JSONService
+    public abstract class JSONService
     {
         public static void Write<T>(string path, T content)
         {

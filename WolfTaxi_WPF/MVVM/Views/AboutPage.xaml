@@ -1,0 +1,124 @@
+﻿<Page x:Class="WolfTaxi_WPF.MVVM.Views.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WolfTaxi_WPF.MVVM.Views"
+      mc:Ignorable="d"  Width="1334"  Height="770"
+      d:Width="1334"  d:Height="770"
+      Title="AboutPage">
+
+    <Grid Margin="5 10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--#region GeneralInfo&Images-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+            <!--#region ProjectInfo-->
+            <Button Width="110" Height="110" Background="Transparent" BorderThickness="0" HorizontalAlignment="Center" Padding="0" Name="ProjectInfoImage" Click="ProjectInfoImage_Click">
+                <StackPanel Width="110" Height="110" Orientation="Vertical">
+                    <Image Source="https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png" Stretch="Uniform" Width="70" Height="70"/>
+
+                    <Label Content="WolfTaxi" Foreground="#f6ba2b" FontFamily="Bauhaus 93"
+                     FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+
+            </Button>
+            <!--#endregion-->
+
+            <!--#region HomeworkAccount-->
+            <Button Width="110" Height="110" Background="Transparent" BorderThickness="0" HorizontalAlignment="Center" Padding="0" Name="HomeworkAccount" Click="HomeworkAccountInfoImage_Click" Margin="50 0 0 0">
+                <StackPanel Width="110" Height="110" Orientation="Vertical">
+                    <Border Width="70" Height=" 70" CornerRadius="100">
+                        <Border.Background>
+                            <ImageBrush ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662251333/WolfTaxi/githubhw_pp.jpg" Stretch="Uniform"/>
+
+                        </Border.Background>
+                    </Border>
+
+
+                    <Label Content="KensnYsbv (HW)" Foreground="#f6ba2b" FontFamily="Bauhaus 93"
+                     FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+
+            </Button>
+            <!--#endregion-->
+
+            <!--#region Account-->
+            <Button Width="110" Height="110" Background="Transparent" BorderThickness="0" HorizontalAlignment="Center" Padding="0" Name="AccountInfoImage" Click="AccountInfoImage_Click" Margin="50 0 0 0">
+                <StackPanel Width="110" Height="110" Orientation="Vertical">
+                    <Border Width="70" Height=" 70" CornerRadius="100">
+                        <Border.Background>
+                            <ImageBrush ImageSource="https://res.cloudinary.com/kysbv/image/upload/v1662252805/WolfTaxi/github_pp.jpg" Stretch="Uniform"/>
+                        </Border.Background>
+                    </Border>
+
+                    <Label Content="KenanYSbv" Foreground="#f6ba2b" FontFamily="Bauhaus 93"
+                     FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+
+            </Button>
+            <!--#endregion-->
+
+
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region ProjectName-->
+        <Label Grid.Row="1" Content="Reset Password" Foreground="#f6ba2b" FontFamily="Bauhaus 93" FontWeight="Bold" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <!--#endregion-->
+
+        <!--#region ProjectInfoText-->
+        <StackPanel Grid.Row="2">
+
+            <!-- Text -->
+            <TextBlock  Foreground="Aqua" FontSize="25" VerticalAlignment="Center" 
+        HorizontalAlignment="Center" Style="{StaticResource font_style}" FontStyle="Oblique" FontWeight="ExtraBlack" Name="InfoText" />
+
+            <!--#region Links-->
+            <StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+
+                    <Label Content="Project Link:" Foreground="#645c64" FontSize="20" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
+
+                    <Button Content="WolfTaxi" Foreground="#0ef5e3" VerticalAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" 
+             FontWeight="DemiBold" Click="ProjectInfoImage_Click" Cursor="Hand" Background="Transparent" BorderThickness="0"
+             TabIndex="4" Height="45"/>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+
+                    <Label Content="My Homework Account Link:" Foreground="#645c64" FontSize="20" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
+
+                    <Button Content="KenanHomework" Foreground="#0ef5e3" 
+            VerticalAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" 
+             FontWeight="DemiBold" Click="HomeworkAccountInfoImage_Click" Cursor="Hand" Background="Transparent" BorderThickness="0"
+             TabIndex="4" Height="45"/>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+
+                    <Label Content="My Main Account Link:" Foreground="#645c64" FontSize="20" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" FontWeight="DemiBold"/>
+
+                    <Button Content="Kenanysbv" Foreground="#0ef5e3" 
+            VerticalAlignment="Center" FontSize="20" FontFamily="Segoe UI Black" 
+             FontWeight="DemiBold" Click="AccountInfoImage_Click" Cursor="Hand" Background="Transparent" BorderThickness="0"
+             TabIndex="4" Height="45"/>
+
+                </StackPanel>
+
+            </StackPanel>
+            <!--#endregion-->
+
+        </StackPanel>
+        <!--#endregion-->
+
+    </Grid>
+</Page>

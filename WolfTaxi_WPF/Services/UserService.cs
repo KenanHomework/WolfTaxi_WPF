@@ -6,7 +6,7 @@ using System.IO;
 
 namespace WolfTaxi_WPF.Services
 {
-    public class UserService
+    public abstract class UserService
     {
 
         public static ProcessResult Search(User user)

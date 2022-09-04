@@ -47,16 +47,12 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public void InfoGithubClick()
         {
-            var uri = "https://github.com/KenanHomework/WolfTaxi_WPF.git";
-            var psi = new System.Diagnostics.ProcessStartInfo();
-            psi.UseShellExecute = true;
-            psi.FileName = uri;
-            System.Diagnostics.Process.Start(psi);
+            WebService.OpenWebsiteWithUrl("https://github.com/KenanHomework/WolfTaxi_WPF.git");
         }
 
         public void AboutClick()
         {
-            InfoGithubClick();
+            Window.Frame.Navigate(new AboutPage());
         }
 
         public void LogoutClick()

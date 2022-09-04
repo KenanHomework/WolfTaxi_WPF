@@ -15,7 +15,7 @@ using WaveStream = NAudio.Wave.WaveStream;
 
 namespace WolfTaxi_WPF.Services
 {
-    public class SoundService
+    public abstract class SoundService
     {
         public static MediaPlayer MediaPlayer = new MediaPlayer();
         public static void Succes() => PlaySoundWithUrl(App.SuccesSoundEffect);
