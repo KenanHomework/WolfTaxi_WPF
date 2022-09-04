@@ -10,6 +10,7 @@ using WolfTaxi_WPF.Commands;
 using WolfTaxi_WPF.Interfaces;
 using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
 using WolfTaxi_WPF.MVVM.Views;
+using WolfTaxi_WPF.MVVM.Views.Pages;
 using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.ViewModels
@@ -50,10 +51,9 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             WebService.OpenWebsiteWithUrl("https://github.com/KenanHomework/WolfTaxi_WPF.git");
         }
 
-        public void AboutClick()
-        {
-            Window.Frame.Navigate(new AboutPage());
-        }
+        public void AboutClick() => Window.Frame.Navigate(new AboutPage());
+
+        public void AdjustmentClick()=> Window.Frame.Navigate(new AdjustmentPage());
 
         public void LogoutClick()
         {
@@ -72,6 +72,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public AppWindowVM()
         {
+
         }
     }
 }

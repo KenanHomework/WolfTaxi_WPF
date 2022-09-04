@@ -360,7 +360,7 @@
                     </StackPanel>
                 </Grid>
 
-                <Frame Grid.Column="1" Width="1334"  Height="770" x:Name="Frame" />
+                <Frame Grid.Column="1" Width="1334"  Height="770" x:Name="Frame" NavigationUIVisibility="Hidden"/>
             </Grid>
             <!--#endregion-->
         </Grid>

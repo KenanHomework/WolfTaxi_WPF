@@ -20,6 +20,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using WolfTaxi_WPF.Services;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -108,8 +109,7 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         private void TaxiTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            App.Container.GetInstance<AddDriverVM>().Driver.Taxi.Type = (TaxiTypes)TaxiTypeComboBox.SelectedItem;
-            TaxiIcon.ImageSource = BitmapService.GetBitmapImageFromUrl(App.Container.GetInstance<AddDriverVM>().Driver.Taxi.IconSource.ToString());
+            TaxiIcon.ImageSource = BitmapService.GetBitmapImageFromUrl($"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{TaxiTypeComboBox.SelectedItem.ToString().ToLower()}.png");
         }
 
     }

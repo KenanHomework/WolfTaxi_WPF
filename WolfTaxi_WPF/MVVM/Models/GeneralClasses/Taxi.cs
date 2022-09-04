@@ -32,6 +32,7 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
             set
             {
                 taxiTypes = value;
+                IconSource = new Uri($"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{value.ToString().ToLower()}.png");
                 OnPropertyChanged();
             }
         }
