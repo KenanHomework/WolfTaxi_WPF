@@ -15,6 +15,7 @@ namespace WolfTaxi_WPF.Facade
     {
 
         #region Members
+        public List<float> TypeOfPPK { get; set; }
 
         public User User { get; set; }
 
@@ -42,6 +43,7 @@ namespace WolfTaxi_WPF.Facade
             this.User = dataFacade.User;
             this.Remember = dataFacade.Remember;
             this.Drivers = dataFacade.Drivers;
+            this.TypeOfPPK = dataFacade.TypeOfPPK;
         }
 
         public void Save()
@@ -148,7 +150,7 @@ namespace WolfTaxi_WPF.Facade
 
         #endregion
 
-        public DataFacade() { }
+        public DataFacade() { TypeOfPPK = new() { 1.2f, 2f, 4f }; }
 
         public override string ToString() => $"User: {User}  \n Remember: {Remember}";
     }

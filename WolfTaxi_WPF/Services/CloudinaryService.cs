@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using WolfTaxi_WPF.Enums;
+using LoremNET;
 
 namespace WolfTaxi_WPF.Services
 {
@@ -29,12 +30,25 @@ namespace WolfTaxi_WPF.Services
             return res.Url.ToString();
         }
 
-        public static ProcessResult DestroyImage(string fileName,string folderPath)
+        public static ProcessResult DestroyImage(string fileName, string folderPath)
         {
             if (string.IsNullOrWhiteSpace(fileName) || string.IsNullOrWhiteSpace(folderPath))
                 return ProcessResult.EmptyArguments;
-            var destroyParams = new DeletionParams($"{folderPath}/{fileName}");
+            return DestroyImagePrivate($"{folderPath}/{fileName}");
+
+        }
+
+        public static ProcessResult DestroyImage(string source)
+        {
+            if (string.IsNullOrWhiteSpace(source))
+                return ProcessResult.EmptyArguments;
+            return DestroyImagePrivate(source);
+        }
+
+        private static ProcessResult DestroyImagePrivate(string source)
+        {
             DeletionResult result = new();
+            var destroyParams = new DeletionParams(source);
             try { result = App.cloudinary.Destroy(destroyParams); }
             catch (Exception) { return ProcessResult.Error; }
             return ProcessResult.Success;

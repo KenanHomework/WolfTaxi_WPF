@@ -59,7 +59,6 @@ namespace WolfTaxi_WPF
         public static string DriverCloudinaryFolderPath = "WolfTaxi/ClientPhotos/DriverPhotos";
         public static string UserCloudinaryFolderPath = "WolfTaxi/ClientPhotos/UserPhotos";
         public static string TempCloudinaryFolderPath = "WolfTaxi/ClientPhotos/TempPhotos";
-        public static List<float> TypeOfPPK = new() { 1.2f, 2f, 4f };
 
         #endregion
 

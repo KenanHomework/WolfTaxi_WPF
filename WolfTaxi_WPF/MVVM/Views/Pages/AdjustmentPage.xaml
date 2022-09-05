@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WolfTaxi_WPF.MVVM.Views.Pages"
+      xmlns:local="clr-namespace:WolfTaxi_WPF.MVVM.Views.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" Width="1334"  Height="770"
       d:Width="1334"  d:Height="770"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -29,26 +29,56 @@
             </Grid.ColumnDefinitions>
 
             <!--#region TaxiType-->
-            <Grid Grid.Column="0" >
+            <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <ComboBox x:Name="TaxiTypeComboBox" Height="40" 
-                    HorizontalAlignment="Left" 
+                    HorizontalAlignment="Left"
                     Foreground="Aqua" ItemsSource="{Binding TaxiTypes,Mode=OneTime,UpdateSourceTrigger=PropertyChanged}"  Width="150" Margin="5 0 " 
                     Style="{StaticResource ComboBoxFlatStyle}" BorderBrush="#FF512DA8" Background="#2c2b3f" SelectionChanged="TaxiTypeComboBox_SelectionChanged" />
-                <!--#endregion-->
+            </Grid>
+            <!--#endregion-->
 
-                <Border Grid.Column="1" Background="Transparent" CornerRadius="5">
-                    <StackPanel Orientation="Horizontal" Margin="10 0 0 0" Background="Transparent">
+            <!--#region InfoOfType-->
+            <StackPanel Grid.Column="1" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!--#region Icon-->
+                <Border HorizontalAlignment="Center" Background="Transparent" CornerRadius="5" Panel.ZIndex="2">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Center" Margin="10 0 0 0" Background="Transparent">
                         <Ellipse  Height="50" Width="50">
                             <Ellipse.Fill>
-                                <ImageBrush x:Name="TaxiIcon"/>
+                                <ImageBrush x:Name="TaxiICon"/>
                             </Ellipse.Fill>
                         </Ellipse>
                     </StackPanel>
                 </Border>
+                <!--#endregion-->
 
-            </Grid>
+                <materialDesign:PackIcon Kind="ArrowRightBold" Foreground="Aqua" Width="100"  Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 0 "/>
+
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region PricePerKm-->
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox      Foreground="#b3b3b3" FontSize="20" FontFamily="Lucida Console" Name="Price_TBX"
+                VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="DemiBold" TextChanged="Price_TBX_TextChanged" />
+
+                <Label Content="₼" Foreground="#60686c" FontSize="20" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontWeight="Heavy" Margin="10 0" Grid.Row="6"/>
+            </StackPanel>
+
+
             <!--#endregion-->
 
         </Grid>
+        <!--#endregion-->
+
+        <!--#region Confirmation-->
+        <Button Grid.Row="2"  Margin="20" Style="{StaticResource MaterialDesignPaperDarkButton}" Height="60" Width="300" Background="Transparent" Command="{Binding Save}"
+             materialDesign:ButtonAssist.CornerRadius="25" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="ContentSave" VerticalAlignment="Center" Foreground="Aqua" Width="50" Height="30"/>
+                <Label Content="Save" Foreground="Aqua" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+            </StackPanel>
+        </Button>
+        <!--#endregion-->
     </Grid>
 </Page>

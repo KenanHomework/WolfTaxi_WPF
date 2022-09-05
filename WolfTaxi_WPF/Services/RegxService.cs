@@ -37,8 +37,22 @@ namespace WolfTaxi_WPF.Services
         {
             try
             {
-
                 if (!string.IsNullOrWhiteSpace(tbx.Text) && Convert.ToUInt32(tbx.Text) >= 1970 && Convert.ToUInt32(tbx.Text) <= DateTime.Now.Year)
+                {
+                    tbx.Foreground = new SolidColorBrush(defColor);
+                    return true;
+                }
+            }
+            catch (Exception) { }
+            tbx.Foreground = new SolidColorBrush(Color.FromRgb(255, 0, 0));
+            return false;
+        }
+
+        public static bool CheckTypePrice(ref TextBox tbx, Color defColor)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(tbx.Text) && Convert.ToSingle(tbx.Text) >= 0.1)
                 {
                     tbx.Foreground = new SolidColorBrush(defColor);
                     return true;

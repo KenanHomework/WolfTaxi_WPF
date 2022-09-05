@@ -42,6 +42,7 @@ namespace WolfTaxi_WPF.MVVM.Views
             InitializeComponent();
             DataContext = App.Container.GetInstance<AppWindowVM>();
             DatacontextConverted.Window = this;
+            DatacontextConverted.InitializePages();
         }
 
         #region Methods

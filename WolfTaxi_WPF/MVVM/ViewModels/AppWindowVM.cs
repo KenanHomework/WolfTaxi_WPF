@@ -23,6 +23,10 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public AppWindow Window { get; set; }
 
+        public AboutPage About { get; set; }
+
+        public AdjustmentPage Adjust { get; set; }
+
         #endregion
 
         #region Commands
@@ -51,9 +55,9 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             WebService.OpenWebsiteWithUrl("https://github.com/KenanHomework/WolfTaxi_WPF.git");
         }
 
-        public void AboutClick() => Window.Frame.Navigate(new AboutPage());
+        public void AboutClick() => Window.Frame.Navigate(About);
 
-        public void AdjustmentClick()=> Window.Frame.Navigate(new AdjustmentPage());
+        public void AdjustmentClick() => Window.Frame.Navigate(Adjust);
 
         public void LogoutClick()
         {
@@ -66,6 +70,12 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         public void Reset()
         {
 
+        }
+
+        public void InitializePages()
+        {
+            About = new();
+            Adjust = new();
         }
 
         #endregion

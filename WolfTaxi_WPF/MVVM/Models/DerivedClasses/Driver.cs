@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using WolfTaxi_WPF.Interfaces;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 {
@@ -66,7 +67,7 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         public void AddMove(Move move) => History.Add(move);
 
-        public float GetPrice(float km) => km * App.TypeOfPPK[(int)Taxi.Type];
+        public float GetPrice(float km) => km * App.DataFacade.TypeOfPPK[(int)Taxi.Type];
 
         #endregion
 
@@ -81,6 +82,12 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
         public override string ToString() => @$"Username: {Username} Password: {Password} Phone: {Phone} Email: {Email} ID:{ID} ";
 
         #endregion
+
+        ~Driver()
+        {
+            if (SourceOfPP != App.DriverProfilePhoto)
+                CloudinaryService.DestroyImage(SourceOfPP);
+        }
 
         public Driver() : base()
         {

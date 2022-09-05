@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Media;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -128,6 +130,7 @@ namespace WolfTaxi_WPF.MVVM.Views
             }
             State = false;
             ReadyForDeleting();
+            SoundService.Notification();
             RefreshDriversListViewSource();
         }
 
