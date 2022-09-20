@@ -13,7 +13,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <SolidColorBrush x:Key="Main_Color" Color="#201a30"></SolidColorBrush>
-                    <SolidColorBrush x:Key="Test_Color" Color="#ffff"></SolidColorBrush>
+                    <SolidColorBrush x:Key="DeActive" Color="#60686c"></SolidColorBrush>
+                    <SolidColorBrush x:Key="Active" Color="#b3b3b3"></SolidColorBrush>
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />

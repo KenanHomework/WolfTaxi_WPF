@@ -49,6 +49,7 @@ namespace WolfTaxi_WPF.Facade
         public void Save()
         {
             JSONService.Write("dataset/dataFacade.json", this);
+            UserService.Write(User);
         }
 
         public void Load()

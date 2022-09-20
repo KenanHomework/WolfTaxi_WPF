@@ -45,6 +45,7 @@ namespace WolfTaxi_WPF
         public static string LuxTaxiIconSource = "https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_lux.png";
         public static string WolfLogoSource = "https://res.cloudinary.com/kysbv/image/upload/v1658898883/WolfTaxi/wolf_logo.png";
         public static string DriverProfilePhoto = "https://res.cloudinary.com/kysbv/image/upload/v1658570801/WolfTaxi/driver_pp.png";
+        public static string UserProfilePhoto = "https://res.cloudinary.com/kysbv/image/upload/v1663668239/WolfTaxi/user_icon.png";
         public static string SuccesSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661935108/WolfTaxi/success-sound-effect.mp3";
         public static string ErrorSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661936264/WolfTaxi/error-sound.mp3";
         public static string NotificationSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661940169/WolfTaxi/notification-sound.mp3";
@@ -119,6 +120,7 @@ namespace WolfTaxi_WPF
         void Register()
         {
             Container.RegisterSingleton<EnterSecurityVM>();
+            Container.RegisterSingleton<EnterWindowVM>();
             Container.RegisterSingleton<SignUpVM>();
             Container.RegisterSingleton<ForgotPasswordVM>();
             Container.RegisterSingleton<DataFacade>();
@@ -130,6 +132,7 @@ namespace WolfTaxi_WPF
             Container.RegisterSingleton<EditDriverVM>();
             Container.RegisterSingleton<EditTextblockVM>();
             Container.RegisterSingleton<LoginPageVM>();
+            Container.RegisterSingleton<ProfilePageVM>();
 
             Container.Verify();
         }
@@ -177,8 +180,11 @@ namespace WolfTaxi_WPF
                 AdminPanel.Close();
             }
             AppWindow = new();
+            Container.GetInstance<ProfilePageVM>().User  = DataFacade.User;
             AppWindow.ShowDialog();
         }
+
+
         #endregion
     }
 }

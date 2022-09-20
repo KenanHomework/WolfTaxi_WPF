@@ -1,5 +1,4 @@
-﻿using WolfTaxi_WPF.MVVM.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -19,16 +18,16 @@ using System.Windows.Shapes;
 namespace WolfTaxi_WPF.Usercontrols
 {
     /// <summary>
-    /// Interaction logic for EditTexblock.xaml
+    /// Interaction logic for EditTextBlock.xaml
     /// </summary>
-    public partial class EditTexblock : UserControl
+    public partial class EditTextBlock : UserControl
     {
-        public EditTexblock()
+        public EditTextBlock()
         {
             InitializeComponent();
         }
 
-        public EditTexblock(Binding text, string hit)
+        public EditTextBlock(Binding text, string hit)
         {
             this.Value = text;
             this.Hit = hit;
@@ -52,6 +51,14 @@ namespace WolfTaxi_WPF.Usercontrols
             set { hit = value; OnPropertyChanged(); }
         }
 
+        private bool isactive;
+
+        public bool IsEditable
+        {
+            get { return isactive; }
+            set { isactive = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         #region PropertyChangedEventHandler
@@ -64,5 +71,16 @@ namespace WolfTaxi_WPF.Usercontrols
 
         #endregion
 
+        #region Methods
+
+        public void PrepareEdit(bool edit)
+        {
+            SolidColorBrush infoColor = new SolidColorBrush(edit ? Color.FromRgb(179, 179, 179) : Color.FromRgb(96, 104, 108));
+            HitLBL.Foreground = infoColor;
+            Chevron.Foreground = infoColor;
+            EditTBX.IsEnabled = edit;
+        }
+
+        #endregion
     }
 }

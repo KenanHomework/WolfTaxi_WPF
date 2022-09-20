@@ -18,9 +18,12 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
         private Location location = new();
         private Taxi taxi = new();
         private List<Move> history = new();
-        private string sourceOfPP = App.DriverProfilePhoto;
         private int rating = 0;
+        private string sourceOfPP = App.DriverProfilePhoto;
 
+
+
+        public string SourceOfPP { get => sourceOfPP; set { sourceOfPP = value; OnPropertyChanged(); } }
         public int Rating
         {
             get
@@ -36,7 +39,6 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
             }
             set { rating = value; }
         }
-        public string SourceOfPP { get => sourceOfPP; set { sourceOfPP = value; OnPropertyChanged(); } }
         public float Balance { get => balance; set { balance = value; OnPropertyChanged(); } }
         public Location Location { get => location; set { location = value; OnPropertyChanged(); } }
         public Taxi Taxi { get => taxi; set { taxi = value; OnPropertyChanged(); } }

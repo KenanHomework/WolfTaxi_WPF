@@ -25,8 +25,8 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 
         public string HashValue(string value)
         {
-            if (string.IsNullOrEmpty(value))
-                throw new ArgumentNullException("value can't be null or empty");
+            if (string.IsNullOrEmpty(value)) 
+                throw new ArgumentNullException("Value can't be null !");
 
             StringBuilder sb = new();
 

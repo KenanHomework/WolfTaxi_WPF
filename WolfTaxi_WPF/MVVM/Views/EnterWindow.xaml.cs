@@ -26,11 +26,7 @@ namespace WolfTaxi_WPF.MVVM.Views
     public partial class EnterWindow : Window, IResetable
     {
 
-        SignUp sign = new();
 
-        AdminLogin adminLogin = new();
-
-        LoginPage login = new();
 
         public EnterWindow()
         {
@@ -47,46 +43,13 @@ namespace WolfTaxi_WPF.MVVM.Views
                     App.ToAppWindow();
                 }
             }
-
-            #region Implement Commands
-
-            App.Container.GetInstance<LoginPageVM>().LoginClick = new(p =>
-            {
-                ProcessResult res = App.DataFacade.Login
-                                                (
-                                                    App.Container.GetInstance<LoginPageVM>().Username,
-                                                    App.Container.GetInstance<LoginPageVM>().Password
-                                                );
-
-
-                if (res == ProcessResult.Success)
-                {
-                    App.DataFacade.Remember = App.Container.GetInstance<LoginPageVM>().Remember;
-                    SoundService.Succes();
-                    App.ToAppWindow();
-                }
-                else
-                    CMessageBox.Show(res.ToString(), CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
-
-            });
-
-            App.Container.GetInstance<LoginPageVM>().SignUpClick = new(p => { Frame.Navigate(sign); });
-
-            App.Container.GetInstance<LoginPageVM>().AdminClick = new(p => { Frame.Navigate(adminLogin); });
-
-            App.Container.GetInstance<SignUpVM>().SignIn = new(p => { Frame.Navigate(login); });
-
-            App.Container.GetInstance<AdminLoginVM>().UserClick = new(p => { Frame.Navigate(login); });
-
-            App.Container.GetInstance<WelcomePageVM>().SignUp = new(p => { Frame.Navigate(sign); });
-
-            App.Container.GetInstance<WelcomePageVM>().SignIn = new(p => { Frame.Navigate(login); });
-
-            App.Container.GetInstance<WelcomePageVM>().Admin = new(p => { Frame.Navigate(adminLogin); });
-
-            #endregion
-
             App.EnterWindow = this;
+
+            DataContext = App.Container.GetInstance<EnterWindowVM>();
+            App.Container.GetInstance<EnterWindowVM>().Window = this;
+            App.Container.GetInstance<EnterWindowVM>().sign = new();
+            App.Container.GetInstance<EnterWindowVM>().adminLogin = new();
+            App.Container.GetInstance<EnterWindowVM>().login = new();
 
             Frame.Navigate(new WelcomePage());
         }
@@ -118,12 +81,7 @@ namespace WolfTaxi_WPF.MVVM.Views
                 DragMove();
         }
 
-        public void Reset()
-        {
-            sign.Reset();
-            adminLogin.Reset();
-            login.Reset();
-        }
+        public void Reset() => App.Container.GetInstance<EnterWindowVM>().Reset();
 
     }
 }

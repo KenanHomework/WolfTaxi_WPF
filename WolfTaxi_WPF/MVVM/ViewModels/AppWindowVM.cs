@@ -25,6 +25,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public AboutPage About { get; set; }
 
+        public ProfilePage Profile { get; set; }
+
         public AdjustmentPage Adjust { get; set; }
 
         #endregion
@@ -59,6 +61,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public void AdjustmentClick() => Window.Frame.Navigate(Adjust);
 
+        public void ProfileClick() => Window.Frame.Navigate(Profile);
+
         public void LogoutClick()
         {
             App.DataFacade.Exit();
@@ -76,6 +80,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         {
             About = new();
             Adjust = new();
+            Profile = new();
         }
 
         #endregion

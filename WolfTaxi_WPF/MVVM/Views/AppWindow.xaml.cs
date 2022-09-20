@@ -84,6 +84,11 @@ namespace WolfTaxi_WPF.MVVM.Views
             IndexSelected = LV.SelectedIndex;
             switch (LV.SelectedIndex)
             {
+                case 0:
+                    {
+                        DatacontextConverted.ProfileClick();
+                        break;
+                    }
                 case 3:
                     {
                         DatacontextConverted.AdjustmentClick();

@@ -60,7 +60,7 @@
                 <Label Content="Remember Me" Foreground="Aqua" FontSize="24" FontFamily="Segoe UI Black" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
             </StackPanel>
-            
+
         </StackPanel>
 
         <!--Password="{Binding Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->

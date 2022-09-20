@@ -13,6 +13,11 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         private List<Move> history = new();
 
+        private string sourceOfPP = App.UserProfilePhoto;
+
+
+
+        public string SourceOfPP { get => sourceOfPP; set { sourceOfPP = value; OnPropertyChanged(); } }
 
         public List<Move> History { get => history; set { history = value; OnPropertyChanged(); } }
 
@@ -38,7 +43,9 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         public User() : base() { }
 
-        public User(string username, string password, string email, string phone) : base(username, password, email, phone) { }
+        public User(string username, string pp, string password, string email, string phone) : base(username, password, email, phone) { SourceOfPP = pp; }
+
+        public User(string username,  string password, string email, string phone) : base(username, password, email, phone) {  }
 
         public User(string username, string password) : base(username, password) { }
 
