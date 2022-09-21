@@ -28,21 +28,55 @@
             <TextBox Foreground="#edecef" Background="#38304c" Margin="10 30"  
               Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="20"
               Text="{Binding Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Background="#38304c" TextChanged="Username_TextChanged" Name="Username"/>
+                materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Background="#38304c" TextChanged="Username_TextChanged" Name="Username" TabIndex="0"/>
 
             <TextBox Foreground="#edecef" Background="#38304c" Margin="10 30"  
               Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="40"
               Text="{Binding Email,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.Background="#38304c" TextChanged="Email_TextChanged" Name="Email"/>
+                materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.Background="#38304c" TextChanged="Email_TextChanged" Name="Email" TabIndex="1"/>
 
-            <PasswordBox Foreground="#edecef" Background="#38304c" Margin="10 30" materialDesign:HintAssist.Hint="Password" MaxLength="20"
-                materialDesign:HintAssist.Background="#38304c" PasswordChanged="Password_PasswordChanged"  
-                Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Name="Password"/>
+            <Grid Margin="10 30"
+                  Name="PasswordGRID">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+
+                <PasswordBox Foreground="#edecef" Background="#38304c" TabIndex="2"
+                        materialDesign:HintAssist.Hint="Password" MaxLength="20"
+                        materialDesign:HintAssist.Background="#38304c" Grid.Column="0"
+                        Style="{StaticResource MaterialDesignOutlinedPasswordBox}" 
+                        Width="{Binding Username.Widht,Mode=OneWay}"
+                        PasswordChanged="HidePassword_PasswordChanged"  Name="HidePassword">
+                    <PasswordBox.ToolTip>
+                        <ToolTip Content="{Binding ToolTipStr}"
+                                         Style="{StaticResource tt_style}"/>
+                    </PasswordBox.ToolTip>
+                </PasswordBox>
+
+                <TextBox Foreground="#edecef" Background="#38304c" Margin="0"  
+                      Style="{StaticResource MaterialDesignOutlinedTextBox}"  
+                      materialDesign:HintAssist.Hint="Password" MaxLength="20" Visibility="Hidden"
+                      materialDesign:HintAssist.Background="#38304c" Grid.Column="0" TabIndex="2"
+                      Name="ShowPassword" TextChanged="ShowPassword_TextChanged">
+                    <TextBox.ToolTip>
+                        <ToolTip Content="{Binding ToolTipStr}"
+                                         Style="{StaticResource tt_style}"/>
+                    </TextBox.ToolTip>
+                </TextBox>
+
+                <ToggleButton Grid.Column="1" Background="#38304c"
+                        Style="{StaticResource MaterialDesignActionToggleButton}"
+                        Content="{materialDesign:PackIcon Kind=EyeOff}" VerticalAlignment="Center"
+                        Click="PasswordEye_Click" x:Name="PasswordEye" HorizontalAlignment="Center"  
+                        materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=Eye}" />
+
+            </Grid>
 
             <TextBox Foreground="#edecef" Background="#38304c" Margin="10 30 10 10"  
               Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="10"
               Text="{Binding Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                materialDesign:HintAssist.Hint="Phone" materialDesign:HintAssist.Background="#38304c" TextChanged="Phone_TextChanged" Name="Phone"/>
+                materialDesign:HintAssist.Hint="Phone" materialDesign:HintAssist.Background="#38304c" TextChanged="Phone_TextChanged" Name="Phone" TabIndex="3"/>
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
 
@@ -66,7 +100,7 @@
         <!--Password="{Binding Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->
         <StackPanel Grid.Row="2" Orientation="Vertical">
 
-            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignPaperDarkButton}" Height="60" Background="Transparent" Command="{Binding SignUp}"
+            <Button  Margin="10 10 10 0" Style="{StaticResource MaterialDesignPaperDarkButton}" Height="60" Background="Transparent" Command="{Binding SignUp}" TabIndex="4"
              materialDesign:ButtonAssist.CornerRadius="25">
                 <Label Content="Sign Up" Foreground="Aqua" FontSize="28" FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
             </Button>

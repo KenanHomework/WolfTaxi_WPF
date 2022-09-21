@@ -33,6 +33,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         private int SecurityCode { get; set; }
 
         private string username;
+        public string ToolTipStr { get; set; } = "Password Requirements :\n* Use at least 8 characters \n* Use upper and lower case characters \n* Use 1 or more numbers \n* Recommend use special characters";
 
         public string Username
         {

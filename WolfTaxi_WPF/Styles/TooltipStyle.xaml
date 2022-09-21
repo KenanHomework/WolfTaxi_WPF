@@ -3,8 +3,8 @@
     <Style TargetType="ToolTip" x:Key="tt_style">
 
         <Setter Property="Placement" Value="Right"/>
-        <Setter Property="Height" Value="40"/>
-        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="auto"/>
+        <Setter Property="Width" Value="auto"/>
         <Setter Property="Margin" Value="20,0,0,0"/>
         <Setter Property="Background" Value="#4A5668"/>
         <Setter Property="BorderBrush" Value="Transparent"/>

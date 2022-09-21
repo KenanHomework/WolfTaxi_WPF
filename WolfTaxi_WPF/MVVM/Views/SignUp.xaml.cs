@@ -43,10 +43,24 @@ namespace WolfTaxi_WPF.MVVM.Views
         private void Phone_TextChanged(object sender, TextChangedEventArgs e)
                     => RegxService.CheckControl(ref Phone, 10, Color.FromRgb(237, 236, 239), "(\\+?( |-|\\.)?\\d{3}( |-|\\.)?)?(\\(?\\d{3}\\)?|\\d{2})( |-|\\.)?\\d{2}\\d{2}");
 
-        private void Password_PasswordChanged(object sender, RoutedEventArgs e)
+        private void PasswordEye_Click(object sender, RoutedEventArgs e)
         {
-            RegxService.CheckControl(ref Password, 8, Color.FromRgb(237, 236, 239), "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
-            App.Container.GetInstance<SignUpVM>().Password = Password.Password;
+            HidePassword.Visibility = PasswordEye.IsChecked == true ? Visibility.Hidden : Visibility.Visible;
+            ShowPassword.Visibility = PasswordEye.IsChecked == false ? Visibility.Hidden : Visibility.Visible;
+            if (PasswordEye.IsChecked == true) ShowPassword.Text = HidePassword.Password;
+            else HidePassword.Password = ShowPassword.Text;
+        }
+
+        private void HidePassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (RegxService.CheckControl(ref HidePassword, 8, Color.FromRgb(237, 236, 239), "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"))
+                ((SignUpVM)DataContext).Password = HidePassword.Password;
+        }
+
+        private void ShowPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (RegxService.CheckControl(ref ShowPassword, 8, Color.FromRgb(237, 236, 239), "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"))
+                ((SignUpVM)DataContext).Password = ShowPassword.Text;
         }
 
         public void Reset() => App.Container.GetInstance<SignUpVM>().Reset();

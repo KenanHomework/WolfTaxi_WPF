@@ -38,9 +38,44 @@
               Text="{Binding Username,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                 materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.Background="#38304c" TextChanged="TextBox_TextChanged" Name="Username"/>
 
-            <PasswordBox Foreground="#edecef" Background="#38304c" Margin="15" materialDesign:HintAssist.Hint="Password" MaxLength="20"
-                materialDesign:HintAssist.Background="#38304c" TabIndex="1"
-                PasswordChanged="PasswordBox_PasswordChanged"  Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Name="Password"/>
+            <Grid Margin="15"
+                  Name="PasswordGRID">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+
+                <PasswordBox Foreground="#edecef" Background="#38304c" TabIndex="2"
+                        materialDesign:HintAssist.Hint="Password" MaxLength="20"
+                        materialDesign:HintAssist.Background="#38304c" Grid.Column="0"
+                        Style="{StaticResource MaterialDesignOutlinedPasswordBox}" 
+                        Width="{Binding Username.Widht,Mode=OneWay}"
+                        PasswordChanged="HidePassword_PasswordChanged"  Name="HidePassword">
+                    <PasswordBox.ToolTip>
+                        <ToolTip Content="{Binding ToolTipStr}"
+                                         Style="{StaticResource tt_style}"/>
+                    </PasswordBox.ToolTip>
+                </PasswordBox>
+
+                <TextBox Foreground="#edecef" Background="#38304c" Margin="0"  
+                      Style="{StaticResource MaterialDesignOutlinedTextBox}"  
+                      materialDesign:HintAssist.Hint="Password" MaxLength="20" Visibility="Hidden"
+                      materialDesign:HintAssist.Background="#38304c" Grid.Column="0" TabIndex="2"
+                      Name="ShowPassword" TextChanged="ShowPassword_TextChanged">
+                    <TextBox.ToolTip>
+                        <ToolTip Content="{Binding ToolTipStr}"
+                                         Style="{StaticResource tt_style}"/>
+                    </TextBox.ToolTip>
+                </TextBox>
+
+                <ToggleButton Grid.Column="1" Background="#38304c"
+                        Style="{StaticResource MaterialDesignActionToggleButton}"
+                        Content="{materialDesign:PackIcon Kind=EyeOff}" VerticalAlignment="Center"
+                        Click="PasswordEye_Click" x:Name="PasswordEye" HorizontalAlignment="Center"  
+                        materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=Eye}" />
+
+            </Grid>
+
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
 
