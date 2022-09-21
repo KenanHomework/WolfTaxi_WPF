@@ -25,14 +25,12 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         private User user;
 
         public string ToolTipStr { get; set; } = "Password Requirements :\n* Use at least 8 characters \n* Use upper and lower case characters \n* Use 1 or more numbers \n* Recommend use special characters";
-        public SolidColorBrush InfoColor { get; set; } = new SolidColorBrush(Color.FromRgb(96, 104, 108));
         public bool IsEditing { get; set; } = false;
 
         public ProfilePage Page { get; set; }
         public string UrlTempPP { get; set; } = string.Empty;
         bool dialogResult = false;
         OpenFileDialog ofd;
-
 
         public User User
         {

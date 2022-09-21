@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,10 +31,12 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
             InitializeComponent();
             App.Container.GetInstance<ProfilePageVM>().Page = this;
             DataContext = App.Container.GetInstance<ProfilePageVM>();
+            InfoColor = new SolidColorBrush(Color.FromRgb(96, 104, 108));
+            ChangeHitColors();
         }
 
+        public SolidColorBrush InfoColor { get; set; }
 
-        public SolidColorBrush InfoColor { get; set; } = new SolidColorBrush(Color.FromRgb(96, 104, 108));
 
         #region ClickMethods
 
@@ -68,15 +72,43 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
 
         #endregion
 
+        #region PropertyChangedEventHandler
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        #endregion
+
+
         #region Methods
 
         public void EditPropertys(bool IsEditing)
         {
             InfoColor = new SolidColorBrush(IsEditing ? Color.FromRgb(179, 179, 179) : Color.FromRgb(96, 104, 108));
+            ChangeHitColors();
+
             EmailTBX.IsEnabled = IsEditing;
             UsernameTBX.IsEnabled = IsEditing;
             PhoneTBX.IsEnabled = IsEditing;
             ShowPass.IsEnabled = IsEditing;
+        }
+
+        public void ChangeHitColors()
+        {
+            UsernameChvrn.Foreground = InfoColor;
+            UsernameLbl.Foreground = InfoColor;
+
+            EmailChvrn.Foreground = InfoColor;
+            EmailLbl.Foreground = InfoColor;
+
+            PhoneChvrn.Foreground = InfoColor;
+            PhoneLbl.Foreground = InfoColor;
+
+            PasswordChvrn.Foreground = InfoColor;
+            PasswordLbl.Foreground = InfoColor;
         }
 
         public void PrepareEdit(bool edit)

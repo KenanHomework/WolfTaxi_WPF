@@ -50,9 +50,9 @@
 
             <materialDesign:PackIcon Kind="ChevronRight"
                 VerticalAlignment="Center" HorizontalAlignment="Left"
-                Foreground="{Binding InfoColor}" Width="40" Height="40"/>
+                Width="40" Height="40" Name="UsernameChvrn"/>
 
-            <Label Content="Username" Foreground="{Binding InfoColor}" FontSize="25" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left"  FontWeight="Heavy" />
+            <Label Content="Username" FontSize="25" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" Name="UsernameLbl"  FontWeight="Heavy" />
 
         </StackPanel>
 
@@ -65,10 +65,10 @@
         <StackPanel Grid.Row="2" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
 
             <materialDesign:PackIcon Kind="ChevronRight"
-                VerticalAlignment="Center" HorizontalAlignment="Left" Name="Chevron"
-                Foreground="{Binding InfoColor}" Width="40" Height="40"/>
+                VerticalAlignment="Center" HorizontalAlignment="Left"
+                Name="EmailChvrn" Width="40" Height="40"/>
 
-            <Label Content="Email" Foreground="{Binding InfoColor}" FontSize="25" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" Name="HitLBL" FontWeight="Heavy" />
+            <Label Content="Email" Name="EmailLbl" FontSize="25" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" />
 
         </StackPanel>
 
@@ -80,11 +80,11 @@
 
         <StackPanel Grid.Row="3" Margin="40 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
 
-            <materialDesign:PackIcon Kind="ChevronRight"
+            <materialDesign:PackIcon Kind="ChevronRight" Name="PhoneChvrn"
                 VerticalAlignment="Center" HorizontalAlignment="Left"
-                Foreground="{Binding InfoColor}" Width="40" Height="40"/>
+                Foreground="{Binding InfoColor,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="40"/>
 
-            <Label Content="Phone" Foreground="{Binding InfoColor}" FontSize="25" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" />
+            <Label Content="Phone" Foreground="{Binding InfoColor,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" FontSize="25" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" Name="PhoneLbl"/>
 
         </StackPanel>
 
@@ -104,9 +104,9 @@
 
                 <materialDesign:PackIcon Kind="ChevronRight"
                 VerticalAlignment="Center" HorizontalAlignment="Left"
-                Foreground="{Binding InfoColor}" Width="40" Height="40"/>
+                Name="PasswordChvrn" Width="40" Height="40"/>
 
-                <Label Content="Password" Foreground="{Binding InfoColor}" FontSize="25" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" />
+                <Label Content="Password" Name="PasswordLbl" FontSize="25" FontFamily="Lucida Console" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontWeight="Heavy" />
 
             </StackPanel>
 
