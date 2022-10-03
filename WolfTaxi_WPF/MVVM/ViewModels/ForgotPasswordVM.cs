@@ -110,7 +110,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         {
             Time = DateTime.Now;
             SecurityCode = new Random().Next(1000, 9999);
-            EmailService.Send(Email, "Reset Password Security Code", $"Your Reset Code: {SecurityCode}", "WolfTaxi");
+            EmailService.SendSecurityCode(Email, "Reset Password Security Code", SecurityCode.ToString(), "WolfTaxi");
         }
 
         public bool CheckEmailAndUsername(object param)

@@ -89,6 +89,16 @@ namespace WolfTaxi_WPF.MVVM.Views
                         DatacontextConverted.ProfileClick();
                         break;
                     }
+                case 1:
+                    {
+                        DatacontextConverted.MapClick();
+                        break;
+                    }
+                case 2:
+                    {
+                        DatacontextConverted.HistoryClick();
+                        break;
+                    }
                 case 3:
                     {
                         DatacontextConverted.AdjustmentClick();

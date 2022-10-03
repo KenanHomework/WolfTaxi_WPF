@@ -133,6 +133,8 @@ namespace WolfTaxi_WPF
             Container.RegisterSingleton<EditTextblockVM>();
             Container.RegisterSingleton<LoginPageVM>();
             Container.RegisterSingleton<ProfilePageVM>();
+            Container.RegisterSingleton<MapPageVM>();
+            Container.RegisterSingleton<HistoryPageVM>();
 
             Container.Verify();
         }
@@ -181,6 +183,8 @@ namespace WolfTaxi_WPF
             }
             AppWindow = new();
             Container.GetInstance<ProfilePageVM>().User  = DataFacade.User;
+            Container.GetInstance<MapPageVM>().User  = DataFacade.User;
+            Container.GetInstance<HistoryPageVM>().User  = DataFacade.User;
             AppWindow.ShowDialog();
         }
 

@@ -23,8 +23,8 @@
 
                 <ResourceDictionary Source="Styles/DriverCard.xaml"/>
                 <ResourceDictionary Source="Styles/ComboBoxItemStyle.xaml"/>
-                <ResourceDictionary Source="Styles/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="Styles/ScrollBarStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="Styles/FontStyle.xaml"/>
                 <ResourceDictionary Source="Styles/TooltipStyle.xaml"/>
                 <ResourceDictionary Source="Styles/ToglebuttonStyle.xaml"/>

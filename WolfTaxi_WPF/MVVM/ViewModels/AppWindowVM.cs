@@ -29,6 +29,10 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public AdjustmentPage Adjust { get; set; }
 
+        public MapPage Map { get; set; }
+
+        public HistoryPage History { get; set; }
+
         #endregion
 
         #region Commands
@@ -62,6 +66,10 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         public void AdjustmentClick() => Window.Frame.Navigate(Adjust);
 
         public void ProfileClick() => Window.Frame.Navigate(Profile);
+
+        public void MapClick() => Window.Frame.Navigate(Map);
+
+        public void HistoryClick() => Window.Frame.Navigate(History);
 
         public void LogoutClick()
         {

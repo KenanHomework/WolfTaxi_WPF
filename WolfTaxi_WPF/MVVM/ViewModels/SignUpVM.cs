@@ -103,8 +103,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
                 return;
             }
             SecurityCode = new Random().Next(1000, 9999);
-            CMessageBox.Show("Security code sended. If don't see mail plese view SPAM.\nPlese write security code under 2 minute.", CMessageTitle.Info,CMessageButton.Ok, CMessageButton.None);
-            EmailService.Send(Email, "Email Verification", $"Your Security Code: {SecurityCode}", "WolfTaxi");
+            CMessageBox.Show("Security code sended. If don't see mail plese view SPAM.\nPlese write security code under 2 minute.", CMessageTitle.Info, CMessageButton.Ok, CMessageButton.None);
+            EmailService.SendSecurityCode(Email, "Email Verification", SecurityCode.ToString(), "WolfTaxi");
             EnterSecurityCode enter = new();
             enter.Reset();
             enter.Code = SecurityCode;

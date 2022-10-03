@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+using WolfTaxi_WPF.EmailDesigns;
 
 namespace WolfTaxi_WPF.Services
 {
@@ -25,6 +27,29 @@ namespace WolfTaxi_WPF.Services
             smtpClient.Host = "smtp.gmail.com";
             smtpClient.Credentials = new NetworkCredential("wolftaxi.team@gmail.com", "qxnpvlnncwkvxzrl");
             smtpClient.Send(message);
+        }
+
+        public static void SendSecurityCode(string ToAdress, string subject, string code, string displayName = null)
+        {
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+            mail.From = new MailAddress("your_email_address@gmail.com");
+            mail.To.Add("kenanysbv@gmail.com");
+            mail.Subject = "Email Verification";
+
+            mail.IsBodyHtml = true;
+            string htmlBody;
+
+            htmlBody = EmailDesing.SecurityCode(code);
+
+            mail.Body = htmlBody;
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("wolftaxi.team@gmail.com", "qxnpvlnncwkvxzrl");
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
         }
     }
 }
