@@ -109,27 +109,31 @@ namespace WolfTaxi_WPF.Facade
 
         public void UpdateDriverInfo(Driver driver)
         {
-            if (Drivers.Contains(driver))
+            // Check Drivers List 
+            if (Drivers.Count <= 0)
+                Drivers = new();
+
+            // Check Driver Exis
+            if (!DriverService.DriverExis(driver))
+                return;
+
+            Drivers.ForEach(d =>
             {
-                Drivers.ForEach(d =>
+                if (d.ID == driver.ID)
                 {
-                    if (d.ID == driver.ID)
-                    {
-                        d = new Driver(driver);
-                        return;
-                    }
-                });
-            }
+                    d.Update(driver);
+                    return;
+                }
+            });
         }
 
         public ProcessResult AddDriver(Driver driver)
         {
-            if (!Drivers.Contains(driver))
-            {
-                drivers.Add(driver);
-                return ProcessResult.Success;
-            }
-            return ProcessResult.Existed;
+            if (DriverService.DriverExis(driver))
+                return ProcessResult.Existed;
+
+            drivers.Add(driver);
+            return ProcessResult.Success;
         }
 
         public void DeleteDriver(Driver driver) => DeleteDriver(driver.ID);
@@ -144,6 +148,7 @@ namespace WolfTaxi_WPF.Facade
                 return;
             }
         });
+
         public void DeleteDriver(IList<Driver> drivers) => drivers.ToList().ForEach(d =>
         {
             try { DeleteDriver(d.ID); }

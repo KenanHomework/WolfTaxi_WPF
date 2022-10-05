@@ -50,11 +50,11 @@ namespace WolfTaxi_WPF
         public static string ErrorSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661936264/WolfTaxi/error-sound.mp3";
         public static string NotificationSoundEffect = "https://res.cloudinary.com/kysbv/video/upload/v1661940169/WolfTaxi/notification-sound.mp3";
         public static string ImgContact = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_contact.png";
-        public static string ImgHistory  = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_history.png";
-        public static string ImgMap  = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_map.png";
-        public static string ImgInfo  = "https://res.cloudinary.com/kysbv/image/upload/v1662239917/WolfTaxi/img_info.png";
-        public static string ImgLogout  = "https://res.cloudinary.com/kysbv/image/upload/v1662240039/WolfTaxi/img_logout.png";
-        public static string ImgAdjusment  = "https://res.cloudinary.com/kysbv/image/upload/v1662242706/WolfTaxi/img_adjustment.png";
+        public static string ImgHistory = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_history.png";
+        public static string ImgMap = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/img_map.png";
+        public static string ImgInfo = "https://res.cloudinary.com/kysbv/image/upload/v1662239917/WolfTaxi/img_info.png";
+        public static string ImgLogout = "https://res.cloudinary.com/kysbv/image/upload/v1662240039/WolfTaxi/img_logout.png";
+        public static string ImgAdjusment = "https://res.cloudinary.com/kysbv/image/upload/v1662242706/WolfTaxi/img_adjustment.png";
         public static string TgBtnMouseOver = "https://res.cloudinary.com/kysbv/image/upload/v1662239454/WolfTaxi/tgBtn_MouseOver.png";
         public static string TgBtnDefault = "https://res.cloudinary.com/kysbv/image/upload/v1662239448/WolfTaxi/tgBtn_default.png";
         public static string DriverCloudinaryFolderPath = "WolfTaxi/ClientPhotos/DriverPhotos";
@@ -78,34 +78,34 @@ namespace WolfTaxi_WPF
         {
             CreateDirectorys();
             Register();
-            //JSONService.Write($"{DriverSubFilePath}/drivers.json",);
 
-            // Paraol -> Kenan : kenanTest123
+            // Test -> testUser1
 
             DataFacade.Load();
-            //DataFacade.Remember = false;
-            //Container.GetInstance<EditDriverVM>().Driver = DataFacade.Drivers[0];
+
 
             DataFacade.Drivers = new List<Driver>() {
-                new Driver("Kamil Kamilli", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe competition", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f)),
-                new Driver("Driver 1.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
-                new Driver("Driver 2.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
-                new Driver("Driver 3.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
-                new Driver("Driver 4.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
-                new Driver("Driver 4.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
-                new Driver("Driver 4.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
-                new Driver("Driver 4.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
-                new Driver("Driver 4.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
-                new Driver("Driver 5.Driver", "kamilliKamil123", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m235i xDrive ", 2022, "77-ZZ-777", TaxiTypes.Comfort, 1.4f))
+                new Driver("Kamil Kamilli",   "kamilliKamil123", "7FO01S3", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f)),
             };
-            //DataFacade.Save();
 
-            //User user = new("test2", "testingWolfTAXI1", "kenanysbv@gmail.com", "055");
-            //UserService.Write(user);
-            // kenanShekili2
+            //DataFacade.Drivers = new List<Driver>() {
+            //    new Driver("Kamil Kamilli",   "kamilliKamil123", "7FO01S3", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f)),
+            //    new Driver("Driver 1.Driver", "kamilliKamil123", "IPJ801S", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
+            //    new Driver("Driver 2.Driver", "kamilliKamil123", "A123456", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
+            //    new Driver("Driver 3.Driver", "kamilliKamil123", "ASD245H", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
+            //    new Driver("Driver 4.Driver", "kamilliKamil123", "AJNDSU2", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
+            //    new Driver("Driver 4.Driver", "kamilliKamil123", "IUN891K", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
+            //    new Driver("Driver 4.Driver", "kamilliKamil123", "A12AD2R", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
+            //    new Driver("Driver 4.Driver", "kamilliKamil123", "B123456", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
+            //    new Driver("Driver 4.Driver", "kamilliKamil123", "A12B656", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
+            //    new Driver("Driver 5.Driver", "kamilliKamil123", "C123456", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m235i xDrive ", 2022, "77-ZZ-777", TaxiTypes.Comfort, 1.4f))
+            //};
+        }
 
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
 
-            //DataFacade.Save();
         }
 
         #region Methods
@@ -182,9 +182,9 @@ namespace WolfTaxi_WPF
                 AdminPanel.Close();
             }
             AppWindow = new();
-            Container.GetInstance<ProfilePageVM>().User  = DataFacade.User;
-            Container.GetInstance<MapPageVM>().User  = DataFacade.User;
-            Container.GetInstance<HistoryPageVM>().User  = DataFacade.User;
+            Container.GetInstance<ProfilePageVM>().User = DataFacade.User;
+            Container.GetInstance<MapPageVM>().User = DataFacade.User;
+            Container.GetInstance<HistoryPageVM>().User = DataFacade.User;
             AppWindow.ShowDialog();
         }
 

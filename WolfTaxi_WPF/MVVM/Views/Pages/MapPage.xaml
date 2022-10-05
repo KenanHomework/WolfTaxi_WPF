@@ -4,22 +4,26 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WolfTaxi_WPF.MVVM.Views.Pages"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:esri="clr-namespace:Esri.ArcGISRuntime.UI.Controls;assembly=Esri.ArcGISRuntime.WPF"
       mc:Ignorable="d" Width="1334"  Height="770"
       d:Width="1334"  d:Height="770"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Map Page">
+
+
     <DockPanel>
         
         <!--#region InputArea-->
 
-        
+        <StackPanel DockPanel.Dock="Top" Width="auto" Height="50">
+            <TextBlock Grid.Column="1" x:Name="InfoText" Foreground="Aqua" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="3" Text="Select Taxi Type for view / edit. After editing the price press the save button."/>
+        </StackPanel>
         
         <!--#endregion-->
 
         <!--#region Map-->
-
-        
+        <esri:MapView x:Name="MainMapView"  />
 
         <!--#endregion-->
 

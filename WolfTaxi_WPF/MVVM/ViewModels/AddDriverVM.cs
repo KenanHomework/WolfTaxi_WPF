@@ -26,13 +26,12 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         #region Members
 
         public string UrlTempPP { get; set; } = string.Empty;
-
+        public string FinCode { get; set; } = string.Empty;
+        public string PasswordTemp { get; set; } = string.Empty;
         public AddDriver Window { get; set; }
-
-        private Driver driver = new();
-
         bool dialogResult = false;
         OpenFileDialog ofd;
+        private Driver driver = new();
 
         public Driver Driver
         {
@@ -83,7 +82,24 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             if (dialogResult)
                 CloudinaryService.DestroyImage("tempdriverpp", App.TempCloudinaryFolderPath);
             Driver.SourceOfPP = dialogResult ? CloudinaryService.UploadImage(ofd.FileName, Driver.ID.ToString(), App.DriverCloudinaryFolderPath) : App.DriverProfilePhoto;
-            App.DataFacade.AddDriver(Driver);
+
+            Driver temp = new(Driver.Username, PasswordTemp, FinCode, Driver.Email, Driver.SourceOfPP, Driver.Phone, Driver.Location, Driver.Taxi);
+
+            ProcessResult res;
+
+            try
+            {
+                res = App.DataFacade.AddDriver(temp);
+            }
+            catch (Exception exc)
+            {
+                SoundService.Error();
+                CMessageBox.Show(exc.Message, CMessageTitle.Error, CMessageButton.Ok, CMessageButton.None);
+                return;
+            }
+
+            if (res != ProcessResult.Success)
+                return;
             Reset();
             SoundService.Succes();
             Window.Close();
@@ -99,6 +115,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
         public void Reset()
         {
             Driver = new();
+            FinCode = String.Empty;
+            PasswordTemp = String.Empty;
         }
 
         public bool AllInfoCorrect()
@@ -107,16 +125,18 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
                !string.IsNullOrWhiteSpace(Driver.Phone) &&
                !string.IsNullOrWhiteSpace(Driver.Taxi.Model) &&
                !string.IsNullOrWhiteSpace(Driver.Taxi.Number) &&
-               Driver.Phone.Length == 10 &&
+               !string.IsNullOrWhiteSpace(FinCode) &&
                !string.IsNullOrWhiteSpace(Window.Password.Password) &&
+               Driver.Phone.Length == 10 &&
                Regex.IsMatch(Driver.Username, "(-?([A-Z].\\s)?([A-Z][a-z]+)\\s?)+([A-Z]'([A-Z][a-z]+))?") &&
                Regex.IsMatch(Driver.Email, "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b") &&
                Regex.IsMatch(Window.Password.Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$") &&
                Regex.IsMatch(Driver.Phone, "(\\+?( |-|\\.)?\\d{3}( |-|\\.)?)?(\\(?\\d{3}\\)?|\\d{2})( |-|\\.)?\\d{2}\\d{2}") &&
+               Regex.IsMatch(FinCode, "(([a-zA-Z0-9]).{6})") &&
                RegxService.CheckControl(ref Window.Location, 3, Color.FromRgb(179, 179, 179)) &&
-            RegxService.CheckControl(ref Window.Model, 3, Color.FromRgb(179, 179, 179)) &&
-            RegxService.CheckCarYear(ref Window.Year, Color.FromRgb(179, 179, 179)) &&
-            RegxService.CheckControl(ref Window.Number, 7, Color.FromRgb(179, 179, 179));
+               RegxService.CheckControl(ref Window.Model, 3, Color.FromRgb(179, 179, 179)) &&
+               RegxService.CheckCarYear(ref Window.Year, Color.FromRgb(179, 179, 179)) &&
+               RegxService.CheckControl(ref Window.Number, 7, Color.FromRgb(179, 179, 179));
 
         #endregion
 

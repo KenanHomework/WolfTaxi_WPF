@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using WolfTaxi_WPF.Commands;
 using WolfTaxi_WPF.Services;
+using WolfTaxi_WPF.MVVM.Views;
+using WolfTaxi_WPF.Enums;
+using WolfTaxi_WPF.Interfaces;
 
 namespace WolfTaxi_WPF.MVVM.ViewModels
 {
-    public class EditDriverVM
+    public class EditDriverVM : IResetable
     {
 
         #region Members
+
+        public Driver RefDriver { get; set; }
 
         private Driver driver;
 
@@ -46,8 +51,18 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
 
         public void Save(object param)
         {
-            App.DataFacade.UpdateDriverInfo(Driver);
+            try
+            {
+                DriverService.UpdateDriver(Driver);
+            }
+            catch (Exception) { throw; }
+
             SoundService.Succes();
+        }
+
+        public void Reset()
+        {
+            Driver = new(RefDriver);
         }
 
         #endregion

@@ -55,7 +55,7 @@
 
                             <Border  HorizontalAlignment="Right" Width="2" Background="#b3b3b3" Height="45" />
 
-                            <!--Driver Addirional Info-->
+                            <!--Driver Additional Info-->
 
                             <Grid Grid.Column="1" Margin="5 0">
                                 <Grid.RowDefinitions>

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WolfTaxi_WPF.Services;
+using WolfTaxi_WPF.Enums;
 
 namespace WolfTaxi_WPF.MVVM.Views
 {
@@ -60,7 +61,16 @@ namespace WolfTaxi_WPF.MVVM.Views
 
         private void SaveClick(object sender, RoutedEventArgs e)
         {
-            App.Container.GetInstance<EditDriverVM>().SaveCommand.Execute(this);
+            try
+            {
+                App.Container.GetInstance<EditDriverVM>().SaveCommand.Execute(this);
+            }
+            catch (Exception exc)
+            {
+                SoundService.Error();
+                CMessageBox.Show(exc.Message, CMessageTitle.Error, CMessageButton.Ok, CMessageButton.None);
+                return;
+            }
             this.Close();
         }
     }

@@ -9,7 +9,7 @@ using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 {
-    public class Driver : Human
+    public class Driver : Human,IUpdateable
     {
 
         #region Members
@@ -20,9 +20,14 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
         private List<Move> history = new();
         private int rating = 0;
         private string sourceOfPP = App.DriverProfilePhoto;
+        private string finCode = String.Empty;
 
 
 
+        public string Fin
+        {
+            get { return finCode; }
+        }
         public string SourceOfPP { get => sourceOfPP; set { sourceOfPP = value; OnPropertyChanged(); } }
         public int Rating
         {
@@ -85,6 +90,27 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         #endregion
 
+        #region Implements
+
+        public void Update(object obj)
+        {
+            if(obj is Driver  driver)
+            {
+                Username = driver.Username;
+                Password = driver.Password;
+                Phone = driver.Phone;
+                Email = driver.Email;
+                Rating = driver.Rating;
+                Balance = driver.Balance;
+                Location = driver.Location;
+                Taxi = driver.Taxi;
+                History = driver.History;
+                SourceOfPP = driver.SourceOfPP;
+            }
+        }
+
+        #endregion
+
         ~Driver()
         {
             if (SourceOfPP != App.DriverProfilePhoto)
@@ -97,6 +123,7 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
             Password = new();
             Phone = String.Empty;
             Email = String.Empty;
+            finCode = String.Empty;
             Rating = 0;
             Balance = 0;
             Location = new();
@@ -111,6 +138,7 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
             Password = driver.Password;
             Phone = driver.Phone;
             Email = driver.Email;
+            finCode = driver.finCode;
             Rating = driver.Rating;
             Balance = driver.Balance;
             Location = driver.Location;
@@ -119,17 +147,19 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
             SourceOfPP = driver.SourceOfPP;
         }
 
-        public Driver(string username, string password, string email, string sourceOfPP, string phone, Location location, Taxi taxi) : base(username, password, email, phone)
+        public Driver(string username, string password, string fin, string email, string sourceOfPP, string phone, Location location, Taxi taxi) : base(username, password, email, phone)
         {
             SourceOfPP = sourceOfPP;
             Location = location;
+            finCode = fin;
             Taxi = taxi;
         }
 
-        public Driver(string username, string password, string email, string phone, Location location, Taxi taxi) : base(username, password, email, phone)
+        public Driver(string username, string password, string fin, string email, string phone, Location location, Taxi taxi) : base(username, password, email, phone)
         {
             Location = location;
             Taxi = taxi;
+            finCode = fin;
         }
 
     }

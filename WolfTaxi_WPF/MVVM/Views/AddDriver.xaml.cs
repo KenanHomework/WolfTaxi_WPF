@@ -65,7 +65,13 @@ namespace WolfTaxi_WPF.MVVM.Views
         private void Password_PasswordChanged(object sender, RoutedEventArgs e)
         {
             RegxService.CheckControl(ref Password, 8, Color.FromRgb(179, 179, 179), "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$");
-            App.Container.GetInstance<SignUpVM>().Password = Password.Password;
+            App.Container.GetInstance<AddDriverVM>().PasswordTemp = Password.Password;
+        }
+
+        private void Fin_TextChanged(object sender, RoutedEventArgs e)
+        {
+            RegxService.CheckControl(ref Fin, 7, Color.FromRgb(179, 179, 179), "(([a-zA-Z0-9]).{6})");
+            App.Container.GetInstance<AddDriverVM>().FinCode = Fin.Text.ToUpper();
         }
 
         private void Locatoion_TextChanged(object sender, TextChangedEventArgs e)

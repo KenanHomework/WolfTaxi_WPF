@@ -89,6 +89,8 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
             About = new();
             Adjust = new();
             Profile = new();
+            Map = new();
+            History = new ();
         }
 
         #endregion
