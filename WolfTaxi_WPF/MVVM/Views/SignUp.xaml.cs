@@ -41,7 +41,7 @@ namespace WolfTaxi_WPF.MVVM.Views
 
 
         private void Phone_TextChanged(object sender, TextChangedEventArgs e)
-                    => RegxService.CheckControl(ref Phone, 10, Color.FromRgb(237, 236, 239), "(\\+?( |-|\\.)?\\d{3}( |-|\\.)?)?(\\(?\\d{3}\\)?|\\d{2})( |-|\\.)?\\d{2}\\d{2}");
+                    => RegxService.CheckControl(ref Phone, 10, Color.FromRgb(237, 236, 239), "^((\\+050|055)|0)\\s?(4(099|055|050|077|070|010)\\d{1}|\\d{1})\\/?(((\\s?|\\.?)\\d{2}){3}|((\\s?|\\.)\\d{3}){2})\\b");
 
         private void PasswordEye_Click(object sender, RoutedEventArgs e)
         {

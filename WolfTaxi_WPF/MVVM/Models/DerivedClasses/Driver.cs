@@ -9,7 +9,7 @@ using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 {
-    public class Driver : Human,IUpdateable
+    public class Driver : Human, IUpdateable
     {
 
         #region Members
@@ -94,7 +94,7 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 
         public void Update(object obj)
         {
-            if(obj is Driver  driver)
+            if (obj is Driver driver)
             {
                 Username = driver.Username;
                 Password = driver.Password;
@@ -132,9 +132,10 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
             SourceOfPP = "https://res.cloudinary.com/kysbv/image/upload/v1658570801/WolfTaxi/driver_pp.png";
         }
 
-        public Driver(Driver driver) : this()
+        public Driver(Driver driver, bool readId = false) : this()
         {
             Username = driver.Username;
+            ID = readId ? driver.ID : ID;
             Password = driver.Password;
             Phone = driver.Phone;
             Email = driver.Email;

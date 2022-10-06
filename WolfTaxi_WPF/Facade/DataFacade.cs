@@ -113,10 +113,6 @@ namespace WolfTaxi_WPF.Facade
             if (Drivers.Count <= 0)
                 Drivers = new();
 
-            // Check Driver Exis
-            if (!DriverService.DriverExis(driver))
-                return;
-
             Drivers.ForEach(d =>
             {
                 if (d.ID == driver.ID)

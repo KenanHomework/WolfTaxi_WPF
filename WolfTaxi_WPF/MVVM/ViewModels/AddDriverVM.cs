@@ -131,7 +131,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
                Regex.IsMatch(Driver.Username, "(-?([A-Z].\\s)?([A-Z][a-z]+)\\s?)+([A-Z]'([A-Z][a-z]+))?") &&
                Regex.IsMatch(Driver.Email, "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b") &&
                Regex.IsMatch(Window.Password.Password, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$") &&
-               Regex.IsMatch(Driver.Phone, "(\\+?( |-|\\.)?\\d{3}( |-|\\.)?)?(\\(?\\d{3}\\)?|\\d{2})( |-|\\.)?\\d{2}\\d{2}") &&
+               Regex.IsMatch(Driver.Phone, "^((\\+050|055)|0)\\s?(4(099|055|050|077|070|010)\\d{1}|\\d{1})\\/?(((\\s?|\\.?)\\d{2}){3}|((\\s?|\\.)\\d{3}){2})\\b") &&
                Regex.IsMatch(FinCode, "(([a-zA-Z0-9]).{6})") &&
                RegxService.CheckControl(ref Window.Location, 3, Color.FromRgb(179, 179, 179)) &&
                RegxService.CheckControl(ref Window.Model, 3, Color.FromRgb(179, 179, 179)) &&

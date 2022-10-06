@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WolfTaxi_WPF.Enums;
+using WolfTaxi_WPF.MVVM.Models.BaseClasses;
 using WolfTaxi_WPF.MVVM.Models.DerivedClasses;
 using WolfTaxi_WPF.MVVM.ViewModels;
 using WolfTaxi_WPF.Services;
@@ -30,7 +31,9 @@ namespace WolfTaxi_WPF.MVVM.Views
             DataContext = this;
         }
 
-        public User User { get; set; }
+        public string ToolTipStr { get; set; } = "Password Requirements :\n* Use at least 8 characters \n* Use upper and lower case characters \n* Use 1 or more numbers \n* Recommend use special characters";
+
+        public Human User { get; set; }
 
         public string Password { get; set; }
 

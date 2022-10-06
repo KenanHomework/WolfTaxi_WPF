@@ -84,9 +84,10 @@ namespace WolfTaxi_WPF.MVVM.Views
             if (!State && DriverListView.SelectedIndex >= 0)
             {
                 EditDriver editDriver = new();
-                App.Container.GetInstance<EditDriverVM>().Driver = (Driver)DriverListView.SelectedItem;
-                App.Container.GetInstance<EditDriverVM>().RefDriver = (Driver)DriverListView.SelectedItem;
+                App.Container.GetInstance<EditDriverVM>().Driver = new((Driver)DriverListView.SelectedItem,true);
+                App.Container.GetInstance<EditDriverVM>().RefDriver = new((Driver)DriverListView.SelectedItem,true);
                 editDriver.ShowDialog();
+                RefreshDriversListViewSource();
             }
             else if (DriverListView.SelectionMode == SelectionMode.Multiple)
                 DriverListView.SelectedItems.Add(DriverListView.SelectedItem);
