@@ -18,6 +18,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using CloudinaryDotNet;
 using System.Windows.Media;
+using System.Text.Json;
 
 namespace WolfTaxi_WPF
 {
@@ -78,10 +79,15 @@ namespace WolfTaxi_WPF
         {
             CreateDirectorys();
             Register();
+            DataFacade.Load();
+            using (var jsonDoc = JsonDocument.Parse(File.ReadAllText("appconfig.json")))
+            {
+                JsonElement key = jsonDoc.RootElement.GetProperty("EsriAPIKey");
+                Esri.ArcGISRuntime.ArcGISRuntimeEnvironment.ApiKey = key.ToString();
+            }
 
             // Test -> testUser1
 
-            DataFacade.Load();
 
 
             DataFacade.Drivers = new List<Driver>() {
@@ -100,12 +106,6 @@ namespace WolfTaxi_WPF
             //    new Driver("Driver 4.Driver", "kamilliKamil123", "A12B656", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
             //    new Driver("Driver 5.Driver", "kamilliKamil123", "C123456", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m235i xDrive ", 2022, "77-ZZ-777", TaxiTypes.Comfort, 1.4f))
             //};
-        }
-
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-
         }
 
         #region Methods

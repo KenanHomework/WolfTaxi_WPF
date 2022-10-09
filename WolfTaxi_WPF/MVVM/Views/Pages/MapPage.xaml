@@ -8,24 +8,70 @@
       xmlns:esri="clr-namespace:Esri.ArcGISRuntime.UI.Controls;assembly=Esri.ArcGISRuntime.WPF"
       mc:Ignorable="d" Width="1334"  Height="770"
       d:Width="1334"  d:Height="770"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1334"
       Title="Map Page">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
+        <!--#region RouteBar-->
 
-    <DockPanel>
-        
-        <!--#region InputArea-->
+        <Grid Grid.Row="0"  Panel.ZIndex="1">
+            <Grid.Background>
+                <SolidColorBrush Color="#2c2b3f" Opacity="0.8"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
 
-        <StackPanel DockPanel.Dock="Top" Width="auto" Height="50">
-            <TextBlock Grid.Column="1" x:Name="InfoText" Foreground="Aqua" FontSize="20" FontFamily="Segoe UI Black" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="3" Text="Select Taxi Type for view / edit. After editing the price press the save button."/>
-        </StackPanel>
-        
+            <ComboBox materialDesign:HintAssist.Hint="Start Address"
+                        MinWidth="72" IsEditable="True" Background="#38304c" 
+                        FontSize="20" Margin="5 0" Foreground="White" 
+                        Style="{StaticResource ComboBoxFlatStyle}">
+                <ComboBox.ToolTip>
+                    <ToolTip Content="you do not need to put 'Baku' in front of the address, by default the search for 'Baku' will be performed" Style="{StaticResource tt_style}"/>
+                </ComboBox.ToolTip>
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+
+            <TextBox Foreground="#edecef" Background="#38304c"                     
+              Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="20"
+              materialDesign:HintAssist.Hint="Destination" 
+              materialDesign:HintAssist.Background="#38304c"
+              Name="TBX" Grid.Column="1" Margin="5 0"/>
+
+            <Button Name="StartNavigationButton" Grid.Column="2"/>
+
+        </Grid>
+
         <!--#endregion-->
 
-        <!--#region Map-->
-        <esri:MapView x:Name="MainMapView"  />
+        <!--#region MapView-->
+
+        <esri:MapView x:Name="WTMap" Grid.RowSpan="23"/>
 
         <!--#endregion-->
 
-    </DockPanel>
+        <!--#region UserTools-->
+        <Border Padding="0" Grid.RowSpan="3" Margin="10"  Panel.ZIndex="2" Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center" CornerRadius="100">
+            <Button Style="{StaticResource MaterialDesignPaperDarkButton}"              
+                Click="RecenterButton_Click" BorderThickness="0" Padding="0"
+                Background="Transparent" Foreground="#c7c7c7" Width="30" Height="30" Name="RecenterButton">
+                <materialDesign:PackIcon Kind="CrosshairsGps" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Button>
+        </Border>
+
+        <!--#endregion-->
+
+    </Grid>
 </Page>
