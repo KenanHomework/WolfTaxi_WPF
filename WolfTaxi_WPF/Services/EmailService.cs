@@ -35,7 +35,7 @@ namespace WolfTaxi_WPF.Services
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
             mail.From = new MailAddress("your_email_address@gmail.com");
-            mail.To.Add("kenanysbv@gmail.com");
+            mail.To.Add(ToAdress);
             mail.Subject = "Email Verification";
 
             mail.IsBodyHtml = true;
