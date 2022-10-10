@@ -28,7 +28,7 @@
             </Style.Triggers>
 
             <Setter Property="Width" Value="auto"/>
-            <Setter Property="Height" Value="60"/>
+            <Setter Property="Height" Value="45"/>
             <Setter Property="Background"  Value="#200a30"/>
             <Setter Property="Foreground"  Value="#f8f9fd"/>
             <Setter Property="Cursor" Value="Hand"/>
@@ -36,16 +36,16 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ComboBoxItem">
-                        <Border HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Height="50" Width="600" Margin="0 5" Background="{TemplateBinding Background}">
+                        <Border HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Height="30" Width="600" Margin="0 5" Background="{TemplateBinding Background}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="40"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <!-- Icon -->
-                                <materialDesign:PackIcon Kind="{Binding Kind,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0"/>
+                                <materialDesign:PackIcon Kind="{Binding Kind,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10 0"/>
 
-                                <TextBlock Name="Name" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Margin="5 0"
+                                <TextBlock Name="Name" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Margin="5 0" TextWrapping="Wrap"
                             Text="{Binding Name,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"  FontFamily="Bahnschrift Condensed"/>
 
 
@@ -62,7 +62,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="35"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>

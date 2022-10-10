@@ -12,6 +12,16 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
         public string Name { get; set; } = string.Empty;
 
         public string Kind { get; set; } = "History";
+
+        public Location Location { get; set; } = new Location();
+
+        public AddressComboBoxItemInfo(string name, string kind, Location location)
+        {
+            Name = name;
+            Kind = kind;
+            Location = location;
+        }
+
         public AddressComboBoxItemInfo(string name, string kind)
         {
             Name = name;
@@ -23,9 +33,10 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 
         }
 
-        public AddressComboBoxItemInfo(string name)
+        public AddressComboBoxItemInfo(string name,Location location)
         {
             Name = name;
+            Location = location;
         }
 
         public override string ToString() => Name;

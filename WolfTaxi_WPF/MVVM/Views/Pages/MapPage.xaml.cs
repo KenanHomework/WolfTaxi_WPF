@@ -27,6 +27,14 @@ using MaterialDesignThemes.Wpf;
 using WolfTaxi_WPF.Enums;
 using Esri.ArcGISRuntime.UI.Controls;
 using System.Xml.Serialization;
+using System.Reflection.Metadata.Ecma335;
+using Windows.Services.Maps;
+using System.Dynamic;
+using Esri.ArcGISRuntime.Tasks.Geocoding;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using WolfTaxi_WPF.Services;
 
 namespace WolfTaxi_WPF.MVVM.Views.Pages
 {
@@ -47,22 +55,39 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
         private Graphic _routeAheadGraphic;
         private Graphic _routeTraveledGraphic;
 
-        private readonly MapPoint _start = new MapPoint(-117.160386727, 32.706608, SpatialReferences.Wgs84);
+        private MapPoint _start = null;
 
-        private readonly MapPoint _destination = new MapPoint(-117.147230, 32.730467, SpatialReferences.Wgs84);
+        private MapPoint _destination = null;
 
         // Feature service for routing in San Diego.
-        private readonly Uri _routingUri = new Uri("https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route");
+        private readonly Uri _routingUri = new Uri("https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World");
+
+        private readonly Uri _serviceUri = new Uri("https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer");
+
 
         public string CaseInfo { get; set; } = string.Empty;
 
         public RelayCommand StartPreprocess { get; set; }
+
+        public AddressRouteType AddressType { get; set; } = AddressRouteType.None;
+
+        private LocatorTask _geocoder;
 
         public MapPage()
         {
             InitializeComponent();
             InitializeUIElements();
             InitializeMap();
+
+            try
+            {
+                _geocoder = new LocatorTask(_serviceUri);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error");
+            }
+
             // Create the map view.
             DataContext = this;
             StartPreprocess = new(StartPreprocessRun, StartPreprocessCanRun);
@@ -70,24 +95,22 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
 
         public void StartPreprocessRun(object param)
         {
-            CMessageBox.Show("Starting Preprocessing.... ", CMessageTitle.Info, CMessageButton.Ok, CMessageButton.None);
+            WTMap.CancelSetViewpointOperations();
+            StartInitialize();
         }
 
-        public bool StartPreprocessCanRun(object param)
-        {
-            return true;
-        }
+        public bool StartPreprocessCanRun(object param) => _start != null && _destination != null;
 
         public void InitializeUIElements()
         {
             StartAddress.Items.Add(new AddressComboBoxItemInfo("My Location", "CrosshairsGps"));
             StartAddress.Items.Add(new AddressComboBoxItemInfo("Select From Map", "MapMarkerRadius"));
             DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Select From Map", "MapMarkerRadius"));
-            StartAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 1"));
-            StartAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 2"));
-            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 3"));
-            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 4"));
-            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 5"));
+            StartAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 1", new Models.GeneralClasses.Location(49.9516, 40.4005)));
+            StartAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 2", new Models.GeneralClasses.Location(49.8716, 40.8005)));
+            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 3", new Models.GeneralClasses.Location(49.2516, 40.4005)));
+            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 4", new Models.GeneralClasses.Location(49.5516, 40.4005)));
+            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 5", new Models.GeneralClasses.Location(49.8514, 40.4006)));
 
         }
 
@@ -135,9 +158,32 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
                 WTMap.GraphicsOverlays.Add(new GraphicsOverlay());
 
                 // Add graphics for the stops.
+                var startSymbol = new SimpleLineSymbol(SimpleLineSymbolStyle.Solid, System.Drawing.Color.Blue, 2);
+                Graphic _startGraphic = new Graphic(_start, new SimpleMarkerSymbol
+                {
+                    Style = SimpleMarkerSymbolStyle.Circle,
+                    Color = System.Drawing.Color.AliceBlue,
+                    Size = 8,
+                    Outline = startSymbol
+                }
+                );
+
+                var endOutlineSymbol = new SimpleLineSymbol(style: SimpleLineSymbolStyle.Solid, color: System.Drawing.Color.Red, width: 2);
+                Graphic _endGraphic = new Graphic(_destination, new SimpleMarkerSymbol
+                {
+                    Style = SimpleMarkerSymbolStyle.Square,
+                    AngleAlignment = SymbolAngleAlignment.Map,
+                    Color = System.Drawing.Color.Green,
+                    Size = 8,
+                    Outline = endOutlineSymbol
+                }
+                );
+
+
+
                 SimpleMarkerSymbol stopSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbolStyle.Diamond, Color.OrangeRed, 20);
-                WTMap.GraphicsOverlays[0].Graphics.Add(new Graphic(_start, stopSymbol));
-                WTMap.GraphicsOverlays[0].Graphics.Add(new Graphic(_destination, stopSymbol));
+                WTMap.GraphicsOverlays[0].Graphics.Add(_startGraphic);
+                WTMap.GraphicsOverlays[0].Graphics.Add(_endGraphic);
 
                 // Create a graphic (with a dashed line symbol) to represent the route.
                 _routeAheadGraphic = new Graphic(_route.RouteGeometry) { Symbol = new SimpleLineSymbol(SimpleLineSymbolStyle.Dash, Color.BlueViolet, 5) };
@@ -254,6 +300,66 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
             RecenterButton.IsEnabled = e != LocationDisplayAutoPanMode.Navigation;
         }
 
+        private async void ShowNearAddress(object sender, GeoViewInputEventArgs e)
+        {
+            try
+            {
+                // Clear the existing graphics & callouts.
+                WTMap.DismissCallout();
+
+                WTMap.GraphicsOverlays = new() { new()};
+                WTMap.GraphicsOverlays[0].Graphics.Clear();
+
+                // Add a graphic for the tapped point.
+                Graphic pinGraphic = await GraphicForPoint(e.Location);
+                WTMap.GraphicsOverlays[0].Graphics.Add(pinGraphic);
+
+                // Normalize the geometry - needed if the user crosses the international date line.
+                MapPoint normalizedPoint = (MapPoint)GeometryEngine.NormalizeCentralMeridian(e.Location);
+
+                // Reverse geocode to get addresses.
+                IReadOnlyList<GeocodeResult> addresses = await _geocoder.ReverseGeocodeAsync(normalizedPoint);
+
+                // Get the first result.
+                GeocodeResult address = addresses.First();
+
+                // Use the city and region for the Callout Title.
+                string calloutTitle = address.Attributes["Address"].ToString();
+
+                // Use the metro area for the Callout Detail.
+                string calloutDetail = address.Attributes["City"] +
+                                       " " + address.Attributes["Region"] +
+                                       " " + address.Attributes["CountryCode"];
+
+                // Define the callout.
+                CalloutDefinition calloutBody = new CalloutDefinition(calloutTitle, calloutDetail);
+
+                // Show the callout on the map at the tapped location.
+                WTMap.ShowCalloutForGeoElement(pinGraphic, e.Position, calloutBody);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                MessageBox.Show("No results found.", "No results");
+            }
+        }
+
+        private async Task<Graphic> GraphicForPoint(MapPoint point)
+        {
+            // Get current assembly that contains the image.
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+
+            // Create new symbol using asynchronous factory method from stream.
+            PictureMarkerSymbol pinSymbol = AddressType == AddressRouteType.Start ? new(new Uri("https://res.cloudinary.com/kysbv/image/upload/v1665405004/WolfTaxi/start_flag_icon.png")) : new(new Uri("https://res.cloudinary.com/kysbv/image/upload/v1665405004/WolfTaxi/destination_flag_icon.png")); ;
+            pinSymbol.Width = 60;
+            pinSymbol.Height = 60;
+            // The image is a pin; offset the image so that the pinpoint
+            //     is on the point rather than the image's true center.
+            pinSymbol.LeaderOffsetX = 30;
+            pinSymbol.OffsetY = 14;
+            return new Graphic(point, pinSymbol);
+        }
+
         private void WTMap_GeoViewTapped(object sender, GeoViewInputEventArgs e)
         {
             // Get the user-tapped location
@@ -272,9 +378,28 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
             CalloutDefinition myCalloutDefinition = new CalloutDefinition($"{CaseInfo} Location:", mapLocationDescription);
 
             // Display the callout
-            WTMap.ShowCalloutAt(mapLocation, myCalloutDefinition);
+            ShowNearAddress(sender, e);
+
+            // Assign Location
+            AssignLocation(projectedLocation);
         }
 
+        public void AssignLocation(MapPoint location)
+        {
+            switch (AddressType)
+            {
+                case AddressRouteType.Start:
+                    _start = location;
+                    break;
+                case AddressRouteType.Destination:
+                    _destination = location;
+                    break;
+                case AddressRouteType.None:
+                    break;
+                default:
+                    break;
+            }
+        }
 
         private void RecenterButton_Click(object sender, RoutedEventArgs e)
         {
@@ -295,15 +420,9 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
             WTMap.LocationDisplay?.DataSource?.StopAsync();
         }
 
-        private void StartAddress_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            AddressSelectorSelectionChanged(AddressRouteType.Start);
-        }
+        private void StartAddress_SelectionChanged(object sender, SelectionChangedEventArgs e) => AddressSelectorSelectionChanged(AddressRouteType.Start);
 
-        private void DestinationAddress_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            AddressSelectorSelectionChanged(AddressRouteType.Destination);
-        }
+        private void DestinationAddress_SelectionChanged(object sender, SelectionChangedEventArgs e) => AddressSelectorSelectionChanged(AddressRouteType.Destination);
 
         public void AddressSelectorSelectionChanged(AddressRouteType type)
         {
@@ -332,7 +451,20 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
                 }
             }
 
-            int index = type == AddressRouteType.Start ? StartAddress.SelectedIndex : DestinationAddress.SelectedIndex;
+            int index = -1;
+            AddressType = type;
+
+            if (AddressType == AddressRouteType.Start)
+            {
+                index = StartAddress.SelectedIndex;
+                DestinationAddress.SelectedIndex = -1;
+            }
+            else if (AddressType == AddressRouteType.Destination)
+            {
+                index = DestinationAddress.SelectedIndex;
+                StartAddress.SelectedIndex = -1;
+            }
+
 
             MapSelection(false);
 
@@ -356,13 +488,27 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
                         return;
                     }
                 default:
-                    break;
+                    MapSelection(false);
+                    if (AddressType == AddressRouteType.None)
+                        break;
+                    AddressComboBoxItemInfo address = (AddressComboBoxItemInfo)(AddressType == AddressRouteType.Start ? StartAddress.SelectedValue : DestinationAddress.SelectedValue);
+                    MapPoint point = address.Location.Point;
+                    AssignLocation(point);
+                    ShowCallout(point);
+                    return;
             }
 
             MapSelection(false);
         }
-    }
 
+
+        public void ShowCallout(MapPoint point)
+        {
+            WTMap.CancelSetViewpointOperations();
+            WTMap.ShowCalloutAt(point, new(CaseInfo));
+        }
+
+    }
     // This location data source uses an input data source and a route tracker.
     // The location source that it updates is based on the snapped-to-route location from the route tracker.
     public class RouteTrackerDisplayLocationDataSource : LocationDataSource

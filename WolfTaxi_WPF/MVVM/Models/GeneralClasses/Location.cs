@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Esri.ArcGISRuntime.Geometry;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,30 +13,7 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
     {
         #region Members
 
-        private float latitude;
-
-        private float longitude;
-
-        private string getString;
-
-        public string GetString
-        {
-            get { return $"{Latitude} {Longitude}"; }
-            set { getString = value; }
-        }
-
-
-        public float Latitude
-        {
-            get { return latitude; }
-            set { latitude = value; OnPropertyChanged(); }
-        }
-
-        public float Longitude
-        {
-            get { return longitude; }
-            set { longitude = value; OnPropertyChanged(); }
-        }
+        public MapPoint Point { get; set; } = null;
 
         #endregion
 
@@ -49,15 +27,11 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 
         #endregion
 
-        public Location(float lonlatitude, float longitude)
-        {
-            Latitude = latitude;
-            Longitude = longitude;
-        }
+        public Location(double x, double y) => Point = new(x,y, SpatialReferences.Wgs84);
 
         public Location()
         {
-
+            
         }
     }
 }

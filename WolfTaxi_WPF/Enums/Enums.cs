@@ -15,6 +15,6 @@ namespace WolfTaxi_WPF.Enums
 
     public enum CMessageTitle { Error, Info, Warning, Confirm }
 
-    public enum AddressRouteType {Start,Destination }
+    public enum AddressRouteType {Start,Destination,None }
 
 }
