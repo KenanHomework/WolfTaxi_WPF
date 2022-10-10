@@ -20,6 +20,13 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WolfTaxi_WPF.MVVM.Models.GeneralClasses;
+using Location = Esri.ArcGISRuntime.Location.Location;
+using WolfTaxi_WPF.Commands;
+using MaterialDesignThemes.Wpf;
+using WolfTaxi_WPF.Enums;
+using Esri.ArcGISRuntime.UI.Controls;
+using System.Xml.Serialization;
 
 namespace WolfTaxi_WPF.MVVM.Views.Pages
 {
@@ -40,28 +47,58 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
         private Graphic _routeAheadGraphic;
         private Graphic _routeTraveledGraphic;
 
-        // San Diego Convention Center.
-        private readonly MapPoint _conventionCenter = new MapPoint(-117.160386727, 32.706608, SpatialReferences.Wgs84);
+        private readonly MapPoint _start = new MapPoint(-117.160386727, 32.706608, SpatialReferences.Wgs84);
 
-        // USS San Diego Memorial.
-        private readonly MapPoint _memorial = new MapPoint(-117.173034, 32.712327, SpatialReferences.Wgs84);
-
-        // RH Fleet Aerospace Museum.
-        private readonly MapPoint _aerospaceMuseum = new MapPoint(-117.147230, 32.730467, SpatialReferences.Wgs84);
+        private readonly MapPoint _destination = new MapPoint(-117.147230, 32.730467, SpatialReferences.Wgs84);
 
         // Feature service for routing in San Diego.
         private readonly Uri _routingUri = new Uri("https://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/Route");
 
+        public string CaseInfo { get; set; } = string.Empty;
+
+        public RelayCommand StartPreprocess { get; set; }
+
         public MapPage()
         {
             InitializeComponent();
+            InitializeUIElements();
+            InitializeMap();
             // Create the map view.
-            WTMap.Map = new Map(BasemapStyle.ArcGISNova);
-            WTMap.LocationDisplay.IsEnabled = true;
-            WTMap.LocationDisplay.AutoPanMode = Esri.ArcGISRuntime.UI.LocationDisplayAutoPanMode.Recenter;
+            DataContext = this;
+            StartPreprocess = new(StartPreprocessRun, StartPreprocessCanRun);
+        }
+
+        public void StartPreprocessRun(object param)
+        {
+            CMessageBox.Show("Starting Preprocessing.... ", CMessageTitle.Info, CMessageButton.Ok, CMessageButton.None);
+        }
+
+        public bool StartPreprocessCanRun(object param)
+        {
+            return true;
+        }
+
+        public void InitializeUIElements()
+        {
+            StartAddress.Items.Add(new AddressComboBoxItemInfo("My Location", "CrosshairsGps"));
+            StartAddress.Items.Add(new AddressComboBoxItemInfo("Select From Map", "MapMarkerRadius"));
+            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Select From Map", "MapMarkerRadius"));
+            StartAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 1"));
+            StartAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 2"));
+            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 3"));
+            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 4"));
+            DestinationAddress.Items.Add(new AddressComboBoxItemInfo("Address __ 5"));
+
         }
 
         public void StartInitialize() => _ = Initialize();
+
+        public void InitializeMap()
+        {
+            WTMap.Map = new Map(BasemapStyle.ArcGISNova);
+            WTMap.LocationDisplay.IsEnabled = true;
+            WTMap.LocationDisplay.AutoPanMode = LocationDisplayAutoPanMode.CompassNavigation;
+        }
 
         private async Task Initialize()
         {
@@ -83,12 +120,11 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
                 routeParams.OutputSpatialReference = SpatialReferences.Wgs84;
 
                 // Create stops for each location.
-                Stop stop1 = new Stop(_conventionCenter) { Name = "San Diego Convention Center" };
-                Stop stop2 = new Stop(_memorial) { Name = "USS San Diego Memorial" };
-                Stop stop3 = new Stop(_aerospaceMuseum) { Name = "RH Fleet Aerospace Museum" };
+                Stop stop1 = new Stop(_start) { Name = "Start Point" };
+                Stop stop2 = new Stop(_destination) { Name = "Destination" };
 
                 // Assign the stops to the route parameters.
-                List<Stop> stopPoints = new List<Stop> { stop1, stop2, stop3 };
+                List<Stop> stopPoints = new List<Stop> { stop1, stop2 };
                 routeParams.SetStops(stopPoints);
 
                 // Get the route results.
@@ -100,9 +136,8 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
 
                 // Add graphics for the stops.
                 SimpleMarkerSymbol stopSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbolStyle.Diamond, Color.OrangeRed, 20);
-                WTMap.GraphicsOverlays[0].Graphics.Add(new Graphic(_conventionCenter, stopSymbol));
-                WTMap.GraphicsOverlays[0].Graphics.Add(new Graphic(_memorial, stopSymbol));
-                WTMap.GraphicsOverlays[0].Graphics.Add(new Graphic(_aerospaceMuseum, stopSymbol));
+                WTMap.GraphicsOverlays[0].Graphics.Add(new Graphic(_start, stopSymbol));
+                WTMap.GraphicsOverlays[0].Graphics.Add(new Graphic(_destination, stopSymbol));
 
                 // Create a graphic (with a dashed line symbol) to represent the route.
                 _routeAheadGraphic = new Graphic(_route.RouteGeometry) { Symbol = new SimpleLineSymbol(SimpleLineSymbolStyle.Dash, Color.BlueViolet, 5) };
@@ -128,33 +163,33 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
 
         private void StartNavigation(object sender, RoutedEventArgs e)
         {
-            //    // Disable the start navigation button.
-            //    StartNavigationButton.IsEnabled = false;
+            // Disable the start navigation button.
+            StartNavigationButton.IsEnabled = false;
 
-            //    // Get the directions for the route.
-            //    _directionsList = _route.DirectionManeuvers;
+            // Get the directions for the route.
+            _directionsList = _route.DirectionManeuvers;
 
-            //    // Create a route tracker.
-            //    _tracker = new RouteTracker(_routeResult, 0, true);
+            // Create a route tracker.
+            _tracker = new RouteTracker(_routeResult, 0, true);
 
-            //    // Handle route tracking status changes.
-            //    _tracker.TrackingStatusChanged += TrackingStatusUpdated;
+            // Handle route tracking status changes.
+            _tracker.TrackingStatusChanged += TrackingStatusUpdated;
 
-            //    // Turn on navigation mode for the map view.
-            //    WTMap.LocationDisplay.AutoPanMode = LocationDisplayAutoPanMode.Navigation;
-            //    WTMap.LocationDisplay.AutoPanModeChanged += AutoPanModeChanged;
+            // Turn on navigation mode for the map view.
+            WTMap.LocationDisplay.AutoPanMode = LocationDisplayAutoPanMode.Navigation;
+            WTMap.LocationDisplay.AutoPanModeChanged += AutoPanModeChanged;
 
-            //    // Add a data source for the location display.
-            //    var simulationParameters = new SimulationParameters(DateTimeOffset.Now, 40.0);
-            //    var simulatedDataSource = new SimulatedLocationDataSource();
-            //    simulatedDataSource.SetLocationsWithPolyline(_route.RouteGeometry, simulationParameters);
-            //    WTMap.LocationDisplay.DataSource = new RouteTrackerDisplayLocationDataSource(simulatedDataSource, _tracker);
+            // Add a data source for the location display.
+            var simulationParameters = new SimulationParameters(DateTimeOffset.Now, 40.0);
+            var simulatedDataSource = new SimulatedLocationDataSource();
+            simulatedDataSource.SetLocationsWithPolyline(_route.RouteGeometry, simulationParameters);
+            WTMap.LocationDisplay.DataSource = new RouteTrackerDisplayLocationDataSource(simulatedDataSource, _tracker);
 
-            //    // Use this instead if you want real location:
-            //    // WTMap.LocationDisplay.DataSource = new RouteTrackerLocationDataSource(new SystemLocationDataSource(), _tracker);
+            // Use this instead if you want real location:
+            // WTMap.LocationDisplay.DataSource = new RouteTrackerLocationDataSource(new SystemLocationDataSource(), _tracker);
 
-            //    // Enable the location display (this wil start the location data source).
-            //    WTMap.LocationDisplay.IsEnabled = true;
+            // Enable the location display (this wil start the location data source).
+            WTMap.LocationDisplay.IsEnabled = true;
         }
 
         private void TrackingStatusUpdated(object sender, RouteTrackerTrackingStatusChangedEventArgs e)
@@ -219,10 +254,32 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
             RecenterButton.IsEnabled = e != LocationDisplayAutoPanMode.Navigation;
         }
 
+        private void WTMap_GeoViewTapped(object sender, GeoViewInputEventArgs e)
+        {
+            // Get the user-tapped location
+            MapPoint mapLocation = e.Location;
+
+            // Project the user-tapped map point location to a geometry
+            Geometry myGeometry = GeometryEngine.Project(mapLocation, SpatialReferences.Wgs84);
+
+            // Convert to geometry to a traditional Lat/Long map point
+            MapPoint projectedLocation = (MapPoint)myGeometry;
+
+            // Format the display callout string based upon the projected map point (example: "Lat: 100.123, Long: 100.234")
+            string mapLocationDescription = string.Format("Lat: {0:F3} Long:{1:F3}", projectedLocation.Y, projectedLocation.X);
+
+            // Create a new callout definition using the formatted string
+            CalloutDefinition myCalloutDefinition = new CalloutDefinition($"{CaseInfo} Location:", mapLocationDescription);
+
+            // Display the callout
+            WTMap.ShowCalloutAt(mapLocation, myCalloutDefinition);
+        }
+
+
         private void RecenterButton_Click(object sender, RoutedEventArgs e)
         {
             // Change the mapview to use navigation mode.
-            WTMap.LocationDisplay.AutoPanMode = LocationDisplayAutoPanMode.Navigation;
+            WTMap.LocationDisplay.AutoPanMode = LocationDisplayAutoPanMode.CompassNavigation;
         }
 
         private void SampleUnloaded(object sender, RoutedEventArgs e)
@@ -238,6 +295,72 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
             WTMap.LocationDisplay?.DataSource?.StopAsync();
         }
 
+        private void StartAddress_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AddressSelectorSelectionChanged(AddressRouteType.Start);
+        }
+
+        private void DestinationAddress_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AddressSelectorSelectionChanged(AddressRouteType.Destination);
+        }
+
+        public void AddressSelectorSelectionChanged(AddressRouteType type)
+        {
+            void MapSelection(bool isTrue)
+            {
+                if (isTrue)
+                {
+
+                    try
+                    {
+                        WTMap.GeoViewTapped += WTMap_GeoViewTapped;
+                    }
+                    catch (Exception) { }
+
+                    CaseInfo = type.ToString();
+                }
+                else
+                {
+                    try
+                    {
+                        WTMap.GeoViewTapped -= WTMap_GeoViewTapped;
+                        WTMap.DismissCallout();
+                    }
+                    catch (Exception) { }
+
+                }
+            }
+
+            int index = type == AddressRouteType.Start ? StartAddress.SelectedIndex : DestinationAddress.SelectedIndex;
+
+            MapSelection(false);
+
+            if (index == -1)
+                return;
+
+            switch (index)
+            {
+                case 0:
+                    {
+                        if (type == AddressRouteType.Start)
+                            CMessageBox.Show(WTMap.LocationDisplay.Location.ToString(), CMessageTitle.Info, CMessageButton.Ok, CMessageButton.None);
+                        else
+                            MapSelection(true);
+                        return;
+                    }
+                case 1:
+                    {
+                        if (type == AddressRouteType.Start)
+                            MapSelection(true);
+                        return;
+                    }
+                default:
+                    break;
+            }
+
+            MapSelection(false);
+        }
     }
 
     // This location data source uses an input data source and a route tracker.

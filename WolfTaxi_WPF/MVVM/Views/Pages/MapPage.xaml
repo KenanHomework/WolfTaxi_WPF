@@ -10,6 +10,56 @@
       d:Width="1334"  d:Height="770"
       d:DesignHeight="450" d:DesignWidth="1334"
       Title="Map Page">
+
+    <!--#region ItemStyle-->
+
+    <Page.Resources>
+        <Style x:Name="AddressItem" TargetType="{x:Type ComboBoxItem}">
+            <Style.Triggers>
+                <!--- Hover Effect-->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#00a4b6"/>
+                </Trigger>
+
+                <!-- Selected -->
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#007ac2"/>
+                </Trigger>
+            </Style.Triggers>
+
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Background"  Value="#200a30"/>
+            <Setter Property="Foreground"  Value="#f8f9fd"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="10" Height="50" Width="600" Margin="0 5" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <!-- Icon -->
+                                <materialDesign:PackIcon Kind="{Binding Kind,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0"/>
+
+                                <TextBlock Name="Name" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Margin="5 0"
+                            Text="{Binding Name,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"  FontFamily="Bahnschrift Condensed"/>
+
+
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <!--#endregion-->
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -26,14 +76,30 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
 
             <ComboBox materialDesign:HintAssist.Hint="Start Address"
                         MinWidth="72" IsEditable="True" Background="#38304c" 
                         FontSize="20" Margin="5 0" Foreground="White" 
-                        Style="{StaticResource ComboBoxFlatStyle}">
+                        Style="{StaticResource ComboBoxFlatStyle}" Name="StartAddress"
+                        SelectionChanged="StartAddress_SelectionChanged" Cursor="Hand">
+                <ComboBox.ToolTip>
+                    <ToolTip Content="You do not need to put 'Baku' in front of the address, by default the search for 'Baku' will be performed" Style="{StaticResource tt_style}"/>
+                </ComboBox.ToolTip>
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+
+            <ComboBox materialDesign:HintAssist.Hint="Destination Address"
+                        MinWidth="72" IsEditable="True" Background="#38304c" 
+                        FontSize="20" Margin="5 0" Foreground="White" Grid.Column="1"
+                        Style="{StaticResource ComboBoxFlatStyle}" Name="DestinationAddress"
+                        SelectionChanged="DestinationAddress_SelectionChanged" Cursor="Hand"
+                        >
                 <ComboBox.ToolTip>
                     <ToolTip Content="you do not need to put 'Baku' in front of the address, by default the search for 'Baku' will be performed" Style="{StaticResource tt_style}"/>
                 </ComboBox.ToolTip>
@@ -44,18 +110,24 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
 
-            <TextBox Foreground="#edecef" Background="#38304c"                     
-              Style="{StaticResource MaterialDesignOutlinedTextBox}" MaxLength="20"
-              materialDesign:HintAssist.Hint="Destination" 
-              materialDesign:HintAssist.Background="#38304c"
-              Name="TBX" Grid.Column="1" Margin="5 0"/>
 
-            <Button Name="StartNavigationButton" Grid.Column="2"/>
+            <Button  Margin="5 0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignPaperDarkButton}" Height="35" Background="#39307c" Name="StartNavigationButton" Command="{Binding StartPreprocess}" Padding="0" IsEnabled="True" Opacity="1" BorderThickness="0" Cursor="Hand"
+                      materialDesign:ButtonAssist.CornerRadius="20" Width="180">
+                <StackPanel Orientation="Horizontal" Opacity="1">
+                    <materialDesign:PackIcon Kind="MapMarkerPath" Width="20" Height="20" Margin="5 0"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c7c7c7"/>
 
+                    <Label Content="Start" Foreground="#c7c7c7" Opacity="1" FontSize="20"
+                         FontFamily="Segoe UI Black" FontWeight="DemiBold"/>
+                </StackPanel>
+            </Button>
         </Grid>
 
         <!--#endregion-->
 
+        <materialDesign:Snackbar
+  x:Name="SnackbarTest"  Panel.ZIndex="3"/>
+        
         <!--#region MapView-->
 
         <esri:MapView x:Name="WTMap" Grid.RowSpan="23"/>

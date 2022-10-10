@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Style x:Name="AddressItem" TargetType="{x:Type ComboBoxItem}">
+        <Style.Triggers>
+            <!--- Hover Effect-->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#2c2b3f"/>
+            </Trigger>
+
+            <!-- Selected -->
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#292d2e"/>
+            </Trigger>
+        </Style.Triggers>
+
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Background"  Value="#200a30"/>
+        <Setter Property="Foreground"  Value="#f8f9fd"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBoxItem">
+                    <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Height="60" Width="1020" Margin="0 5" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Icon -->
+                            <materialDesign:PackIcon Kind="{Binding Kind,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                            <TextBlock Name="Name" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" TextWrapping="Wrap" 
+                            Text="{Binding Name,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"  FontFamily="Bahnschrift Condensed"/>
+
+
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

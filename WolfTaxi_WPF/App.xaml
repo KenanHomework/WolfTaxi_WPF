@@ -28,6 +28,7 @@
                 <ResourceDictionary Source="Styles/FontStyle.xaml"/>
                 <ResourceDictionary Source="Styles/TooltipStyle.xaml"/>
                 <ResourceDictionary Source="Styles/ToglebuttonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/AddressSelectorItemStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

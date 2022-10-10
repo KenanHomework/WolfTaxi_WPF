@@ -41,6 +41,7 @@ namespace WolfTaxi_WPF.MVVM.Views
                 {
                     SoundService.Succes();
                     App.ToAppWindow();
+                    return;
                 }
             }
             App.EnterWindow = this;

@@ -50,11 +50,11 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <Button Name="btnOk" Grid.Column="1" Content="OK"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BntOk_Click" Background="#FF698EF1" BorderBrush="{x:Null}" 
+                    <Button Name="btnOk" Grid.Column="1" Content="OK"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BntOk_Click" Background="#FF698EF1" BorderBrush="{x:Null}" Cursor="Hand"
                     Style="{StaticResource btnStyle}" Foreground="White" Height="25" Margin="0 0 20 0"/>
 
 
-                    <Button Name="btnCancel" Grid.Column="2" Content="Close" Height="25"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BtnCancel_Click"  Background="#FFE60000" BorderBrush="{x:Null}" Style="{StaticResource btnStyle}" Foreground="White"/>
+                    <Button Name="btnCancel" Grid.Column="2" Content="Close" Height="25"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80"  Click="BtnCancel_Click"  Background="#FFE60000" BorderBrush="{x:Null}" Style="{StaticResource btnStyle}" Foreground="White" Cursor="Hand"/>
                 </StackPanel>
             </Grid>
         </Grid>
