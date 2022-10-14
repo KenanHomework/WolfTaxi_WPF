@@ -3,6 +3,7 @@ using WolfTaxi_WPF.MVVM.Models.GeneralClasses;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
 {
@@ -42,6 +43,16 @@ namespace WolfTaxi_WPF.MVVM.Models.DerivedClasses
         #endregion
 
         public User() : base() { }
+
+        public User(User other) : base(other.Username, other.Password.Value, other.Email, other.Phone)
+        {
+            this.Username = other.Username;
+            this.Password = new(other.Password);
+            this.Phone = other.Phone;
+            this.Email = other.Email;
+            this.History = other.History;
+            this.SourceOfPP = other.SourceOfPP;
+        }
 
         public User(string username, string pp, string password, string email, string phone) : base(username, password, email, phone) { SourceOfPP = pp; }
 

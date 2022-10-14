@@ -86,7 +86,7 @@ namespace WolfTaxi_WPF
                 Esri.ArcGISRuntime.ArcGISRuntimeEnvironment.ApiKey = key.ToString();
             }
 
-            // Test -> testUser1
+            // Test -> testUser123
 
 
 
@@ -182,7 +182,7 @@ namespace WolfTaxi_WPF
                 AdminPanel.Close();
             }
             AppWindow = new();
-            Container.GetInstance<ProfilePageVM>().User = DataFacade.User;
+            Container.GetInstance<ProfilePageVM>().User = new User(DataFacade.User);
             Container.GetInstance<MapPageVM>().User = DataFacade.User;
             Container.GetInstance<HistoryPageVM>().User = DataFacade.User;
             AppWindow.ShowDialog();

@@ -126,7 +126,8 @@
         <!--#endregion-->
 
         <materialDesign:Snackbar
-  x:Name="SnackbarTest"  Panel.ZIndex="3"/>
+                        x:Name="SnackbarInfo"
+                        MessageQueue="{materialDesign:MessageQueue}"/>
         
         <!--#region MapView-->
 

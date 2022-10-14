@@ -84,7 +84,7 @@ namespace WolfTaxi_WPF.MVVM.Views
         {
             if (!User.Password.Compare(Password))
             {
-                CMessageBox.Show("Incorrect Admin Password !", CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
+                CMessageBox.Show("Incorrect User Password !", CMessageTitle.Warning, CMessageButton.Ok, CMessageButton.None);
                 Succes = false;
                 return;
             }

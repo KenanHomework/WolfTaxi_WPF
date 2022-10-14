@@ -110,7 +110,7 @@ namespace WolfTaxi_WPF.MVVM.ViewModels
        Driver.Phone.Length == 10 &&
        Regex.IsMatch(Driver.Username, "(-?([A-Z].\\s)?([A-Z][a-z]+)\\s?)+([A-Z]'([A-Z][a-z]+))?") &&
        Regex.IsMatch(Driver.Email, "\\b[\\w\\.-]+@[\\w\\.-]+\\.\\w{2,4}\\b") &&
-       Regex.IsMatch(Driver.Phone, "^((\\+050|055)|0)\\s?(4(099|055|050|077|070|010)\\d{1}|\\d{1})\\/?(((\\s?|\\.?)\\d{2}){3}|((\\s?|\\.)\\d{3}){2})\\b") &&
+       Regex.IsMatch(Driver.Phone, "^((\\050|055|099|077|070|010|051)|0)\\s?(4(099|055|050|077|070|010)\\d{1}|\\d{1})\\/?(((\\s?|\\.?)\\d{2}){3}|((\\s?|\\.)\\d{3}){2})\\b") &&
        RegxService.CheckControl(ref Page.Model, 3, Color.FromRgb(179, 179, 179)) &&
        RegxService.CheckCarYear(ref Page.Year, Color.FromRgb(179, 179, 179)) &&
        RegxService.CheckControl(ref Page.Number, 7, Color.FromRgb(179, 179, 179));

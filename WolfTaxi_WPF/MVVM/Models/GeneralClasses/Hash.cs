@@ -5,6 +5,7 @@ using LoremNET;
 using System.Text;
 using System.Threading.Tasks;
 using WolfTaxi_WPF.Interfaces;
+using System.Windows.Forms;
 
 namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 {
@@ -67,6 +68,13 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
                 throw new ArgumentNullException("value can't be null or empty");
 
             Value = HashValue(value);
+        }
+
+        public Hash(Hash other)
+        {
+            this.Value = other.Value;
+            this.HashKey = other.HashKey;
+            this.SaltStrings = other.SaltStrings;
         }
 
 

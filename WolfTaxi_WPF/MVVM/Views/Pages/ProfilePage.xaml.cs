@@ -16,8 +16,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WolfTaxi_WPF.MVVM.ViewModels;
 using WolfTaxi_WPF.Services;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WolfTaxi_WPF.MVVM.Views.Pages
 {
@@ -36,6 +34,8 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
         }
 
         public SolidColorBrush InfoColor { get; set; }
+
+        public bool EmailIsTrue { get; set; } = false;
 
 
         #region ClickMethods
@@ -127,6 +127,9 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             App.Container.GetInstance<ProfilePageVM>().Save.Execute(sender);
+            App.Container.GetInstance<ProfilePageVM>().ShowPassword(false);
+            if (!EmailIsTrue)
+                return;
             PrepareEdit(false);
         }
 
