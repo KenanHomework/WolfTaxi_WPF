@@ -29,7 +29,7 @@
                     <Image Grid.Column="0" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" 
                  Source="https://res.cloudinary.com/kysbv/image/upload/v1659124152/WolfTaxi/add_new_driver.png"/>
 
-                    <Label Grid.Column="1" Foreground="#f0f4fd" Margin="2 0"  FontWeight="SemiBold" Content="Edit Dtriver"/>
+                    <Label Grid.Column="1" Foreground="#f0f4fd" Margin="2 0"  FontWeight="SemiBold" Content="Add Dtriver"/>
 
                     <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Background="Transparent" BorderThickness="0" Width="40" Foreground="#f0f4fd" VerticalAlignment="Center" Content="_" Padding="0 0 0 8" Height="25" Click="ResizeButton_Click"/>
@@ -75,7 +75,7 @@
                             <StackPanel Orientation="Horizontal" Margin="10 0 0 0" Background="Transparent">
                                 <Ellipse x:Name="PP" Height="50" Width="50">
                                     <Ellipse.Fill>
-                                        <ImageBrush x:Name="ProfilePhoto" ImageSource="{Binding Driver.SourceOfPP,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                        <ImageBrush x:Name="ProfilePhoto" Stretch="Fill" ImageSource="{Binding Driver.SourceOfPP,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                             </StackPanel>

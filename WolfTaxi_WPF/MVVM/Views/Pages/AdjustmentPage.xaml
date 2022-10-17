@@ -31,9 +31,10 @@
             <!--#region TaxiType-->
             <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <ComboBox x:Name="TaxiTypeComboBox" Height="40" 
-                    HorizontalAlignment="Left"
-                    Foreground="Aqua" ItemsSource="{Binding TaxiTypes,Mode=OneTime,UpdateSourceTrigger=PropertyChanged}"  Width="150" Margin="5 0 " 
-                    Style="{StaticResource ComboBoxFlatStyle}" BorderBrush="#FF512DA8" Background="#2c2b3f" SelectionChanged="TaxiTypeComboBox_SelectionChanged" />
+                    HorizontalAlignment="Left" ItemContainerStyle="{StaticResource TaxiTypeComboBox}"
+                    Foreground="Aqua"  Width="150" Margin="5 0 " Style="{StaticResource ComboBoxFlatStyle}"
+                     BorderBrush="#FF512DA8" Background="#2c2b3f" SelectionChanged="TaxiTypeComboBox_SelectionChanged" >
+                </ComboBox>
             </Grid>
             <!--#endregion-->
 

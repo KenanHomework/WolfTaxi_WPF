@@ -17,8 +17,6 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
         #region Members
 
         private TaxiTypes taxiTypes = TaxiTypes.Comfort;
-
-
         private Uri iconSource;
         private string model = string.Empty;
         private int year = 1970;
@@ -26,16 +24,7 @@ namespace WolfTaxi_WPF.MVVM.Models.GeneralClasses
 
 
         public Uri IconSource { get => iconSource; set { iconSource = value; OnPropertyChanged(); } }
-        public TaxiTypes Type
-        {
-            get { return taxiTypes; }
-            set
-            {
-                taxiTypes = value;
-                IconSource = new Uri($"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{value.ToString().ToLower()}.png");
-                OnPropertyChanged();
-            }
-        }
+        public TaxiTypes Type { get { return taxiTypes; } set { OnPropertyChanged(); } }
         public string Model { get => model; set { model = value; OnPropertyChanged(); } }
         public int Year { get => year; set { year = value; OnPropertyChanged(); } }
         public string Number { get => number; set { number = value; OnPropertyChanged(); } }

@@ -8,6 +8,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using WolfTaxi_WPF.MVVM.Models.BaseClasses;
+using System.Linq.Expressions;
+using System.Xml;
 
 namespace WolfTaxi_WPF.Facade
 {
@@ -15,11 +18,11 @@ namespace WolfTaxi_WPF.Facade
     {
 
         #region Members
-        public List<float> TypeOfPPK { get; set; }
 
         public User User { get; set; }
 
         public bool Remember { get; set; } = false;
+
 
         private List<Driver> drivers;
         public List<Driver> Drivers { get => drivers; set { drivers = value; OnPropertyChanged(); } }
@@ -43,7 +46,6 @@ namespace WolfTaxi_WPF.Facade
             this.User = dataFacade.User;
             this.Remember = dataFacade.Remember;
             this.Drivers = dataFacade.Drivers;
-            this.TypeOfPPK = dataFacade.TypeOfPPK;
         }
 
         public void Save()
@@ -63,7 +65,8 @@ namespace WolfTaxi_WPF.Facade
                 loaded = JSONService.Read<DataFacade>("dataset/dataFacade.json");
                 ReadData(loaded);
             }
-            catch (Exception) { }
+            catch (Exception) {  }
+
 
 
         }
@@ -151,9 +154,15 @@ namespace WolfTaxi_WPF.Facade
             catch (Exception) { }
         });
 
+        public float GetPrice(TaxiTypes type) => App.AllTaxiType.Find(t => t.Type == type).Price;
+
+        public TaxiTypeBase GetTaxiTypeBase(TaxiTypes type) => App.AllTaxiType.Find(t => t.Type == type);
+
+        public void UpdateTaxiTypePrice(TaxiTypes type, float price) => App.AllTaxiType.ForEach(t => { if (type == t.Type) t.Price = price; });
+
         #endregion
 
-        public DataFacade() { TypeOfPPK = new() { 1.2f, 2f, 4f }; }
+        public DataFacade() {  }
 
         public override string ToString() => $"User: {User}  \n Remember: {Remember}";
     }

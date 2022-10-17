@@ -29,6 +29,8 @@
                 <ResourceDictionary Source="Styles/TooltipStyle.xaml"/>
                 <ResourceDictionary Source="Styles/ToglebuttonStyle.xaml"/>
                 <ResourceDictionary Source="Styles/AddressSelectorItemStyle.xaml"/>
+                <ResourceDictionary Source="Styles/TaxiTypeComboBoxStyle.xaml"/>
+                <ResourceDictionary Source="Styles/TaxiTypeListViewStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

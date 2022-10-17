@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace WolfTaxi_WPF.Enums
 {
     public enum ProcessResult { Success, NotFound, Empty, IncorrectPassword, Existed, FileError, Error, EmptyArguments }
+
     public enum TaxiTypes { Comfort, Fast, Lux }
 
     public enum DialogResult { Success, Cancel, Ok, No, Yes }
@@ -15,6 +16,6 @@ namespace WolfTaxi_WPF.Enums
 
     public enum CMessageTitle { Error, Info, Warning, Confirm }
 
-    public enum AddressRouteType {Start,Destination,None }
+    public enum AddressRouteType { Start, Destination, None }
 
 }

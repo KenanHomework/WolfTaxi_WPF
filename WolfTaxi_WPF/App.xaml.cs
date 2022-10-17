@@ -19,6 +19,7 @@ using System.Runtime.CompilerServices;
 using CloudinaryDotNet;
 using System.Windows.Media;
 using System.Text.Json;
+using WolfTaxi_WPF.MVVM.Models.BaseClasses;
 
 namespace WolfTaxi_WPF
 {
@@ -61,6 +62,7 @@ namespace WolfTaxi_WPF
         public static string DriverCloudinaryFolderPath = "WolfTaxi/ClientPhotos/DriverPhotos";
         public static string UserCloudinaryFolderPath = "WolfTaxi/ClientPhotos/UserPhotos";
         public static string TempCloudinaryFolderPath = "WolfTaxi/ClientPhotos/TempPhotos";
+        public static List<TaxiTypeBase> AllTaxiType;
 
         #endregion
 
@@ -80,6 +82,7 @@ namespace WolfTaxi_WPF
             CreateDirectorys();
             Register();
             DataFacade.Load();
+            ReadAllTaxiType();
             using (var jsonDoc = JsonDocument.Parse(File.ReadAllText("appconfig.json")))
             {
                 JsonElement key = jsonDoc.RootElement.GetProperty("EsriAPIKey");
@@ -91,8 +94,10 @@ namespace WolfTaxi_WPF
 
 
             DataFacade.Drivers = new List<Driver>() {
-                new Driver("Kamil Kamilli",   "kamilliKamil123", "7FO01S3", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f)),
+                new Driver("Kamil Kamilli",   "kamilliKamil123", "7FO01S3", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe", 2022, "77-ZZ-777",TaxiTypes.Fast, 1.4f)),
             };
+
+            #region Drivers
 
             //DataFacade.Drivers = new List<Driver>() {
             //    new Driver("Kamil Kamilli",   "kamilliKamil123", "7FO01S3", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m8 gran coupe", 2022, "77-ZZ-777", TaxiTypes.Fast, 1.4f)),
@@ -106,6 +111,7 @@ namespace WolfTaxi_WPF
             //    new Driver("Driver 4.Driver", "kamilliKamil123", "A12B656", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw x6m xDrive", 2022, "77-ZZ-777", TaxiTypes.Lux, 1.4f)) ,
             //    new Driver("Driver 5.Driver", "kamilliKamil123", "C123456", "kamil@kamilli.com", "0555555555", new(), new Taxi("bmw m235i xDrive ", 2022, "77-ZZ-777", TaxiTypes.Comfort, 1.4f))
             //};
+            #endregion
         }
 
         #region Methods
@@ -135,8 +141,23 @@ namespace WolfTaxi_WPF
             Container.RegisterSingleton<ProfilePageVM>();
             Container.RegisterSingleton<MapPageVM>();
             Container.RegisterSingleton<HistoryPageVM>();
+            Container.RegisterSingleton<AskRouteVM>();
 
             Container.Verify();
+        }
+
+        void WriteAllTaxiType()
+        {
+            JSONService.Write("dataset/all_taxi.json", AllTaxiType);
+        }
+
+        void ReadAllTaxiType()
+        {
+            try
+            {
+                AllTaxiType = JSONService.Read<List<TaxiTypeBase>>("dataset/dataFacade.json");
+            }
+            catch (Exception) { AllTaxiType = new() { new ComfortTaxiType(), new FastTaxiType(), new LuxTaxiType() }; }
         }
 
         public static void ToAdminPanel()

@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WolfTaxi_WPF.Commands;
 using WolfTaxi_WPF.Enums;
+using WolfTaxi_WPF.MVVM.Models.BaseClasses;
 using WolfTaxi_WPF.MVVM.ViewModels;
 using WolfTaxi_WPF.Services;
 
@@ -30,7 +31,8 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
         public AdjustmentPage()
         {
             InitializeComponent();
-            TaxiTypeComboBox.ItemsSource = Enum.GetValues(typeof(TaxiTypes));
+            //TaxiTypeComboBox.ItemsSource = Enum.GetValues(typeof(TaxiTypes));
+            TaxiTypeComboBox.ItemsSource = App.AllTaxiType;
             TaxiTypeComboBox.SelectedIndex = 0;
             DataContext = this;
             Save = new(SaveClick, CanSave);
@@ -58,12 +60,15 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
 
         private void TaxiTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TaxiICon.ImageSource = BitmapService.GetBitmapImageFromUrl($"https://res.cloudinary.com/kysbv/image/upload/v1658306801/WolfTaxi/taxi_type_{TaxiTypeComboBox.SelectedItem.ToString().ToLower()}.png");
-            PricePerKm = App.DataFacade.TypeOfPPK[TaxiTypeComboBox.SelectedIndex];
+            //TaxiICon.ImageSource = BitmapService.GetBitmapImageFromUrl(App.DataFacade.GetTaxiTypeBase((TaxiTypes)TaxiTypeComboBox.SelectedItem).IconSource);
+            //PricePerKm = App.DataFacade.GetTaxiTypeBase((TaxiTypes)TaxiTypeComboBox.SelectedItem).Price;
+            //Price_TBX.Text = PricePerKm.ToString();         
+            TaxiICon.ImageSource = BitmapService.GetBitmapImageFromUrl(((TaxiTypeBase)TaxiTypeComboBox.SelectedItem).IconSource);
+            PricePerKm = ((TaxiTypeBase)TaxiTypeComboBox.SelectedItem).Price;
             Price_TBX.Text = PricePerKm.ToString();
         }
 
-        public bool CanSave(object param) => PricePerKm != App.DataFacade.TypeOfPPK[TaxiTypeComboBox.SelectedIndex];
+        public bool CanSave(object param) => PricePerKm != ((TaxiTypeBase)TaxiTypeComboBox.SelectedItem).Price;
 
         public void SaveClick(object param)
         {
@@ -71,7 +76,7 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
                 CMessageTitle.Confirm, CMessageButton.Yes, CMessageButton.No);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                App.DataFacade.TypeOfPPK[TaxiTypeComboBox.SelectedIndex] = PricePerKm;
+                ((TaxiTypeBase)TaxiTypeComboBox.SelectedItem).Price = PricePerKm;
                 App.DataFacade.Save();
                 SoundService.Succes();
             }

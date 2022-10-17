@@ -38,6 +38,9 @@ using WolfTaxi_WPF.Services;
 using System.Windows.Media;
 using Color = System.Drawing.Color;
 using Geometry = Esri.ArcGISRuntime.Geometry.Geometry;
+using WolfTaxi_WPF.MVVM.ViewModels;
+using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 
 namespace WolfTaxi_WPF.MVVM.Views.Pages
 {
@@ -104,6 +107,10 @@ namespace WolfTaxi_WPF.MVVM.Views.Pages
         {
             WTMap.CancelSetViewpointOperations();
             StartInitialize();
+            AskRoute askRoute = new();
+            askRoute._start = this._start;
+            askRoute._destination = this._destination;
+            askRoute.ShowDialog();
         }
 
         public bool StartPreprocessCanRun(object param) => _start != null && _destination != null;
