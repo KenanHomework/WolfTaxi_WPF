@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using WolfTaxi_WPF.EmailDesigns;
 
 namespace WolfTaxi_WPF.Services

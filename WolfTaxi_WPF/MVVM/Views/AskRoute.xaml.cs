@@ -54,6 +54,7 @@ namespace WolfTaxi_WPF.MVVM.Views
             InitializeComponent();
             InitializeMap();
             Initialize();
+            TaxiTypeListView.ItemsSource = App.AllTaxiType;
         }
 
         private async Task Initialize()

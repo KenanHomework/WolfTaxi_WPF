@@ -68,7 +68,7 @@
                 <!--#region SelectCategory-->
 
                 <ListView Grid.Column="1" Grid.Row="1" SelectionMode="Single" Name="TaxiTypeListView"
-                          ItemContainerStyle="{StaticResource TaxiTypeListView}">
+                          ItemContainerStyle="{StaticResource TaxiTypeListView}" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"></StackPanel>
